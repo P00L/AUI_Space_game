@@ -89,6 +89,7 @@
     <Compile Include="Model\Child.cs" />
     <Compile Include="Model\Constant.cs" />
     <Compile Include="Model\GameState.cs" />
+    <Compile Include="Model\PROVA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
