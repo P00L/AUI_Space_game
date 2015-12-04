@@ -16,12 +16,16 @@ namespace AuiSpaceGame
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using Microsoft.Kinect;
+    using AuiSpaceGame.Model;
 
     /// <summary>
     /// Interaction logic for MainWindow
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+
+        private Child child = new Child();
+
         /// <summary>
         /// Radius of drawn hand circles
         /// </summary>
@@ -300,6 +304,8 @@ namespace AuiSpaceGame
         /// <param name="e">event arguments</param>
         private void Reader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
+            child.name = "Luca";
+            label.Content = child.name; 
             bool dataReceived = false;
 
             using (BodyFrame bodyFrame = e.FrameReference.AcquireFrame())
