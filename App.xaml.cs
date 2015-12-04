@@ -4,7 +4,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Samples.Kinect.BodyBasics
+namespace AuiSpaceGame
 {
     using System;
     using System.Windows;

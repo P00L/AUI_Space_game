@@ -31,7 +31,7 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 
 
-namespace Microsoft.Samples.Kinect.BodyBasics {
+namespace AuiSpaceGame {
     
     
     /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
-            Microsoft.Samples.Kinect.BodyBasics.App app = new Microsoft.Samples.Kinect.BodyBasics.App();
+            AuiSpaceGame.App app = new AuiSpaceGame.App();
             app.InitializeComponent();
             app.Run();
         }
