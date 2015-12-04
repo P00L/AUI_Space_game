@@ -13,3 +13,6 @@ C:\Users\Dario\workspace AUI\BodyBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.B
 C:\Users\Dario\workspace AUI\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.csproj.GenerateResource.Cache
 C:\Users\Dario\workspace AUI\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.exe
 C:\Users\Dario\workspace AUI\BodyBasics-WPF\obj\Debug\BodyBasics-WPF.pdb
+E:\Polimi\AUI\AUI_Space_game\bin\AnyCPU\Debug\BodyBasics-WPF.exe.config
+E:\Polimi\AUI\AUI_Space_game\obj\Debug\BodyBasics-WPF.exe
+E:\Polimi\AUI\AUI_Space_game\obj\Debug\BodyBasics-WPF.pdb
