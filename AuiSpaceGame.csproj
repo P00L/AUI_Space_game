@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Model\Animation.cs" />
     <Compile Include="Model\Child.cs" />
+    <Compile Include="Model\Class1.cs" />
     <Compile Include="Model\Constant.cs" />
     <Compile Include="Model\GameState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

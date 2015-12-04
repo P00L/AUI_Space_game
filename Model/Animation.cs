@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    interface Animation
+    abstract class Animation
     {
+        public DateTime startingAnimationTime { get; set; }
+        public DateTime animationDuration { get; set; }
+
     }
 }

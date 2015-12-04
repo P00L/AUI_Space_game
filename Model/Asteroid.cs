@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    class Class1
+    class Asteroid : Animation
     {
-        public int ciao()
-        {
-            return 1;
-        }
-    }
-    
-    class Class2
-    {
+        public int lane { get; set; }
+        public float speed { get; set; }
+        public float z0 { get; set; }
 
     }
 }
