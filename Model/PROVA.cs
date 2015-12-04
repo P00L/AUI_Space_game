@@ -9,5 +9,14 @@ namespace AuiSpaceGame.Model
     class PROVA
     {
         //BLABLABLABLA
+
+
+        //PROVA estensione VS
+        int a;
+
+
+
+
+        int b;
     }
 }
