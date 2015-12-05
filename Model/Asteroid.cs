@@ -8,9 +8,9 @@ namespace AuiSpaceGame.Model
 {
     class Asteroid : Animation
     {
-        public int lane { get; set; }
-        public float speed { get; set; }
-        public float z0 { get; set; }
+        public double Lane { get; set; }
+        public double Speed { get; set; }
+        public double Z0 { get; set; }
 
     }
 }

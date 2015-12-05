@@ -8,8 +8,8 @@ namespace AuiSpaceGame.Model
 {
     class Child
     {
-        public String name { get; set; }
-        public String surname { get; set; }
-        public String id { get; set; }
+        public String Name { get; set; }
+        public String Surname { get; set; }
+        public String Id { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace AuiSpaceGame.Model
 {
     class Game
     {
-        public Animation[] AnimationsSequence { get; set; }
+        public List<Animation> AnimationsSequence { get; set; }
         public Child Child { get; set; }
-        public DateTime GameDuration { get; set; }
+        public TimeSpan GameDuration { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace AuiSpaceGame.Model
 {
     abstract class Animation
     {
-        public DateTime startingAnimationTime { get; set; }
-        public DateTime animationDuration { get; set; }
+        public DateTime StartingAnimationTime { get; set; }
+        public TimeSpan AnimationDuration { get; set; }
 
     }
 }

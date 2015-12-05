@@ -8,9 +8,9 @@ namespace AuiSpaceGame.Model
 {
     class GameState
     {
-        private int animationId { get; set; }
-        private Boolean executeReinforcement { get; set; }
-        private Boolean animationOn { get; set; }
+        private int AnimationId { get; set; }
+        private Boolean ExecuteReinforcement { get; set; }
+        private Boolean AnimationOn { get; set; }
         private Boolean GameOn { get; set; }
         private Boolean GamePause { get; set; }
     }
