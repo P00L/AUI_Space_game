@@ -9,9 +9,17 @@ namespace AuiSpaceGame.Model
     static class Constant
     {
         public const double ZCarpet = 2;
+
+        /// <summary>
+        /// Delay of the carpet (in milliseconds)
+        /// </summary>
         public const double TPharos = 0;
         public const double ZLittleSpace = 0.07;
-        public const double SquaredCarpetLength = 0.6;
+        public const double Square = 0.6;
+        /// <summary>
+        /// Precision to measure the position
+        /// </summary>
+        public const double Delta = 0.25;
     }
 
     static class Lane

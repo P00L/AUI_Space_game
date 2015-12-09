@@ -23,8 +23,34 @@ namespace AuiSpaceGame
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Array for the bodies
+        /// </summary>
+        private Body[] bodies = null;
 
-        private Child child = new Child();
+        /// <summary>
+        /// Body of the child
+        /// </summary>
+        private Body childBody;
+
+        /// <summary>
+        /// Active Kinect sensor
+        /// </summary>
+        private KinectSensor kinectSensor = null;
+
+        /// <summary>
+        /// Coordinate mapper to map one type of point to another
+        /// </summary>
+        private CoordinateMapper coordinateMapper = null;
+
+        /// <summary>
+        /// Reader for body frames
+        /// </summary>
+        private BodyFrameReader bodyFrameReader = null;
+
+        private Game game;
+
+
 
         /// <summary>
         /// Radius of drawn hand circles
@@ -86,25 +112,9 @@ namespace AuiSpaceGame
         /// </summary>
         private DrawingImage imageSource;
 
-        /// <summary>
-        /// Active Kinect sensor
-        /// </summary>
-        private KinectSensor kinectSensor = null;
+        
 
-        /// <summary>
-        /// Coordinate mapper to map one type of point to another
-        /// </summary>
-        private CoordinateMapper coordinateMapper = null;
-
-        /// <summary>
-        /// Reader for body frames
-        /// </summary>
-        private BodyFrameReader bodyFrameReader = null;
-
-        /// <summary>
-        /// Array for the bodies
-        /// </summary>
-        private Body[] bodies = null;
+        
 
         /// <summary>
         /// definition of bones
@@ -304,8 +314,6 @@ namespace AuiSpaceGame
         /// <param name="e">event arguments</param>
         private void Reader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
-            child.name = "Luca";
-            label.Content = child.name; 
             bool dataReceived = false;
 
             using (BodyFrame bodyFrame = e.FrameReference.AcquireFrame())
@@ -370,31 +378,26 @@ namespace AuiSpaceGame
                     // prevent drawing outside of our render area
                     this.drawingGroup.ClipGeometry = new RectangleGeometry(new Rect(0.0, 0.0, this.displayWidth, this.displayHeight));
 
-                    // NOSTRO CODICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                    float childHeight = 3;
-                    Body childBody = this.bodies[0];
-                    foreach(Body body in this.bodies)
+                }
+
+                // NOSTRO CODICEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                float childHeight = 3;
+                childBody = this.bodies[0];
+                foreach (Body body in this.bodies)
+                {
+                    if (body.IsTracked)
                     {
-                        if (body.IsTracked)
+                        if (body.Joints[JointType.SpineMid].Position.Y < childHeight)
                         {
-                            if (body.Joints[JointType.SpineMid].Position.Y < childHeight)
-                            {
-                                childBody = body;
-                                childHeight = body.Joints[JointType.SpineMid].Position.Y;
-                                
-                            }
+                            childBody = body;
+                            childHeight = body.Joints[JointType.SpineMid].Position.Y;
                         }
-                        
-                    }
-                    /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
-                    Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
-                    Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);*/
-                    if(childBody.Joints[JointType.SpineMid].Position.Z >= 1.77 && childBody.Joints[JointType.SpineMid].Position.Z <= 2.23 && childBody.Joints[JointType.SpineMid].Position.X >= -0.23 && childBody.Joints[JointType.SpineMid].Position.X <= 0.23)
-                    {
-                        Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff"));
                     }
 
                 }
+                //now we have the body of the child
+                CheckChildPosition();
+
             }
         }
 
@@ -544,5 +547,18 @@ namespace AuiSpaceGame
             this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText
                                                             : Properties.Resources.SensorNotAvailableStatusText;
         }
+
+        private void CheckChildPosition()
+        {
+              /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
+                Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
+                Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);*/
+            
+            if (childBody.Joints[JointType.SpineMid].Position.Z >= 1.77 && childBody.Joints[JointType.SpineMid].Position.Z <= 2.23 && childBody.Joints[JointType.SpineMid].Position.X >= -0.23 && childBody.Joints[JointType.SpineMid].Position.X <= 0.23)
+            {
+                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff"));
+            }
+        }
+
     }
 }

@@ -8,10 +8,17 @@ namespace AuiSpaceGame.Model
 {
     class GameState
     {
-        private int AnimationId { get; set; }
-        private Boolean ExecuteReinforcement { get; set; }
-        private Boolean AnimationOn { get; set; }
-        private Boolean GameOn { get; set; }
-        private Boolean GamePause { get; set; }
+        //gameon:	TRUE-->	gamePau TRUE
+        //          FALSE           FALSE-->animationOn TRUE (esclusivi)
+        //                                              FALSE
+        //                                  reinforcementOn TRUE
+        //                                                  FALSE
+
+        public int AnimationId { get; set; }
+        public Boolean ReinforcementOn { get; set; }
+        public Boolean ExecuteReinforcement { get; set; } // TODO default = true;
+        public Boolean AnimationOn { get; set; }
+        public Boolean GameOn { get; set; } //TODO quando setto a false -> setto tutto a false
+        public Boolean GamePause { get; set; }
     }
 }
