@@ -22,15 +22,36 @@ namespace AuiSpaceGame.Model
         public event EventHandler ReinforcementOnChanged;
         public event EventHandler ExecuteReinforcementChanged;
 
-        private Boolean gameOn;
-        private Boolean gamePause;
-        private Boolean animationOn;
-        private Boolean reinforcementOn;
+        private Boolean gameOn = false;
+        private Boolean gamePause = false;
+        private Boolean animationOn = false;
+        private Boolean reinforcementOn = false;
         private Boolean executeReinforcement = true; //se il bambino colpisce l'asteroide diventa false
+        private Boolean redoAnimation = false;
+        private int animationId = 0;
 
         public int AnimationId
         {
-            get; set;
+            get
+            {
+                return animationId;
+            }
+            set
+            {
+                animationId = value;
+            }
+        }
+
+        public Boolean RedoAnimation
+        {
+            get
+            {
+                return redoAnimation;
+            }
+            set
+            {
+                redoAnimation = value;
+            }
         }
 
         public Boolean ReinforcementOn

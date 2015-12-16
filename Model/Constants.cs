@@ -20,6 +20,7 @@ namespace AuiSpaceGame.Model
         /// Precision to measure the position
         /// </summary>
         public const double Delta = 0.25;
+        public const double TReinforcement = 22;
     }
 
     static class Lane
