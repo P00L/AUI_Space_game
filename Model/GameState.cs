@@ -13,12 +13,117 @@ namespace AuiSpaceGame.Model
         //                                              FALSE
         //                                  reinforcementOn TRUE
         //                                                  FALSE
+        
+        //TODO game pause????
 
-        public int AnimationId { get; set; }
-        public Boolean ReinforcementOn { get; set; }
-        public Boolean ExecuteReinforcement { get; set; } // TODO default = true;
-        public Boolean AnimationOn { get; set; }
-        public Boolean GameOn { get; set; } //TODO quando setto a false -> setto tutto a false
-        public Boolean GamePause { get; set; }
+        public event EventHandler GameOnChanged;
+        public event EventHandler GamePauseOnChanged;
+        public event EventHandler AnimationOnChanged;
+        public event EventHandler ReinforcementOnChanged;
+        public event EventHandler ExecuteReinforcementChanged;
+
+        private Boolean gameOn;
+        private Boolean gamePause;
+        private Boolean animationOn;
+        private Boolean reinforcementOn;
+        private Boolean executeReinforcement = true; //se il bambino colpisce l'asteroide diventa false
+
+        public int AnimationId
+        {
+            get; set;
+        }
+
+        public Boolean ReinforcementOn
+        {
+            get
+            {
+                return reinforcementOn;
+            }
+            set
+            {
+                reinforcementOn = value;
+                OnReinforcementOnChanged(EventArgs.Empty);
+            }
+        }
+
+        public Boolean ExecuteReinforcement
+        {
+            get
+            {
+                return executeReinforcement;
+            }
+            set
+            {
+                executeReinforcement = value;
+                OnExecuteReinforcementChanged(EventArgs.Empty);
+            }
+        } 
+        public Boolean AnimationOn
+        {
+            get
+            {
+                return animationOn;
+            }
+            set
+            {
+                animationOn = value;
+                OnAnimationOnChanged(EventArgs.Empty);
+            }
+        }
+        public Boolean GameOn
+        {
+            get
+            {
+                return gameOn;
+            }
+            set
+            {
+                gameOn = value;
+                if (!gameOn)
+                {
+                    animationOn = false;
+                    reinforcementOn = false;
+                    executeReinforcement = true;
+                    animationOn = false;
+                    gamePause = false;
+                }
+                OnGameOnChanged(EventArgs.Empty);
+            }
+        }
+        public Boolean GamePause
+        {
+            get
+            {
+                return gamePause;
+            }
+            set
+            {
+                gamePause = value;
+                OnGamePauseOnChanged(EventArgs.Empty);
+            }
+
+        }
+
+        protected virtual void OnGameOnChanged(EventArgs e)
+        {
+            GameOnChanged?.Invoke(this, e);
+        }
+
+        protected virtual void OnGamePauseOnChanged(EventArgs e)
+        {
+            GamePauseOnChanged?.Invoke(this, e);
+        }
+        protected virtual void OnAnimationOnChanged(EventArgs e)
+        {
+            AnimationOnChanged?.Invoke(this, e);
+        }
+        protected virtual void OnReinforcementOnChanged(EventArgs e)
+        {
+            ReinforcementOnChanged?.Invoke(this, e);
+        }
+        protected virtual void OnExecuteReinforcementChanged(EventArgs e)
+        {
+            ExecuteReinforcementChanged?.Invoke(this, e);
+        }
     }
 }
