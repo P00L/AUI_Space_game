@@ -29,5 +29,11 @@ namespace AuiSpaceGame.Model
         public const double Middle = 0;
         public const double Right = 0.46;
     }
-    
+
+    static class Speed
+    {
+        public const double Low = 2;
+        public const double High = 10;
+    }
+
 }

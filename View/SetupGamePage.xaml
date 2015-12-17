@@ -1,0 +1,39 @@
+﻿<Page x:Class="AuiSpaceGame.View.SetupGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AuiSpaceGame.View"
+      mc:Ignorable="d"
+      Title="SetupGamePage" Height="499.333" Width="476">
+
+    <Grid>
+        <Button x:Name="button" Content="vai a starting page" HorizontalAlignment="Left" Margin="364,415,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <TextBox x:Name="gameName" HorizontalAlignment="Left" Height="23" Margin="37,32,0,0" TextWrapping="Wrap" Text="Nome gioco" VerticalAlignment="Top" Width="120" TextChanged="gameName_TextChanged"/>
+        <TextBox x:Name="childName" HorizontalAlignment="Left" Height="23" Margin="37,60,0,0" TextWrapping="Wrap" Text="TODONome del bambino" VerticalAlignment="Top" Width="120"/>
+        <RadioButton x:Name="animationAsteroid" Content="Asteroide" HorizontalAlignment="Left" Margin="31,162,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
+        <RadioButton x:Name="animationLogicBlock" Content="RadioButton" HorizontalAlignment="Left" Margin="157,162,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
+        <ListView x:Name="animationSequence" HorizontalAlignment="Left" Height="100" Margin="188,32,0,0" VerticalAlignment="Top" Width="100">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Animation"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="squareTopLeft" Content="" HorizontalAlignment="Left" Margin="31,203,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopLeft_Click"/>
+        <Button x:Name="squareTopRight" Content="" HorizontalAlignment="Left" Margin="103,203,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopRight_Click"/>
+        <Button x:Name="squareBottomLeft" Content="" HorizontalAlignment="Left" Margin="31,278,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomLeft_Click"/>
+        <Button x:Name="squareBottomRight" Content="" HorizontalAlignment="Left" Margin="103,278,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomRight_Click"/>
+
+        <Button x:Name="laneLeft" Content="" HorizontalAlignment="Left" Margin="54,228,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneLeft_Click" IsEnabled="False"/>
+        <Button x:Name="laneMiddle" Content="" HorizontalAlignment="Left" Margin="70,228,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneMiddle_Click" IsEnabled="False"/>
+        <Button x:Name="laneRight" Content="" HorizontalAlignment="Left" Margin="86,228,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneRight_Click" IsEnabled="False"/>
+
+        <RadioButton x:Name="lowSpeed" Content="Bassa" HorizontalAlignment="Left" Margin="103,339,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
+        <RadioButton x:Name="highSpeed" Content="Alta" HorizontalAlignment="Left" Margin="178,339,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False"/>
+        <Label x:Name="SpeedLabel" Content="Velocità&#xD;&#xA;" HorizontalAlignment="Left" Margin="31,333,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addAnimation" Content="Add" HorizontalAlignment="Left" Margin="293,112,0,0" VerticalAlignment="Top" Width="75" Click="addAnimation_Click"/>
+        <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,453,0,0" VerticalAlignment="Top" Width="74"/>
+    </Grid>
+</Page>

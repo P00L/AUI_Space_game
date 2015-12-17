@@ -12,5 +12,12 @@ namespace AuiSpaceGame.Model
         public double Speed { get; set; }
         public double Z0 { get; set; }
 
+        public Asteroid(double lane, double speed)
+        {
+            Lane = lane;
+            Speed = speed;
+            Z0 = Constant.ZCarpet + Constant.ZLittleSpace + Constant.Square;
+        }
+
     }
 }
