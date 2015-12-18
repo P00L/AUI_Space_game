@@ -38,5 +38,6 @@
         <Button x:Name="animationUp" Content="Up" HorizontalAlignment="Left" Margin="391,69,0,0" VerticalAlignment="Top" Width="75" Click="animationUp_Click" IsEnabled="False"/>
         <Button x:Name="animationDown" Content="Down" HorizontalAlignment="Left" Margin="391,94,0,0" VerticalAlignment="Top" Width="75" Click="animationDown_Click" IsEnabled="False"/>
         <Button x:Name="animationRemove" Content="Remove" HorizontalAlignment="Left" Margin="391,119,0,0" VerticalAlignment="Top" Width="75" Click="animationRemove_Click" IsEnabled="False"/>
+        <Button x:Name="startGame" Content="Inizia" HorizontalAlignment="Left" Margin="364,398,0,0" VerticalAlignment="Top" Width="75" Click="startGame_Click"/>
     </Grid>
 </Page>

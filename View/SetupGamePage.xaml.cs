@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AuiSpaceGame.Model;
+using AuiSpaceGame.Controller;
 
 namespace AuiSpaceGame.View
 {
@@ -361,6 +362,15 @@ namespace AuiSpaceGame.View
             animationLogicBlock.IsChecked = false;
             lowSpeed.IsChecked = false;
             highSpeed.IsChecked = false;
+        }
+
+        private void startGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameState gameState = new GameState();
+            Kinect kinect = new Kinect(Game,gameState);
+            GameController gameController = new GameController(Game,gameState);
+            gameState.GameOn = true;
+
         }
     }
 }

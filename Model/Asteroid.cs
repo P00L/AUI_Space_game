@@ -17,6 +17,8 @@ namespace AuiSpaceGame.Model
             Lane = lane;
             Speed = speed;
             Z0 = Constant.ZCarpet + Constant.ZLittleSpace + Constant.Square;
+            AnimationDuration = TimeSpan.FromMilliseconds((Constant.Square * 2) / Speed);
+            Console.WriteLine(AnimationDuration);
         }
 
     }

@@ -14,7 +14,8 @@ namespace AuiSpaceGame.Controller
         Game Game;
         Timer Timer;
 
-        public GameController(GameState gameState,Game game){
+        public GameController(Game game, GameState gameState)
+        {
             GameState = gameState;
             Game = game;
             GameState.GameOnChanged += new EventHandler(GameOnChanged);
@@ -50,6 +51,7 @@ namespace AuiSpaceGame.Controller
             {
                 Animation animation = Game.AnimationsSequence.ElementAt(GameState.AnimationId);
                 animation.StartingAnimationTime = DateTime.Now.AddMilliseconds(Constant.TPharos);
+                Console.WriteLine(animation.AnimationDuration);
                 Timer.Interval = animation.AnimationDuration.Milliseconds;
                 //TODO chiamate pharos & C
                 Timer.Start();
