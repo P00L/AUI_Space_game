@@ -47,6 +47,10 @@ namespace AuiSpaceGame.View
             CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
             Game.AnimationsSequence.Add(CurrentAnimation); //TODO controllare
 
+            //animationSequence.SelectedItem = CurrentAnimation;        
+            animationSequence.ScrollIntoView(CurrentAnimation);
+
+
             squareTopLeft.IsEnabled = false;
             squareTopRight.IsEnabled = false;
             squareBottomLeft.IsEnabled = false;
@@ -68,6 +72,8 @@ namespace AuiSpaceGame.View
             highSpeed.IsEnabled = true;
             lowSpeed.IsChecked = true;
             highSpeed.IsChecked = false;
+
+            animationSequence.SelectedItem = CurrentAnimation;
 
         }
 
@@ -93,6 +99,7 @@ namespace AuiSpaceGame.View
             laneMiddle.Background = Brushes.AliceBlue;
             laneRight.Background = Brushes.AliceBlue;
 
+            animationSequence.SelectedItem = CurrentAnimation;
         }
 
         private void animationLogicBlock_Checked(object sender, RoutedEventArgs e)
@@ -209,14 +216,40 @@ namespace AuiSpaceGame.View
 
         private void animationSequence_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //TODO cambiare
-            Console.WriteLine("HO SELEZIONATO UNA ANIMATION");
-            if(((Animation)e.Source) is Asteroid) {
-                Console.WriteLine("ASTEROIDE");
-            }
-            if (((Animation)e.Source) is Child)
+            if (animationSequence.SelectedItem != null)
             {
-                Console.WriteLine("CHILD");
+                CurrentAnimation = (Animation)animationSequence.SelectedItem;
+                if (CurrentAnimation.GetType() == typeof(Asteroid))
+                {
+                    if (((Asteroid)CurrentAnimation).Lane == Lane.Left)
+                    {
+                        laneLeft.Background = Brushes.Yellow;
+                        laneMiddle.Background = Brushes.AliceBlue;
+                        laneRight.Background = Brushes.AliceBlue;
+                    }
+                    if (((Asteroid)CurrentAnimation).Lane == Lane.Right)
+                    {
+                        laneLeft.Background = Brushes.AliceBlue;
+                        laneMiddle.Background = Brushes.AliceBlue;
+                        laneRight.Background = Brushes.Yellow;
+                    }
+                    if (((Asteroid)CurrentAnimation).Lane == Lane.Middle)
+                    {
+                        laneLeft.Background = Brushes.AliceBlue;
+                        laneMiddle.Background = Brushes.Yellow;
+                        laneRight.Background = Brushes.AliceBlue;
+                    }
+                    if (((Asteroid)CurrentAnimation).Speed == Speed.High)
+                    {
+                        lowSpeed.IsChecked = false;
+                        highSpeed.IsChecked = true;
+                    }
+                    if (((Asteroid)CurrentAnimation).Speed == Speed.Low)
+                    {
+                        lowSpeed.IsChecked = true;
+                        highSpeed.IsChecked = false;
+                    }
+                }
             }
         }
     }

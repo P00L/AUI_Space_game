@@ -13,7 +13,7 @@
         <TextBox x:Name="childName" HorizontalAlignment="Left" Height="23" Margin="37,60,0,0" TextWrapping="Wrap" Text="TODONome del bambino" VerticalAlignment="Top" Width="120"/>
         <RadioButton x:Name="animationAsteroid" Content="Asteroide" HorizontalAlignment="Left" Margin="31,162,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
         <RadioButton x:Name="animationLogicBlock" Content="RadioButton" HorizontalAlignment="Left" Margin="157,162,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
-        <ListView x:Name="animationSequence" HorizontalAlignment="Left" Height="100" Margin="188,32,0,0" VerticalAlignment="Top" Width="100">
+        <ListView x:Name="animationSequence" HorizontalAlignment="Left" Height="100" Margin="188,32,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="animationSequence_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Animation"/>
@@ -31,7 +31,7 @@
         <Button x:Name="laneRight" Content="" HorizontalAlignment="Left" Margin="86,228,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneRight_Click" IsEnabled="False"/>
 
         <RadioButton x:Name="lowSpeed" Content="Bassa" HorizontalAlignment="Left" Margin="103,339,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
-        <RadioButton x:Name="highSpeed" Content="Alta" HorizontalAlignment="Left" Margin="178,339,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False"/>
+        <RadioButton x:Name="highSpeed" Content="Alta" HorizontalAlignment="Left" Margin="178,339,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
         <Label x:Name="SpeedLabel" Content="Velocità&#xD;&#xA;" HorizontalAlignment="Left" Margin="31,333,0,0" VerticalAlignment="Top"/>
         <Button x:Name="addAnimation" Content="Add" HorizontalAlignment="Left" Margin="293,112,0,0" VerticalAlignment="Top" Width="75" Click="addAnimation_Click"/>
         <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,453,0,0" VerticalAlignment="Top" Width="74"/>
