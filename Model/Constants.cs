@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    static class Constant
+    public static class Constant
     {
         public const double ZCarpet = 2;
 
@@ -23,14 +23,14 @@ namespace AuiSpaceGame.Model
         public const double TReinforcement = 22;
     }
 
-    static class Lane
+    public static class Lane
     {
         public const double Left = -0.46;
         public const double Middle = 0;
         public const double Right = 0.46;
     }
 
-    static class Speed
+    public static class Speed
     {
         public const double Low = 2;
         public const double High = 10;

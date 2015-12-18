@@ -32,6 +32,10 @@ namespace AuiSpaceGame.View
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
+        public SetupGamePage(Asteroid game)
+        {
+            
+        }
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new StartingPage());

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    class GameState
+    public class GameState
     {
         //gameon:	TRUE-->	gamePau TRUE
         //          FALSE           FALSE-->animationOn TRUE (esclusivi)

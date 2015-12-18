@@ -7,7 +7,7 @@ using AuiSpaceGame.Model;
 namespace AuiSpaceGame.Controller
 {
 
-    class GameController
+    public class GameController
     {
 
         GameState GameState;
@@ -51,7 +51,6 @@ namespace AuiSpaceGame.Controller
             {
                 Animation animation = Game.AnimationsSequence.ElementAt(GameState.AnimationId);
                 animation.StartingAnimationTime = DateTime.Now.AddMilliseconds(Constant.TPharos);
-                Console.WriteLine(animation.AnimationDuration);
                 Timer.Interval = animation.AnimationDuration.Milliseconds;
                 //TODO chiamate pharos & C
                 Timer.Start();

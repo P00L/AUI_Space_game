@@ -15,7 +15,7 @@ using AuiSpaceGame.Model;
 
 namespace AuiSpaceGame.Controller
 {
-    class Kinect
+    public class Kinect
     {
         /// <summary>
         /// Array for the bodies

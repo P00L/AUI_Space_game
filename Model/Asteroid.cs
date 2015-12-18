@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    class Asteroid : Animation
+    public class Asteroid : Animation
     {
         public double Lane { get; set; }
         public double Speed { get; set; }
@@ -18,7 +18,6 @@ namespace AuiSpaceGame.Model
             Speed = speed;
             Z0 = Constant.ZCarpet + Constant.ZLittleSpace + Constant.Square;
             AnimationDuration = TimeSpan.FromMilliseconds((Constant.Square * 2) / Speed);
-            Console.WriteLine(AnimationDuration);
         }
 
     }

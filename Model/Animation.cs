@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    abstract class Animation
+    public abstract class Animation
     {
         public DateTime StartingAnimationTime { get; set; }
         public TimeSpan AnimationDuration { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    class Game
+    public class Game
     {
         public String Name { get; set; }
         public ObservableCollection<Animation> AnimationsSequence { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuiSpaceGame.Model
 {
-    class Child
+    public class Child
     {
         public String Name { get; set; }
         public String Surname { get; set; }
