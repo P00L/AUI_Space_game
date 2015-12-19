@@ -32,12 +32,13 @@
 
         <RadioButton x:Name="lowSpeed" Content="Bassa" HorizontalAlignment="Left" Margin="103,357,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
         <RadioButton x:Name="highSpeed" Content="Alta" HorizontalAlignment="Left" Margin="178,357,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
+        
         <Label x:Name="SpeedLabel" Content="Velocità&#xD;&#xA;" HorizontalAlignment="Left" Margin="31,351,0,0" VerticalAlignment="Top"/>
         <Button x:Name="addAnimation" Content="Add" HorizontalAlignment="Left" Margin="391,144,0,0" VerticalAlignment="Top" Width="75" Click="addAnimation_Click"/>
-        <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,471,0,0" VerticalAlignment="Top" Width="74"/>
+        <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,471,0,0" VerticalAlignment="Top" Width="74" IsEnabled="False"/>
         <Button x:Name="animationUp" Content="Up" HorizontalAlignment="Left" Margin="391,69,0,0" VerticalAlignment="Top" Width="75" Click="animationUp_Click" IsEnabled="False"/>
         <Button x:Name="animationDown" Content="Down" HorizontalAlignment="Left" Margin="391,94,0,0" VerticalAlignment="Top" Width="75" Click="animationDown_Click" IsEnabled="False"/>
         <Button x:Name="animationRemove" Content="Remove" HorizontalAlignment="Left" Margin="391,119,0,0" VerticalAlignment="Top" Width="75" Click="animationRemove_Click" IsEnabled="False"/>
-        <Button x:Name="startGame" Content="Inizia" HorizontalAlignment="Left" Margin="364,398,0,0" VerticalAlignment="Top" Width="75" Click="startGame_Click"/>
+        <Button x:Name="startGame" Content="Inizia" HorizontalAlignment="Left" Margin="364,398,0,0" VerticalAlignment="Top" Width="75" Click="startGame_Click" IsEnabled="False"/>
     </Grid>
 </Page>

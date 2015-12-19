@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AuiSpaceGame.Model;
 
 namespace AuiSpaceGame.View
 {
@@ -28,6 +29,16 @@ namespace AuiSpaceGame.View
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SetupGamePage());
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Game Game = new Game();
+            Game.AnimationsSequence.Add(new Asteroid(Lane.Left, Speed.High));
+            Game.AnimationsSequence.Add(new Asteroid(Lane.Middle, Speed.High));
+            Game.AnimationsSequence.Add(new Asteroid(Lane.Right, Speed.High));
+            
+            this.NavigationService.Navigate(new SetupGamePage(Game));
         }
     }
 }

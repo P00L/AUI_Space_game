@@ -32,9 +32,14 @@ namespace AuiSpaceGame.View
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
-        public SetupGamePage(Asteroid game)
+        public SetupGamePage(Game game)
         {
-            
+            Game = game;
+            InitializeComponent();
+            animationSequence.ItemsSource = Game.AnimationsSequence;
+            if (game.AnimationsSequence.Count > 0)
+                startGame.IsEnabled = true;
+            //TODO sistemare la selezione della prima animazione (indipendentemente dalla posizione) viene visualizzato sempre 1colonna, speed.low
         }
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +86,7 @@ namespace AuiSpaceGame.View
             EnableUpDown();
             animationRemove.IsEnabled = true;
             animationSequence.SelectedItem = CurrentAnimation;
+            startGame.IsEnabled = true;
 
         }
 
@@ -237,29 +243,47 @@ namespace AuiSpaceGame.View
                         laneLeft.Background = Brushes.Yellow;
                         laneMiddle.Background = Brushes.AliceBlue;
                         laneRight.Background = Brushes.AliceBlue;
-                    }
+                    } else
+                    if (((Asteroid)CurrentAnimation).Lane == Lane.Middle)
+                    {
+                        laneLeft.Background = Brushes.AliceBlue;
+                        laneMiddle.Background = Brushes.Yellow;
+                        laneRight.Background = Brushes.AliceBlue;
+                    } else
                     if (((Asteroid)CurrentAnimation).Lane == Lane.Right)
                     {
                         laneLeft.Background = Brushes.AliceBlue;
                         laneMiddle.Background = Brushes.AliceBlue;
                         laneRight.Background = Brushes.Yellow;
                     }
-                    if (((Asteroid)CurrentAnimation).Lane == Lane.Middle)
+
+                    if (((Asteroid)CurrentAnimation).Speed == Speed.Low)
                     {
-                        laneLeft.Background = Brushes.AliceBlue;
-                        laneMiddle.Background = Brushes.Yellow;
-                        laneRight.Background = Brushes.AliceBlue;
-                    }
+                        lowSpeed.IsChecked = true;
+                        highSpeed.IsChecked = false;
+                    } else
                     if (((Asteroid)CurrentAnimation).Speed == Speed.High)
                     {
                         lowSpeed.IsChecked = false;
                         highSpeed.IsChecked = true;
                     }
-                    if (((Asteroid)CurrentAnimation).Speed == Speed.Low)
-                    {
-                        lowSpeed.IsChecked = true;
-                        highSpeed.IsChecked = false;
-                    }
+
+                    animationAsteroid.IsEnabled = true;
+                    animationLogicBlock.IsEnabled = true;
+
+                    lowSpeed.IsEnabled = true;
+                    highSpeed.IsEnabled = true;
+
+                    squareTopLeft.IsEnabled = false;
+                    squareTopRight.IsEnabled = false;
+                    squareBottomLeft.IsEnabled = false;
+                    squareBottomRight.IsEnabled = false;
+                    laneLeft.IsEnabled = true;
+                    laneMiddle.IsEnabled = true;
+                    laneRight.IsEnabled = true;
+
+                    animationAsteroid.IsChecked = true;
+
                 }
             }
         }
@@ -298,6 +322,7 @@ namespace AuiSpaceGame.View
                 if (len == 1)
                 {
                     animationRemove.IsEnabled = false;
+                    startGame.IsEnabled = false;
                     Reset();
                     return;
                 }
