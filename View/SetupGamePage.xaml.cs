@@ -43,7 +43,7 @@ namespace AuiSpaceGame.View
                 startGame.IsEnabled = true;
                 animationSequence.SelectedItem = CurrentAnimation;
             }
-            //TODO sistemare la selezione della prima animazione (indipendentemente dalla posizione) viene visualizzato sempre 1colonna, speed.low
+          
         }
         private void button_Click(object sender, RoutedEventArgs e)
         {
