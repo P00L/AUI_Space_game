@@ -38,7 +38,11 @@ namespace AuiSpaceGame.View
             InitializeComponent();
             animationSequence.ItemsSource = Game.AnimationsSequence;
             if (game.AnimationsSequence.Count > 0)
+            {
+                CurrentAnimation = Game.AnimationsSequence.ElementAt(0);
                 startGame.IsEnabled = true;
+                animationSequence.SelectedItem = CurrentAnimation;
+            }
             //TODO sistemare la selezione della prima animazione (indipendentemente dalla posizione) viene visualizzato sempre 1colonna, speed.low
         }
         private void button_Click(object sender, RoutedEventArgs e)
@@ -94,27 +98,34 @@ namespace AuiSpaceGame.View
         {
             if (CurrentAnimation != null)
             {
-                int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
-                Game.AnimationsSequence.Remove(CurrentAnimation);
-                CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
-                Game.AnimationsSequence.Insert(index, CurrentAnimation);
+                if (CurrentAnimation.GetType() == typeof(Asteroid))
+                {
+                    return;
+                }
+                else
+                {
+                    int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
+                    Game.AnimationsSequence.Remove(CurrentAnimation);
+                    CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
+                    Game.AnimationsSequence.Insert(index, CurrentAnimation);
 
-                lowSpeed.IsEnabled = true;
-                highSpeed.IsEnabled = true;
+                    lowSpeed.IsEnabled = true;
+                    highSpeed.IsEnabled = true;
 
-                squareTopLeft.IsEnabled = false;
-                squareTopRight.IsEnabled = false;
-                squareBottomLeft.IsEnabled = false;
-                squareBottomRight.IsEnabled = false;
-                laneLeft.IsEnabled = true;
-                laneMiddle.IsEnabled = true;
-                laneRight.IsEnabled = true;
+                    squareTopLeft.IsEnabled = false;
+                    squareTopRight.IsEnabled = false;
+                    squareBottomLeft.IsEnabled = false;
+                    squareBottomRight.IsEnabled = false;
+                    laneLeft.IsEnabled = true;
+                    laneMiddle.IsEnabled = true;
+                    laneRight.IsEnabled = true;
 
-                laneLeft.Background = Brushes.Yellow;
-                laneMiddle.Background = Brushes.AliceBlue;
-                laneRight.Background = Brushes.AliceBlue;
+                    laneLeft.Background = Brushes.Yellow;
+                    laneMiddle.Background = Brushes.AliceBlue;
+                    laneRight.Background = Brushes.AliceBlue;
 
-                animationSequence.SelectedItem = CurrentAnimation;
+                    animationSequence.SelectedItem = CurrentAnimation;
+                }
             }
         }
 
@@ -235,6 +246,7 @@ namespace AuiSpaceGame.View
             if (animationSequence.SelectedItem != null)
             {
                 CurrentAnimation = (Animation)animationSequence.SelectedItem;
+                Console.WriteLine(((Asteroid)CurrentAnimation).Speed);
                 EnableUpDown();
                 if (CurrentAnimation.GetType() == typeof(Asteroid))
                 {
@@ -243,13 +255,15 @@ namespace AuiSpaceGame.View
                         laneLeft.Background = Brushes.Yellow;
                         laneMiddle.Background = Brushes.AliceBlue;
                         laneRight.Background = Brushes.AliceBlue;
-                    } else
+                    }
+                    else
                     if (((Asteroid)CurrentAnimation).Lane == Lane.Middle)
                     {
                         laneLeft.Background = Brushes.AliceBlue;
                         laneMiddle.Background = Brushes.Yellow;
                         laneRight.Background = Brushes.AliceBlue;
-                    } else
+                    }
+                    else
                     if (((Asteroid)CurrentAnimation).Lane == Lane.Right)
                     {
                         laneLeft.Background = Brushes.AliceBlue;
@@ -261,7 +275,8 @@ namespace AuiSpaceGame.View
                     {
                         lowSpeed.IsChecked = true;
                         highSpeed.IsChecked = false;
-                    } else
+                    }
+                    else
                     if (((Asteroid)CurrentAnimation).Speed == Speed.High)
                     {
                         lowSpeed.IsChecked = false;
@@ -396,8 +411,8 @@ namespace AuiSpaceGame.View
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
             GameState gameState = new GameState();
-            Kinect kinect = new Kinect(Game,gameState);
-            GameController gameController = new GameController(Game,gameState);
+            Kinect kinect = new Kinect(Game, gameState);
+            GameController gameController = new GameController(Game, gameState);
             gameState.GameOn = true;
 
         }

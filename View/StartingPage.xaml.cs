@@ -34,9 +34,9 @@ namespace AuiSpaceGame.View
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             Game Game = new Game();
-            Game.AnimationsSequence.Add(new Asteroid(Lane.Left, Speed.High));
-            Game.AnimationsSequence.Add(new Asteroid(Lane.Middle, Speed.High));
             Game.AnimationsSequence.Add(new Asteroid(Lane.Right, Speed.High));
+            Game.AnimationsSequence.Add(new Asteroid(Lane.Middle, Speed.High));
+            Game.AnimationsSequence.Add(new Asteroid(Lane.Left, Speed.High));
             
             this.NavigationService.Navigate(new SetupGamePage(Game));
         }
