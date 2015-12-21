@@ -39,6 +39,7 @@ namespace AuiSpaceGame.View
         {
             Game = game;
             InitializeComponent();
+            gameName.Text = Game.Name;
             animationSequence.ItemsSource = Game.AnimationsSequence;
             if (game.AnimationsSequence.Count > 0)
             {
@@ -57,9 +58,8 @@ namespace AuiSpaceGame.View
 
         private void gameName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Game.Name = e.Source.ToString();
+            Game.Name = gameName.Text;
         }
-
 
         private void addAnimation_Click(object sender, RoutedEventArgs e)
         {

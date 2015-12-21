@@ -9,7 +9,7 @@
 
     <Grid>
         <Button x:Name="button" Content="vai a starting page" HorizontalAlignment="Left" Margin="364,433,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <TextBox x:Name="gameName" HorizontalAlignment="Left" Height="23" Margin="31,14,0,0" TextWrapping="Wrap" Text="Nome gioco" VerticalAlignment="Top" Width="120" TextChanged="gameName_TextChanged"/>
+        <TextBox x:Name="gameName" HorizontalAlignment="Left" Height="23" Margin="31,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="gameName_TextChanged"/>
         <TextBox x:Name="childName" HorizontalAlignment="Left" Height="23" Margin="31,42,0,0" TextWrapping="Wrap" Text="TODONome del bambino" VerticalAlignment="Top" Width="120"/>
         <RadioButton x:Name="animationAsteroid" Content="Asteroide" HorizontalAlignment="Left" Margin="31,180,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
         <RadioButton x:Name="animationLogicBlock" Content="RadioButton" HorizontalAlignment="Left" Margin="157,180,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
