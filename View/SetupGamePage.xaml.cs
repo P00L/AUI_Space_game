@@ -45,8 +45,10 @@ namespace AuiSpaceGame.View
                 CurrentAnimation = Game.AnimationsSequence.ElementAt(0);
                 startGame.IsEnabled = true;
                 animationSequence.SelectedItem = CurrentAnimation;
+                animationSequence.Focus();
+                animationRemove.IsEnabled = true;
             }
-          
+
         }
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -64,9 +66,7 @@ namespace AuiSpaceGame.View
             CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
             Game.AnimationsSequence.Add(CurrentAnimation); //TODO controllare
 
-
             animationSequence.ScrollIntoView(CurrentAnimation);
-
 
             squareTopLeft.IsEnabled = false;
             squareTopRight.IsEnabled = false;
@@ -82,7 +82,9 @@ namespace AuiSpaceGame.View
 
             animationAsteroid.IsEnabled = true;
             animationLogicBlock.IsEnabled = true;
+            animationAsteroid.Checked -= animationAsteroid_Checked;
             animationAsteroid.IsChecked = true;
+            animationAsteroid.Checked += animationAsteroid_Checked;
             animationLogicBlock.IsChecked = false;
 
             lowSpeed.IsEnabled = true;
@@ -92,6 +94,7 @@ namespace AuiSpaceGame.View
 
             EnableUpDown();
             animationRemove.IsEnabled = true;
+            animationSequence.Focus();
             animationSequence.SelectedItem = CurrentAnimation;
             startGame.IsEnabled = true;
 
@@ -99,63 +102,24 @@ namespace AuiSpaceGame.View
 
         private void animationAsteroid_Checked(object sender, RoutedEventArgs e)
         {
-            if (CurrentAnimation != null)
-            {
-                if (CurrentAnimation.GetType() == typeof(Asteroid))
-                {
-                    return;
-                }
-                else
-                {
-                    int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
-                    Game.AnimationsSequence.Remove(CurrentAnimation);
-                    CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
-                    Game.AnimationsSequence.Insert(index, CurrentAnimation);
-
-                    lowSpeed.IsEnabled = true;
-                    highSpeed.IsEnabled = true;
-
-                    squareTopLeft.IsEnabled = false;
-                    squareTopRight.IsEnabled = false;
-                    squareBottomLeft.IsEnabled = false;
-                    squareBottomRight.IsEnabled = false;
-                    laneLeft.IsEnabled = true;
-                    laneMiddle.IsEnabled = true;
-                    laneRight.IsEnabled = true;
-
-                    laneLeft.Background = Brushes.Yellow;
-                    laneMiddle.Background = Brushes.AliceBlue;
-                    laneRight.Background = Brushes.AliceBlue;
-
-                    animationSequence.SelectedItem = CurrentAnimation;
-                }
-            }
+            int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
+            Game.AnimationsSequence.Remove(CurrentAnimation);
+            CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
+            Game.AnimationsSequence.Insert(index, CurrentAnimation);
+            animationSequence.Focus();
+            animationSequence.SelectedItem = CurrentAnimation;
         }
 
         private void animationLogicBlock_Checked(object sender, RoutedEventArgs e)
         {
-            // TODO
-            /* int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
-            Game.AnimationsSequence.Remove(CurrentAnimation);
-            CurrentAnimation = new LogicBlock();
-            Game.AnimationsSequence.Insert(index, CurrentAnimation);
-            */
-
-            lowSpeed.IsEnabled = false;
-            highSpeed.IsEnabled = false;
-
-            squareTopLeft.IsEnabled = true;
-            squareTopRight.IsEnabled = true;
-            squareBottomLeft.IsEnabled = true;
-            squareBottomRight.IsEnabled = true;
-            laneLeft.IsEnabled = false;
-            laneMiddle.IsEnabled = false;
-            laneRight.IsEnabled = false;
-
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.Yellow;
-            squareTopRight.Background = Brushes.AliceBlue;
+            /*TODO ISTANZIARE COME LOGIC BLOCK
+           int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
+           Game.AnimationsSequence.Remove(CurrentAnimation);
+           CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
+           Game.AnimationsSequence.Insert(index, CurrentAnimation);
+           animationSequence.Focus();
+           animationSequence.SelectedItem = CurrentAnimation;
+           */
         }
 
         private void laneLeft_Click(object sender, RoutedEventArgs e)
@@ -249,7 +213,6 @@ namespace AuiSpaceGame.View
             if (animationSequence.SelectedItem != null)
             {
                 CurrentAnimation = (Animation)animationSequence.SelectedItem;
-                Console.WriteLine(((Asteroid)CurrentAnimation).Speed);
                 EnableUpDown();
                 if (CurrentAnimation.GetType() == typeof(Asteroid))
                 {
@@ -300,7 +263,9 @@ namespace AuiSpaceGame.View
                     laneMiddle.IsEnabled = true;
                     laneRight.IsEnabled = true;
 
+                    animationAsteroid.Checked -= animationAsteroid_Checked;
                     animationAsteroid.IsChecked = true;
+                    animationAsteroid.Checked += animationAsteroid_Checked;
 
                 }
             }
@@ -311,10 +276,11 @@ namespace AuiSpaceGame.View
             if (CurrentAnimation != null)
             {
                 int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
-                Animation tmpAnimation = CurrentAnimation;
                 Game.AnimationsSequence.Remove(CurrentAnimation);
                 Game.AnimationsSequence.Insert(index - 1, CurrentAnimation);
-                animationSequence.SelectedItem = tmpAnimation;
+                animationSequence.SelectedItem = CurrentAnimation;
+                animationSequence.ScrollIntoView(CurrentAnimation);
+                animationSequence.Focus();
             }
         }
 
@@ -323,10 +289,11 @@ namespace AuiSpaceGame.View
             if (CurrentAnimation != null)
             {
                 int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
-                Animation tmpAnimation = CurrentAnimation;
                 Game.AnimationsSequence.Remove(CurrentAnimation);
                 Game.AnimationsSequence.Insert(index + 1, CurrentAnimation);
-                animationSequence.SelectedItem = tmpAnimation;
+                animationSequence.SelectedItem = CurrentAnimation;
+                animationSequence.ScrollIntoView(CurrentAnimation);
+                animationSequence.Focus();
             }
         }
 
@@ -350,9 +317,13 @@ namespace AuiSpaceGame.View
                 }
                 else
                 {
-                    CurrentAnimation = Game.AnimationsSequence.ElementAt(index - 1);
+                    if (index == (len -1))
+                        CurrentAnimation = Game.AnimationsSequence.ElementAt(index -1);
+                    else
+                        CurrentAnimation = Game.AnimationsSequence.ElementAt(index);
                 }
                 animationSequence.SelectedItem = CurrentAnimation;
+                animationSequence.Focus();
             }
         }
 

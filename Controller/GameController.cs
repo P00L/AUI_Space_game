@@ -31,7 +31,8 @@ namespace AuiSpaceGame.Controller
 
         public void GameOnChanged(object sender, EventArgs e)
         {
-            if (GameState.GameOn) {
+            if (GameState.GameOn)
+            {
                 GameState.AnimationOn = true;
             }
             else
@@ -51,7 +52,7 @@ namespace AuiSpaceGame.Controller
             {
                 Animation animation = Game.AnimationsSequence.ElementAt(GameState.AnimationId);
                 animation.StartingAnimationTime = DateTime.Now.AddMilliseconds(Constant.TPharos);
-                Timer.Interval = animation.AnimationDuration.Milliseconds;
+                Timer.Interval = animation.AnimationDuration.TotalMilliseconds;
                 //TODO chiamate pharos & C
                 Timer.Start();
             }
@@ -100,7 +101,8 @@ namespace AuiSpaceGame.Controller
         }
 
 
-        public void NextStepGame() {
+        public void NextStepGame()
+        {
         }
 
         private void NextAnimation()
@@ -119,6 +121,7 @@ namespace AuiSpaceGame.Controller
                 else
                 {
                     GameState.AnimationId += 1;
+                    GameState.AnimationOn = true;
                 }
 
             }
@@ -126,7 +129,7 @@ namespace AuiSpaceGame.Controller
 
         private Boolean CheckEndGame()
         {
-            if (GameState.AnimationId < Game.AnimationsSequence.Count)
+            if (GameState.AnimationId < (Game.AnimationsSequence.Count - 1))
             {
                 return false;
             }
