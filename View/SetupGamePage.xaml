@@ -35,7 +35,7 @@
         
         <Label x:Name="SpeedLabel" Content="Velocità&#xD;&#xA;" HorizontalAlignment="Left" Margin="31,351,0,0" VerticalAlignment="Top"/>
         <Button x:Name="addAnimation" Content="Add" HorizontalAlignment="Left" Margin="391,144,0,0" VerticalAlignment="Top" Width="75" Click="addAnimation_Click"/>
-        <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,471,0,0" VerticalAlignment="Top" Width="74" IsEnabled="False"/>
+        <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,471,0,0" VerticalAlignment="Top" Width="74" Click="saveButton_Click"/>
         <Button x:Name="animationUp" Content="Up" HorizontalAlignment="Left" Margin="391,69,0,0" VerticalAlignment="Top" Width="75" Click="animationUp_Click" IsEnabled="False"/>
         <Button x:Name="animationDown" Content="Down" HorizontalAlignment="Left" Margin="391,94,0,0" VerticalAlignment="Top" Width="75" Click="animationDown_Click" IsEnabled="False"/>
         <Button x:Name="animationRemove" Content="Remove" HorizontalAlignment="Left" Margin="391,119,0,0" VerticalAlignment="Top" Width="75" Click="animationRemove_Click" IsEnabled="False"/>

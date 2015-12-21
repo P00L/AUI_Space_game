@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AuiSpaceGame.Model;
+using AuiSpaceGame.Model.Parser;
 
 namespace AuiSpaceGame.View
 {
@@ -26,19 +27,16 @@ namespace AuiSpaceGame.View
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void createGameButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SetupGamePage());
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void loadGameButton_Click(object sender, RoutedEventArgs e)
         {
-            Game Game = new Game();
-            Game.AnimationsSequence.Add(new Asteroid(Lane.Right, Speed.High));
-            Game.AnimationsSequence.Add(new Asteroid(Lane.Middle, Speed.High));
-            Game.AnimationsSequence.Add(new Asteroid(Lane.Left, Speed.High));
-            
-            this.NavigationService.Navigate(new SetupGamePage(Game));
+            Game Game = Parser.loadGame();
+            if(Game != null)
+                this.NavigationService.Navigate(new SetupGamePage(Game));
         }
     }
 }

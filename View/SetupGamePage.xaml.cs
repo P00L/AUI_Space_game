@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AuiSpaceGame.Model;
 using AuiSpaceGame.Controller;
+using Microsoft.Win32;
+using System.IO;
+using AuiSpaceGame.Model.Parser;
 
 namespace AuiSpaceGame.View
 {
@@ -415,6 +418,13 @@ namespace AuiSpaceGame.View
             GameController gameController = new GameController(Game, gameState);
             gameState.GameOn = true;
 
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Parser.saveGame(Game);
+            //TODO segnalare gioco salvato
+            //TODO gestire attivazione pulsante "save"
         }
     }
 }
