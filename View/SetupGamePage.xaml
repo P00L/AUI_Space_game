@@ -14,11 +14,11 @@
         <RadioButton x:Name="animationAsteroid" Content="Asteroide" HorizontalAlignment="Left" Margin="31,180,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
         <RadioButton x:Name="animationLogicBlock" Content="RadioButton" HorizontalAlignment="Left" Margin="157,180,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
         <ListView x:Name="animationSequence" HorizontalAlignment="Left" Height="154" Margin="188,10,0,0" VerticalAlignment="Top" Width="198" SelectionChanged="animationSequence_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Animation"/>
-                </GridView>
-            </ListView.View>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
         </ListView>
 
         <Button x:Name="squareTopLeft" Content="" HorizontalAlignment="Left" Margin="31,221,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopLeft_Click"/>

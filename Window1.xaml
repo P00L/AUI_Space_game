@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AuiSpaceGame"
         mc:Ignorable="d"
-        Title="Window1" Height="600" Width="600">
+        Title="Window1" Height="600" Width="600"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
     <Frame x:Name="frame" Content="" VerticalAlignment="Top" HorizontalAlignment="Left" NavigationUIVisibility="Hidden" Height="600" Width="600"/>
 </Window>
