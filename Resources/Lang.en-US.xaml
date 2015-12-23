@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AuiSpaceGame.Resources" xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <System:String x:Key="gameName">Game's name</System:String>
+    <System:String x:Key="childName">Child's name</System:String>
+    <System:String x:Key="gameDuration">Exstimated length</System:String>
+    <System:String x:Key="therapistName">Therapist's name</System:String>
+    <System:String x:Key="animationUp">Up</System:String>
+    <System:String x:Key="animationDown">Down</System:String>
+    <System:String x:Key="animationRemove">Remove</System:String>
+    <System:String x:Key="addAnimation">Add</System:String>
+    <System:String x:Key="back">Back</System:String>
+    <System:String x:Key="saveGame">Save</System:String>
+    <System:String x:Key="startGame">Start</System:String>
+    <System:String x:Key="animationAsteroid">Asteroid</System:String>
+    <System:String x:Key="animationLogicBlock">Logic block</System:String>
+    <System:String x:Key="speed">Speed</System:String>
+    <System:String x:Key="lowSpeed">Low</System:String>
+    <System:String x:Key="highSpeed">High</System:String>
+    <System:String x:Key="color">Color</System:String>
+    <System:String x:Key="colorYellow">Yellow</System:String>
+    <System:String x:Key="colorRed">Red</System:String>
+    <System:String x:Key="colorBlue">Blue</System:String>
+    <System:String x:Key="shape">Shape</System:String>
+    <System:String x:Key="shapeCircle">Circle</System:String>
+    <System:String x:Key="shapeSquare">Square</System:String>
+    <System:String x:Key="shapeTriangle">Triangle</System:String>
+    <System:String x:Key="targetAnimation">Target</System:String>
+    <System:String x:Key="createNewGame">Create new game</System:String>
+    <System:String x:Key="loadGame">Load game</System:String>
+
+
+
+</ResourceDictionary>

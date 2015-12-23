@@ -9,8 +9,7 @@
       Title="StartingPage">
 
     <Grid>
-        <Button x:Name="createGameButton" Content="Crea nuovo gioco" HorizontalAlignment="Left" Margin="100,122,0,0" VerticalAlignment="Top" Click="createGameButton_Click"/>
-        <Button x:Name="loadGameButton" Content="Carica gioco" HorizontalAlignment="Left" Margin="100,158,0,0" VerticalAlignment="Top" Click="loadGameButton_Click" Width="98"/>
-
+        <Button x:Name="createGameButton" Content="{DynamicResource createNewGame}" HorizontalAlignment="Left" Margin="100,122,0,0" VerticalAlignment="Top" Click="createGameButton_Click"/>
+        <Button x:Name="loadGameButton" Content="{DynamicResource loadGame}" HorizontalAlignment="Left" Margin="100,158,0,0" VerticalAlignment="Top" Click="loadGameButton_Click"/>
     </Grid>
 </Page>
