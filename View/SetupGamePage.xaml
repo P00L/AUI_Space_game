@@ -3,42 +3,80 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:AuiSpaceGame.View"
       mc:Ignorable="d"
-      Title="SetupGamePage" Height="499.333" Width="476">
+      Title="SetupGamePage">
 
-    <Grid>
-        <Button x:Name="button" Content="vai a starting page" HorizontalAlignment="Left" Margin="364,433,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <TextBox x:Name="gameName" HorizontalAlignment="Left" Height="23" Margin="31,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="gameName_TextChanged"/>
-        <TextBox x:Name="childName" HorizontalAlignment="Left" Height="23" Margin="31,42,0,0" TextWrapping="Wrap" Text="TODONome del bambino" VerticalAlignment="Top" Width="120"/>
-        <RadioButton x:Name="animationAsteroid" Content="Asteroide" HorizontalAlignment="Left" Margin="31,180,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
-        <RadioButton x:Name="animationLogicBlock" Content="RadioButton" HorizontalAlignment="Left" Margin="157,180,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
-        <ListView x:Name="animationSequence" HorizontalAlignment="Left" Height="154" Margin="188,10,0,0" VerticalAlignment="Top" Width="198" SelectionChanged="animationSequence_SelectionChanged">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"></StackPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Left">
+                <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="Nome del gioco" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="137"/>
+                <TextBox x:Name="childName" TextWrapping="Wrap" Text="TODO" materialDesign:TextFieldAssist.Hint="Nome del bambino" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right">
+                <Label x:Name="gameDuration" HorizontalAlignment="Right" Content="Durata di gioco: ----"/>
+                <TextBox x:Name="therapistName" HorizontalAlignment="Right" TextWrapping="Wrap" Text="TODONome del bambino" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="Nome del bambino" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <ListView  x:Name="animationSequence" Height="100px" SelectionChanged="animationSequence_SelectionChanged" MinWidth="50">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button x:Name="animationUp" Content="Up" Grid.Row="0" Grid.Column="0" Click="animationUp_Click" IsEnabled="False"/>
+                <Button x:Name="animationDown" Content="Down" Grid.Row="0" Grid.Column="1" Click="animationDown_Click" IsEnabled="False"/>
+                <Button x:Name="animationRemove" Content="Remove" Grid.Row="0" Grid.Column="2" Click="animationRemove_Click" IsEnabled="False"/>
+                <Button x:Name="addAnimation" Content="Add" Grid.Row="0" Grid.Column="3" Click="addAnimation_Click"/>
+            </Grid>
+        </StackPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <StackPanel DockPanel.Dock="Right">
+                <Button x:Name="button" Content="Back" VerticalAlignment="Bottom" Click="button_Click"/>
+                <Button x:Name="saveButton" Content="Salva" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+                <Button x:Name="startGame" Content="Inizia" VerticalAlignment="Bottom" Click="startGame_Click" IsEnabled="False"/>
+            </StackPanel>
+            <Grid DockPanel.Dock="Left">
+                <RadioButton x:Name="animationAsteroid" Content="Asteroide" HorizontalAlignment="Left" Margin="31,30,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
+                <RadioButton x:Name="animationLogicBlock" Content="RadioButton" HorizontalAlignment="Left" Margin="157,30,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
 
-        <Button x:Name="squareTopLeft" Content="" HorizontalAlignment="Left" Margin="31,221,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopLeft_Click"/>
-        <Button x:Name="squareTopRight" Content="" HorizontalAlignment="Left" Margin="103,221,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopRight_Click"/>
-        <Button x:Name="squareBottomLeft" Content="" HorizontalAlignment="Left" Margin="31,296,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomLeft_Click"/>
-        <Button x:Name="squareBottomRight" Content="" HorizontalAlignment="Left" Margin="103,296,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomRight_Click"/>
+                <Button x:Name="squareTopLeft" Content="" HorizontalAlignment="Left" Margin="31,71,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopLeft_Click"/>
+                <Button x:Name="squareTopRight" Content="" HorizontalAlignment="Left" Margin="103,71,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopRight_Click"/>
+                <Button x:Name="squareBottomLeft" Content="" HorizontalAlignment="Left" Margin="31,146,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomLeft_Click"/>
+                <Button x:Name="squareBottomRight" Content="" HorizontalAlignment="Left" Margin="103,146,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomRight_Click"/>
 
-        <Button x:Name="laneLeft" Content="" HorizontalAlignment="Left" Margin="54,246,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneLeft_Click" IsEnabled="False"/>
-        <Button x:Name="laneMiddle" Content="" HorizontalAlignment="Left" Margin="70,246,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneMiddle_Click" IsEnabled="False"/>
-        <Button x:Name="laneRight" Content="" HorizontalAlignment="Left" Margin="86,246,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneRight_Click" IsEnabled="False"/>
+                <Button x:Name="laneLeft" Content="" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneLeft_Click" IsEnabled="False"/>
+                <Button x:Name="laneMiddle" Content="" HorizontalAlignment="Left" Margin="70,96,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneMiddle_Click" IsEnabled="False"/>
+                <Button x:Name="laneRight" Content="" HorizontalAlignment="Left" Margin="86,96,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneRight_Click" IsEnabled="False"/>
 
-        <RadioButton x:Name="lowSpeed" Content="Bassa" HorizontalAlignment="Left" Margin="103,357,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
-        <RadioButton x:Name="highSpeed" Content="Alta" HorizontalAlignment="Left" Margin="178,357,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
-        
-        <Label x:Name="SpeedLabel" Content="Velocità&#xD;&#xA;" HorizontalAlignment="Left" Margin="31,351,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addAnimation" Content="Add" HorizontalAlignment="Left" Margin="391,144,0,0" VerticalAlignment="Top" Width="75" Click="addAnimation_Click"/>
-        <Button x:Name="saveButton" Content="Salva" HorizontalAlignment="Left" Margin="364,471,0,0" VerticalAlignment="Top" Width="74" Click="saveButton_Click"/>
-        <Button x:Name="animationUp" Content="Up" HorizontalAlignment="Left" Margin="391,69,0,0" VerticalAlignment="Top" Width="75" Click="animationUp_Click" IsEnabled="False"/>
-        <Button x:Name="animationDown" Content="Down" HorizontalAlignment="Left" Margin="391,94,0,0" VerticalAlignment="Top" Width="75" Click="animationDown_Click" IsEnabled="False"/>
-        <Button x:Name="animationRemove" Content="Remove" HorizontalAlignment="Left" Margin="391,119,0,0" VerticalAlignment="Top" Width="75" Click="animationRemove_Click" IsEnabled="False"/>
-        <Button x:Name="startGame" Content="Inizia" HorizontalAlignment="Left" Margin="364,398,0,0" VerticalAlignment="Top" Width="75" Click="startGame_Click" IsEnabled="False"/>
-    </Grid>
+                <RadioButton x:Name="lowSpeed" Content="Bassa" HorizontalAlignment="Left" Margin="103,357,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
+                <RadioButton x:Name="highSpeed" Content="Alta" HorizontalAlignment="Left" Margin="178,357,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
+
+                <Label x:Name="SpeedLabel" Content="Velocità&#xD;&#xA;" HorizontalAlignment="Left" Margin="31,354,0,0" VerticalAlignment="Top"/>
+
+                <RadioButton x:Name="yellowColour" Content="Giallo" HorizontalAlignment="Left" Margin="103,389,0,0" VerticalAlignment="Top" GroupName="colour"/>
+                <RadioButton x:Name="redColour" Content="Rosso" HorizontalAlignment="Left" Margin="178,389,0,0" VerticalAlignment="Top" GroupName="colour"/>
+                <Label x:Name="ColourLabel" Content="Colore" HorizontalAlignment="Left" Margin="31,386,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ShapeLabel" Content="Forma" HorizontalAlignment="Left" Margin="31,417,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="circleShape" Content="Cerchio" HorizontalAlignment="Left" Margin="103,422,0,0" VerticalAlignment="Top" GroupName="shape"/>
+                <RadioButton x:Name="squareShape" Content="Quadrato" HorizontalAlignment="Left" Margin="178,422,0,0" VerticalAlignment="Top" GroupName="shape"/>
+                <RadioButton x:Name="blueColour" Content="Blu" HorizontalAlignment="Left" Margin="262,389,0,0" VerticalAlignment="Top" GroupName="colour"/>
+                <RadioButton x:Name="triangleShape" Content="Triangolo" HorizontalAlignment="Left" Margin="262,422,0,0" VerticalAlignment="Top" GroupName="shape"/>
+                <Button x:Name="targetAnimationButton" Content="Target" HorizontalAlignment="Left" Margin="31,449,0,0" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
 </Page>
