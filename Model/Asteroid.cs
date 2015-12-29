@@ -19,7 +19,8 @@ namespace AuiSpaceGame.Model
             set
             {
                 lane = value;
-                NotifyPropertyChanged("lane");
+                Image = "Asteroid," + speed.ToString() +","+ lane.ToString() + ".png";
+                NotifyPropertyChanged("image");
             }
         }
         public double Speed
@@ -29,7 +30,8 @@ namespace AuiSpaceGame.Model
             {
                 speed = value;
                 AnimationDuration = TimeSpan.FromMilliseconds(((Constant.Square * 2) * 1000) / speed);
-                NotifyPropertyChanged("speed");
+                Image = "Asteroid," + speed.ToString() + "," + lane.ToString() + ".png";
+                NotifyPropertyChanged("image");
             }
         }
         public double Z0 { get; set; }
@@ -40,6 +42,8 @@ namespace AuiSpaceGame.Model
             Speed = speed;
             Z0 = Constant.ZCarpet + Constant.ZLittleSpace + Constant.Square;
             AnimationDuration = TimeSpan.FromMilliseconds(((Constant.Square * 2) * 1000) / Speed);
+            Image = "Asteroid," + speed.ToString() + "," + lane.ToString() + ".png";
+
         }
 
         private void NotifyPropertyChanged(string propertyName)

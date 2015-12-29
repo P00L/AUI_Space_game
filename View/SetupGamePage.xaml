@@ -29,10 +29,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <TextBlock Text="Speed = "/>
-                        <TextBlock Text="{Binding Speed}"/>
-                        <TextBlock Text=" - Lane = "/>
-                        <TextBlock Text="{Binding Lane}"/>
+                        <Image Source="{Binding Image}"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

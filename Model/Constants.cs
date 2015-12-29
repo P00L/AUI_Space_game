@@ -21,6 +21,8 @@ namespace AuiSpaceGame.Model
         /// </summary>
         public const double Delta = 0.25;
         public const double TReinforcement = 22;
+
+        public const string ImageUriPrefix = "/AuiSpaceGame;component/Images/";
     }
 
     public static class Lane
