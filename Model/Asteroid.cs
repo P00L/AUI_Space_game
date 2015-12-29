@@ -49,7 +49,7 @@ namespace AuiSpaceGame.Model
 
         private void UpdateImage()
         {
-            string NewImage = "Asteroid-";
+            string NewImage = "Asteroids/Asteroid-";
 
             if (speed == AuiSpaceGame.Model.Speed.Low)
                 NewImage += "low-";

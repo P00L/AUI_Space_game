@@ -191,10 +191,24 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\Asteroid-low-left.png" />
-    <Resource Include="Images\Asteroid-low-right.png" />
-    <Resource Include="Images\Asteroid-low-middle.png" />
+    <Resource Include="Images\Asteroids\Asteroid-high-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Asteroids\Asteroid-high-middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Asteroids\Asteroid-high-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Asteroids\Asteroid-low-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Asteroids\Asteroid-low-middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Asteroids\Asteroid-low-right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

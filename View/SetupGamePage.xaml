@@ -29,7 +29,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <Image Source="{Binding Image}"/>
+                        <Image Source="{Binding Image}" Height="74" Width="74"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
