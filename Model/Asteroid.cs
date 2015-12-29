@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuiSpaceGame.Model;
 
 namespace AuiSpaceGame.Model
 {
@@ -19,7 +20,7 @@ namespace AuiSpaceGame.Model
             set
             {
                 lane = value;
-                Image = "Asteroid," + speed.ToString() +","+ lane.ToString() + ".png";
+                UpdateImage();
                 NotifyPropertyChanged("image");
             }
         }
@@ -30,7 +31,7 @@ namespace AuiSpaceGame.Model
             {
                 speed = value;
                 AnimationDuration = TimeSpan.FromMilliseconds(((Constant.Square * 2) * 1000) / speed);
-                Image = "Asteroid," + speed.ToString() + "," + lane.ToString() + ".png";
+                UpdateImage();
                 NotifyPropertyChanged("image");
             }
         }
@@ -42,8 +43,28 @@ namespace AuiSpaceGame.Model
             Speed = speed;
             Z0 = Constant.ZCarpet + Constant.ZLittleSpace + Constant.Square;
             AnimationDuration = TimeSpan.FromMilliseconds(((Constant.Square * 2) * 1000) / Speed);
-            Image = "Asteroid," + speed.ToString() + "," + lane.ToString() + ".png";
+            UpdateImage();
 
+        }
+
+        private void UpdateImage()
+        {
+            string NewImage = "Asteroid-";
+
+            if (speed == AuiSpaceGame.Model.Speed.Low)
+                NewImage += "low-";
+            else if (speed == AuiSpaceGame.Model.Speed.High)
+                NewImage += "high-";
+
+            if (lane == AuiSpaceGame.Model.Lane.Left)
+                NewImage += "left";
+            else if (lane == AuiSpaceGame.Model.Lane.Middle)
+                NewImage += "middle";
+            else if (lane == AuiSpaceGame.Model.Lane.Right)
+                NewImage += "right";
+
+            NewImage += ".png";
+            Image = NewImage;
         }
 
         private void NotifyPropertyChanged(string propertyName)
