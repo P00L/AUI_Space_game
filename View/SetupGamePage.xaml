@@ -19,64 +19,97 @@
                 <TextBox x:Name="therapistName" HorizontalAlignment="Right" TextWrapping="Wrap" Text="TODO" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="{DynamicResource therapistName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             </StackPanel>
         </DockPanel>
-        <StackPanel DockPanel.Dock="Top">
-            <ListView  x:Name="animationSequence" Height="100px" SelectionChanged="animationSequence_SelectionChanged" MinWidth="50">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"></StackPanel>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Button x:Name="animationUp" Content="{DynamicResource animationUp}" Grid.Row="0" Grid.Column="0" Click="animationUp_Click" IsEnabled="False"/>
-                <Button x:Name="animationDown" Content="{DynamicResource animationDown}" Grid.Row="0" Grid.Column="1" Click="animationDown_Click" IsEnabled="False"/>
-                <Button x:Name="animationRemove" Content="{DynamicResource animationRemove}" Grid.Row="0" Grid.Column="2" Click="animationRemove_Click" IsEnabled="False"/>
-                <Button x:Name="addAnimation" Content="{DynamicResource addAnimation}" Grid.Row="0" Grid.Column="3" Click="addAnimation_Click"/>
-            </Grid>
+
+        <ListView  x:Name="animationSequence" DockPanel.Dock="Top" Height="100px" SelectionChanged="animationSequence_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="Speed = "/>
+                        <TextBlock Text="{Binding Speed}"/>
+                        <TextBlock Text=" - Lane = "/>
+                        <TextBlock Text="{Binding Lane}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+            </Grid.RowDefinitions>
+            <Button x:Name="animationUp" Content="{DynamicResource animationUp}" Grid.Row="0" Grid.Column="0" Click="animationUp_Click" IsEnabled="False"/>
+            <Button x:Name="animationDown"  Content="{DynamicResource animationDown}" Grid.Row="0" Grid.Column="1" Click="animationDown_Click" IsEnabled="False"/>
+            <Button x:Name="animationRemove"  Content="{DynamicResource animationRemove}" Grid.Row="0" Grid.Column="2" Click="animationRemove_Click" IsEnabled="False"/>
+            <Button x:Name="addAnimation"  Content="{DynamicResource addAnimation}" Grid.Row="0" Grid.Column="3" Click="addAnimation_Click"/>
+        </Grid>
+
+        <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom">
+            <Button x:Name="backButton" Content="{DynamicResource back}" VerticalAlignment="Bottom" Click="button_Click"/>
+            <Button x:Name="saveButton" Content="{DynamicResource saveGame}" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+            <Button x:Name="startGame" Content="{DynamicResource startGame}" VerticalAlignment="Bottom" Click="startGame_Click" IsEnabled="False"/>
         </StackPanel>
-        <DockPanel DockPanel.Dock="Bottom">
-            <StackPanel DockPanel.Dock="Right">
-                <Button x:Name="backButton" Content="{DynamicResource back}" VerticalAlignment="Bottom" Click="button_Click"/>
-                <Button x:Name="saveButton" Content="{DynamicResource saveGame}" VerticalAlignment="Bottom" Click="saveButton_Click"/>
-                <Button x:Name="startGame" Content="{DynamicResource startGame}" VerticalAlignment="Bottom" Click="startGame_Click" IsEnabled="False"/>
+
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <RadioButton x:Name="animationAsteroid" Content="{DynamicResource animationAsteroid}" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
+                <RadioButton x:Name="animationLogicBlock" Content="{DynamicResource animationLogicBlock}" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
             </StackPanel>
-            <Grid DockPanel.Dock="Left">
-                <RadioButton x:Name="animationAsteroid" Content="{DynamicResource animationAsteroid}" HorizontalAlignment="Left" Margin="31,30,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
-                <RadioButton x:Name="animationLogicBlock" Content="{DynamicResource animationLogicBlock}" HorizontalAlignment="Left" Margin="157,30,0,0" VerticalAlignment="Top" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
 
-                <Button x:Name="squareTopLeft" Content="" HorizontalAlignment="Left" Margin="31,71,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopLeft_Click"/>
-                <Button x:Name="squareTopRight" Content="" HorizontalAlignment="Left" Margin="103,71,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareTopRight_Click"/>
-                <Button x:Name="squareBottomLeft" Content="" HorizontalAlignment="Left" Margin="31,146,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomLeft_Click"/>
-                <Button x:Name="squareBottomRight" Content="" HorizontalAlignment="Left" Margin="103,146,0,0" VerticalAlignment="Top" Width="25" Height="25" IsEnabled="False" Click="squareBottomRight_Click"/>
+            <StackPanel DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="SpeedLabel" Content="{DynamicResource speed}"/>
+                    <RadioButton x:Name="lowSpeed" Content="{DynamicResource lowSpeed}" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
+                    <RadioButton x:Name="highSpeed" Content="{DynamicResource highSpeed}" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="colorLabel" Content="{DynamicResource color}"/>
+                    <RadioButton x:Name="colorYellow" Content="{DynamicResource colorYellow}" GroupName="colour"/>
+                    <RadioButton x:Name="colorRed" Content="{DynamicResource colorRed}" GroupName="colour"/>
+                    <RadioButton x:Name="colorBlue" Content="{DynamicResource colorBlue}" GroupName="colour"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="shapeLabel" Content="{DynamicResource shape}"/>
+                    <RadioButton x:Name="shapeCircle" Content="{DynamicResource shapeCircle}" GroupName="shape"/>
+                    <RadioButton x:Name="shapeSquare" Content="{DynamicResource shapeSquare}" GroupName="shape"/>
+                    <RadioButton x:Name="shapeTriangle" Content="{DynamicResource shapeTriangle}" GroupName="shape"/>
+                </StackPanel>
+                <Button x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <Viewbox>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="squareTopLeft" Grid.Row="0" Grid.Column="0" Content="" IsEnabled="False" Click="squareTopLeft_Click" Height="Auto" />
+                    <Button x:Name="squareTopRight" Grid.Row="0" Grid.Column="4" Content=""  IsEnabled="False" Click="squareTopRight_Click" Height="Auto" />
+                    <Button x:Name="squareBottomLeft" Grid.Row="2" Grid.Column="0" Content="" IsEnabled="False" Click="squareBottomLeft_Click" Height="Auto" />
+                    <Button x:Name="squareBottomRight" Grid.Row="2" Grid.Column="4" Content="" IsEnabled="False" Click="squareBottomRight_Click" Height="Auto"/>
 
-                <Button x:Name="laneLeft" Content="" HorizontalAlignment="Left" Margin="54,96,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneLeft_Click" IsEnabled="False"/>
-                <Button x:Name="laneMiddle" Content="" HorizontalAlignment="Left" Margin="70,96,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneMiddle_Click" IsEnabled="False"/>
-                <Button x:Name="laneRight" Content="" HorizontalAlignment="Left" Margin="86,96,0,0" VerticalAlignment="Top" Width="16" Height="50" Click="laneRight_Click" IsEnabled="False"/>
-
-                <RadioButton x:Name="lowSpeed" Content="{DynamicResource lowSpeed}" HorizontalAlignment="Left" Margin="103,204,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
-                <RadioButton x:Name="highSpeed" Content="{DynamicResource highSpeed}" HorizontalAlignment="Left" Margin="178,204,0,0" VerticalAlignment="Top" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
-
-                <Label x:Name="SpeedLabel" Content="{DynamicResource speed}" HorizontalAlignment="Left" Margin="31,201,0,0" VerticalAlignment="Top"/>
-
-                <RadioButton x:Name="colorYellow" Content="{DynamicResource colorYellow}" HorizontalAlignment="Left" Margin="103,239,0,0" VerticalAlignment="Top" GroupName="colour"/>
-                <RadioButton x:Name="colorRed" Content="{DynamicResource colorRed}" HorizontalAlignment="Left" Margin="178,239,0,0" VerticalAlignment="Top" GroupName="colour"/>
-                <Label x:Name="colorLabel" Content="{DynamicResource color}" HorizontalAlignment="Left" Margin="31,236,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="shapeLabel" Content="{DynamicResource shape}" HorizontalAlignment="Left" Margin="31,269,0,0" VerticalAlignment="Top"/>
-                <RadioButton x:Name="shapeCircle" Content="{DynamicResource shapeCircle}" HorizontalAlignment="Left" Margin="103,272,0,0" VerticalAlignment="Top" GroupName="shape"/>
-                <RadioButton x:Name="shapeSquare" Content="{DynamicResource shapeSquare}" HorizontalAlignment="Left" Margin="178,272,0,0" VerticalAlignment="Top" GroupName="shape"/>
-                <RadioButton x:Name="colorBlue" Content="{DynamicResource colorBlue}" HorizontalAlignment="Left" Margin="262,239,0,0" VerticalAlignment="Top" GroupName="colour"/>
-                <RadioButton x:Name="shapeTriangle" Content="{DynamicResource shapeTriangle}" HorizontalAlignment="Left" Margin="262,272,0,0" VerticalAlignment="Top" GroupName="shape"/>
-                <Button x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}" HorizontalAlignment="Left" Margin="31,299,0,0" VerticalAlignment="Top" Width="75"/>
-            </Grid>
+                    <Button x:Name="laneLeft" Grid.Row="1" Grid.Column="1" Content=""  Click="laneLeft_Click" IsEnabled="False" Height="Auto" />
+                    <Button x:Name="laneMiddle" Grid.Row="1" Grid.Column="2" Content=""  Click="laneMiddle_Click" IsEnabled="False" Height="Auto" />
+                    <Button x:Name="laneRight" Grid.Row="1" Grid.Column="3" Content="" Click="laneRight_Click" IsEnabled="False" Height="Auto" />
+                </Grid>
+            </Viewbox>
         </DockPanel>
     </DockPanel>
 </Page>
