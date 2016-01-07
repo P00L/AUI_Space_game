@@ -58,7 +58,7 @@ namespace AuiSpaceGame.Model
         public const double Right = 1;
     }
 
-    public static class Figure
+    public static class FigureShape
     {
         public const string Triangle = "Triangle";
         public const string Circle = "Circle";

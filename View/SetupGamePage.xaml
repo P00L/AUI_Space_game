@@ -71,15 +71,15 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label x:Name="colorLabel" Content="{DynamicResource color}"/>
-                    <RadioButton x:Name="colorYellow" Content="{DynamicResource colorYellow}" GroupName="colour"/>
-                    <RadioButton x:Name="colorRed" Content="{DynamicResource colorRed}" GroupName="colour"/>
-                    <RadioButton x:Name="colorBlue" Content="{DynamicResource colorBlue}" GroupName="colour"/>
+                    <RadioButton x:Name="colorYellow" Content="{DynamicResource colorYellow}" GroupName="colour" Checked="colorYellow_Checked"/>
+                    <RadioButton x:Name="colorRed" Content="{DynamicResource colorRed}" GroupName="colour" Checked="colorRed_Checked"/>
+                    <RadioButton x:Name="colorBlue" Content="{DynamicResource colorBlue}" GroupName="colour" Checked="colorBlue_Checked"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label x:Name="shapeLabel" Content="{DynamicResource shape}"/>
-                    <RadioButton x:Name="shapeCircle" Content="{DynamicResource shapeCircle}" GroupName="shape"/>
-                    <RadioButton x:Name="shapeSquare" Content="{DynamicResource shapeSquare}" GroupName="shape"/>
-                    <RadioButton x:Name="shapeTriangle" Content="{DynamicResource shapeTriangle}" GroupName="shape"/>
+                    <RadioButton x:Name="shapeCircle" Content="{DynamicResource shapeCircle}" GroupName="shape" Checked="shapeCircle_Checked"/>
+                    <RadioButton x:Name="shapeSquare" Content="{DynamicResource shapeSquare}" GroupName="shape" Checked="shapeSquare_Checked"/>
+                    <RadioButton x:Name="shapeTriangle" Content="{DynamicResource shapeTriangle}" GroupName="shape" Checked="shapeTriangle_Checked"/>
                 </StackPanel>
                 <Button x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}" HorizontalAlignment="Left"/>
             </StackPanel>

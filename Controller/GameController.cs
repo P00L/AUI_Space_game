@@ -28,15 +28,16 @@ namespace AuiSpaceGame.Controller
             Timer.AutoReset = false;
         }
 
-
         public void GameOnChanged(object sender, EventArgs e)
         {
             if (GameState.GameOn)
             {
+                Console.WriteLine("GAME ON");
                 GameState.AnimationOn = true;
             }
             else
             {
+                Console.WriteLine("GAME OFF");
                 //TODO chiamate pharos & c
             }
         }
@@ -50,14 +51,36 @@ namespace AuiSpaceGame.Controller
         {
             if (GameState.AnimationOn) // false--->true start of animation
             {
+                Console.WriteLine("ANIMATION ON " + GameState.AnimationId + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 Animation animation = Game.AnimationsSequence.ElementAt(GameState.AnimationId);
+                //TODO controllare se serve davvero
+                GameState.ExecuteReinforcementChanged -= ExecuteReinforcementChanged;
+                if (animation.GetType() == typeof(Asteroid))
+                {
+                    GameState.ExecuteReinforcement = true;
+                }
+                else if(animation.GetType() == typeof(LogicBlock))
+                {
+                    GameState.ExecuteReinforcement = false;
+                }
+                GameState.ExecuteReinforcementChanged += ExecuteReinforcementChanged;
+
                 animation.StartingAnimationTime = DateTime.Now.AddMilliseconds(Constant.TPharos);
                 Timer.Interval = animation.AnimationDuration.TotalMilliseconds;
                 //TODO chiamate pharos & C
+                if(animation.GetType() == typeof(Asteroid))
+                {
+
+                }
+                else if (animation.GetType() == typeof(LogicBlock))
+                {
+
+                }
                 Timer.Start();
             }
             else // true--->false end of animation
             {
+                Console.WriteLine("ANIMATION OFF " + GameState.AnimationId + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 if (GameState.ExecuteReinforcement)
                 {
                     GameState.ReinforcementOn = true;
@@ -73,6 +96,7 @@ namespace AuiSpaceGame.Controller
         {
             if (GameState.ReinforcementOn) //reinforecmente started
             {
+                Console.WriteLine("REINFORCEMENT ON " + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 Timer.Interval = Constant.TReinforcement;
                 //TODO chiamata pharos & c
                 Timer.Start();
@@ -80,26 +104,29 @@ namespace AuiSpaceGame.Controller
             }
             else //reinforcement ended
             {
+                Console.WriteLine("REINFORCEMENT OFF " + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 NextAnimation();
             }
         }
 
         public void ExecuteReinforcementChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("ExecuteReinforcementChanged");
         }
 
         private void OnElapsedTimer(object sender, ElapsedEventArgs e)
         {
             if (GameState.AnimationOn) //end of animation
             {
+                Console.WriteLine("ANIMATION END " + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 GameState.AnimationOn = false;
             }
-            if (GameState.ReinforcementOn) //end of animation
+            if (GameState.ReinforcementOn) //end of reinforcmente
             {
+                Console.WriteLine("REINFORCEMENT END " + "{0:HH: mm: ss.fff}", DateTime.Now);
                 GameState.ReinforcementOn = false;
             }
         }
-
 
         public void NextStepGame()
         {
@@ -109,6 +136,7 @@ namespace AuiSpaceGame.Controller
         {
             if (GameState.RedoAnimation)
             {
+                Console.WriteLine("redo");
                 GameState.RedoAnimation = false;
                 GameState.AnimationOn = true;
             }
@@ -116,10 +144,12 @@ namespace AuiSpaceGame.Controller
             {
                 if (CheckEndGame())
                 {
+                    Console.WriteLine("end game");
                     GameState.GameOn = false;
                 }
                 else
                 {
+                    Console.WriteLine("next animation");
                     GameState.AnimationId += 1;
                     GameState.AnimationOn = true;
                 }

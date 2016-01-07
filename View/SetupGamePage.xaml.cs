@@ -27,6 +27,7 @@ namespace AuiSpaceGame.View
     {
         private Game Game;
         private Animation CurrentAnimation;
+        private int SquareTmp;
 
         public SetupGamePage()
         {
@@ -51,6 +52,7 @@ namespace AuiSpaceGame.View
             }
 
         }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new StartingPage());
@@ -112,14 +114,12 @@ namespace AuiSpaceGame.View
 
         private void animationLogicBlock_Checked(object sender, RoutedEventArgs e)
         {
-            /*TODO ISTANZIARE COME LOGIC BLOCK
-           int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
-           Game.AnimationsSequence.Remove(CurrentAnimation);
-           CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
-           Game.AnimationsSequence.Insert(index, CurrentAnimation);
-           animationSequence.Focus();
-           animationSequence.SelectedItem = CurrentAnimation;
-           */
+            int index = Game.AnimationsSequence.IndexOf(CurrentAnimation);
+            Game.AnimationsSequence.Remove(CurrentAnimation);
+            CurrentAnimation = new LogicBlock();
+            Game.AnimationsSequence.Insert(index, CurrentAnimation);
+            animationSequence.Focus();
+            animationSequence.SelectedItem = CurrentAnimation;
         }
 
         private void laneLeft_Click(object sender, RoutedEventArgs e)
@@ -153,45 +153,41 @@ namespace AuiSpaceGame.View
             laneMiddle.Background = Brushes.AliceBlue;
             laneRight.Background = Brushes.Yellow;
         }
+
         private void squareBottomLeft_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
-            /* LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            CurrentLogicBlock.Lane = Lane.Left; */
-
+            SquareTmp = Square.BottomLeft;
+            shapeColorSquare();
             squareBottomLeft.Background = Brushes.Yellow;
             squareBottomRight.Background = Brushes.AliceBlue;
             squareTopLeft.Background = Brushes.AliceBlue;
             squareTopRight.Background = Brushes.AliceBlue;
         }
+
         private void squareBottomRight_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
-            /* LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            CurrentLogicBlock.Lane = Lane.Left; */
-
+            SquareTmp = Square.BottomRight;
+            shapeColorSquare();
             squareBottomLeft.Background = Brushes.AliceBlue;
             squareBottomRight.Background = Brushes.Yellow;
             squareTopLeft.Background = Brushes.AliceBlue;
             squareTopRight.Background = Brushes.AliceBlue;
         }
+
         private void squareTopLeft_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
-            /* LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            CurrentLogicBlock.Lane = Lane.Left; */
-
+            SquareTmp = Square.TopLeft;
+            shapeColorSquare();
             squareBottomLeft.Background = Brushes.AliceBlue;
             squareBottomRight.Background = Brushes.AliceBlue;
             squareTopLeft.Background = Brushes.Yellow;
             squareTopRight.Background = Brushes.AliceBlue;
         }
+
         private void squareTopRight_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
-            /* LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            CurrentLogicBlock.Lane = Lane.Left; */
-
+            SquareTmp = Square.TopRight;
+            shapeColorSquare();
             squareBottomLeft.Background = Brushes.AliceBlue;
             squareBottomRight.Background = Brushes.AliceBlue;
             squareTopLeft.Background = Brushes.AliceBlue;
@@ -214,6 +210,7 @@ namespace AuiSpaceGame.View
             {
                 CurrentAnimation = (Animation)animationSequence.SelectedItem;
                 EnableUpDown();
+                //ASTEROID ANIMATION
                 if (CurrentAnimation.GetType() == typeof(Asteroid))
                 {
                     if (((Asteroid)CurrentAnimation).Lane == Lane.Left)
@@ -263,10 +260,56 @@ namespace AuiSpaceGame.View
                     laneMiddle.IsEnabled = true;
                     laneRight.IsEnabled = true;
 
+                    colorBlue.IsEnabled = false;
+                    colorBlue.IsChecked = false;
+                    colorRed.IsEnabled = false;
+                    colorRed.IsChecked = false;
+                    colorYellow.IsEnabled = false;
+                    colorYellow.IsChecked = false;
+
+                    shapeCircle.IsEnabled = false;
+                    shapeCircle.IsChecked = false;
+                    shapeSquare.IsEnabled = false;
+                    shapeSquare.IsChecked = false;
+                    shapeTriangle.IsEnabled = false;
+                    shapeTriangle.IsChecked = false;
+
                     animationAsteroid.Checked -= animationAsteroid_Checked;
                     animationAsteroid.IsChecked = true;
                     animationAsteroid.Checked += animationAsteroid_Checked;
 
+                }
+                //LOGIC BLOCK ANIMATION
+                else if (CurrentAnimation.GetType() == typeof(LogicBlock))
+                {
+
+                    colorBlue.IsEnabled = true;
+                    colorRed.IsEnabled = true;
+                    colorYellow.IsEnabled = true;
+
+                    shapeCircle.IsEnabled = true;
+                    shapeTriangle.IsEnabled = true;
+                    shapeSquare.IsEnabled = true;
+
+                    animationAsteroid.IsEnabled = true;
+                    animationLogicBlock.IsEnabled = true;
+
+                    lowSpeed.IsEnabled = false;
+                    lowSpeed.IsChecked = false;
+                    highSpeed.IsEnabled = false;
+                    highSpeed.IsChecked = false;
+
+                    squareTopLeft.IsEnabled = true;
+                    squareTopRight.IsEnabled = true;
+                    squareBottomLeft.IsEnabled = true;
+                    squareBottomRight.IsEnabled = true;
+                    laneLeft.IsEnabled = false;
+                    laneMiddle.IsEnabled = false;
+                    laneRight.IsEnabled = false;
+
+                    animationAsteroid.Checked -= animationAsteroid_Checked;
+                    animationLogicBlock.IsChecked = true;
+                    animationAsteroid.Checked += animationAsteroid_Checked;
                 }
             }
         }
@@ -317,8 +360,8 @@ namespace AuiSpaceGame.View
                 }
                 else
                 {
-                    if (index == (len -1))
-                        CurrentAnimation = Game.AnimationsSequence.ElementAt(index -1);
+                    if (index == (len - 1))
+                        CurrentAnimation = Game.AnimationsSequence.ElementAt(index - 1);
                     else
                         CurrentAnimation = Game.AnimationsSequence.ElementAt(index);
                 }
@@ -396,6 +439,77 @@ namespace AuiSpaceGame.View
             Parser.saveGame(Game);
             //TODO segnalare gioco salvato
             //TODO gestire attivazione pulsante "save"
+        }
+
+        private void shapeTriangle_Checked(object sender, RoutedEventArgs e)
+        {
+            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure = FigureShape.Triangle;
+        }
+
+        private void shapeSquare_Checked(object sender, RoutedEventArgs e)
+        {
+            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure = FigureShape.Square;
+        }
+
+        private void shapeCircle_Checked(object sender, RoutedEventArgs e)
+        {
+            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure = FigureShape.Circle;
+        }
+
+        private void colorYellow_Checked(object sender, RoutedEventArgs e)
+        {
+            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color = Colour.Yellow;
+        }
+
+        private void colorRed_Checked(object sender, RoutedEventArgs e)
+        {
+            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color = Colour.Red;
+        }
+
+        private void colorBlue_Checked(object sender, RoutedEventArgs e)
+        {
+            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color = Colour.Blue;
+        }
+
+        private void shapeColorSquare()
+        {
+            if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color == Colour.Red)
+            {
+                colorBlue.IsChecked = false;
+                colorYellow.IsChecked = false;
+                colorRed.IsChecked = true;
+            }
+            if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color == Colour.Blue)
+            {
+                colorBlue.IsChecked = true;
+                colorYellow.IsChecked = false;
+                colorRed.IsChecked = false;
+            }
+            if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color == Colour.Yellow)
+            {
+                colorBlue.IsChecked = false;
+                colorYellow.IsChecked = true;
+                colorRed.IsChecked = false;
+            }
+            if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure == FigureShape.Circle)
+            {
+                shapeCircle.IsChecked = true;
+                shapeTriangle.IsChecked = false;
+                shapeSquare.IsChecked = false;
+            }
+            if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure == FigureShape.Square)
+            {
+                shapeCircle.IsChecked = false;
+                shapeTriangle.IsChecked = false;
+                shapeSquare.IsChecked = true;
+            }
+            if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure == FigureShape.Triangle)
+            {
+                shapeCircle.IsChecked = false;
+                shapeTriangle.IsChecked = true;
+                shapeSquare.IsChecked = false;
+            }
+
         }
     }
 }

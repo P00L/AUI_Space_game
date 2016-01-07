@@ -83,7 +83,7 @@ namespace AuiSpaceGame.Model
                 NewImage += "right";
                 */
             NewImage += ".png";
-            logicBlock.Image = NewImage;
+            //logicBlock.Image = NewImage;
         }
 
         private void NotifyPropertyChanged(string propertyName)
