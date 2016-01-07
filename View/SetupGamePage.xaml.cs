@@ -294,6 +294,7 @@ namespace AuiSpaceGame.View
                 else if (CurrentAnimation.GetType() == typeof(LogicBlock))
                 {
 
+                    shapeColorSquare();
                     colorBlue.IsEnabled = true;
                     colorRed.IsEnabled = true;
                     colorYellow.IsEnabled = true;
@@ -318,9 +319,9 @@ namespace AuiSpaceGame.View
                     laneMiddle.IsEnabled = false;
                     laneRight.IsEnabled = false;
 
-                    animationAsteroid.Checked -= animationAsteroid_Checked;
+                    animationLogicBlock.Checked -= animationLogicBlock_Checked;
                     animationLogicBlock.IsChecked = true;
-                    animationAsteroid.Checked += animationAsteroid_Checked;
+                    animationLogicBlock.Checked += animationLogicBlock_Checked;
                 }
             }
         }
@@ -490,30 +491,35 @@ namespace AuiSpaceGame.View
                 colorYellow.IsChecked = false;
                 colorRed.IsChecked = true;
             }
+            else
             if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color == Colour.Blue)
             {
                 colorBlue.IsChecked = true;
                 colorYellow.IsChecked = false;
                 colorRed.IsChecked = false;
             }
+            else
             if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color == Colour.Yellow)
             {
                 colorBlue.IsChecked = false;
                 colorYellow.IsChecked = true;
                 colorRed.IsChecked = false;
             }
+
             if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure == FigureShape.Circle)
             {
                 shapeCircle.IsChecked = true;
                 shapeTriangle.IsChecked = false;
                 shapeSquare.IsChecked = false;
             }
+            else
             if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure == FigureShape.Square)
             {
                 shapeCircle.IsChecked = false;
                 shapeTriangle.IsChecked = false;
                 shapeSquare.IsChecked = true;
             }
+            else
             if (((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure == FigureShape.Triangle)
             {
                 shapeCircle.IsChecked = false;
