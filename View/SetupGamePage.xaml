@@ -12,7 +12,7 @@
         <DockPanel DockPanel.Dock="Top">
             <StackPanel DockPanel.Dock="Left">
                 <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource gameName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="137"/>
-                <TextBox x:Name="childName" TextWrapping="Wrap" Text="TODO" materialDesign:TextFieldAssist.Hint="{DynamicResource childName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="childName" TextWrapping="Wrap" TextChanged="childName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource childName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right">
                 <Label x:Name="gameDuration" HorizontalAlignment="Right" Content="{DynamicResource gameDuration}"/>

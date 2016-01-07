@@ -63,6 +63,11 @@ namespace AuiSpaceGame.View
             Game.Name = gameName.Text;
         }
 
+        private void childName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Game.Child = childName.Text;
+        }
+
         private void addAnimation_Click(object sender, RoutedEventArgs e)
         {
             CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);

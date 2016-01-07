@@ -144,7 +144,6 @@
   <ItemGroup>
     <Compile Include="Model\Animation.cs" />
     <Compile Include="Model\Asteroid.cs" />
-    <Compile Include="Model\Child.cs" />
     <Compile Include="Model\Constants.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\GameState.cs" />

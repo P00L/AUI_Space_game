@@ -45,7 +45,7 @@ namespace AuiSpaceGame.Model.Parser
             string fileName = "game";
             if (game.Name != null) //TODO generazione nomi (se non c'è nomeGioco)?
                 fileName = game.Name;
-            saveFileDialog.FileName = "NOMEBAMBINO_" + fileName; //TODO nome bambino
+            saveFileDialog.FileName = game.Child + "_" + fileName;
             saveFileDialog.Filter = "XML file | *.xml";
             if (saveFileDialog.ShowDialog() == true)
                 File.WriteAllText(saveFileDialog.FileName, sw.ToString());
