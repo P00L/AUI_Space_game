@@ -94,7 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\LogicBlock.cs" />
     <Compile Include="Model\Parser\Parser.cs" />
+    <Compile Include="Model\Shape.cs" />
     <Compile Include="View\SetupGamePage.xaml.cs">
       <DependentUpon>SetupGamePage.xaml</DependentUpon>
     </Compile>
