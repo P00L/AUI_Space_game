@@ -14,6 +14,8 @@ namespace AuiSpaceGame.Model
         private string color;
         private string figure;
         private LogicBlock logicBlock;
+        private double x;
+        private double z;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Color
@@ -37,11 +39,31 @@ namespace AuiSpaceGame.Model
             }
         }
 
-        public Shape(string color, string figure, LogicBlock logicBlock)
+        public double X
+        {
+            get { return x; }
+            set
+            {
+                x = value;
+            }
+        }
+
+        public double Z
+        {
+            get { return z; }
+            set
+            {
+                z = value;
+            }
+        }
+
+        public Shape(string color, string figure, LogicBlock logicBlock, double x, double z)
         {
             Color = color;
             Figure = figure;
             this.logicBlock = logicBlock;
+            X = x;
+            Z = z;
         }
 
         private void UpdateImage() //TODO

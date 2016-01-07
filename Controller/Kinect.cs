@@ -49,6 +49,7 @@ namespace AuiSpaceGame.Controller
 
         private Game game;
         private GameState gameState;
+        private Animation currentAnimation;
 
         public Kinect(Game game, GameState gameState)
         {
@@ -130,38 +131,64 @@ namespace AuiSpaceGame.Controller
 
                 }
                 //now we have the body of the child
-                if(gameState.AnimationOn)
-                    CheckChildPosition();
+                if (gameState.AnimationOn)
+                {
+                    currentAnimation = game.AnimationsSequence.ElementAt(gameState.AnimationId);
+                    if (currentAnimation.GetType() == typeof(Asteroid))
+                        CheckChildPositionAsteroid();
+                    else if (currentAnimation.GetType() == typeof(LogicBlock))
+                        CheckChildPositionLogicBlock();
+                }
+
             }
         }
- 
-        private void CheckChildPosition()
+
+        private void CheckChildPositionAsteroid()
         {
             /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
               Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
               Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);*/
 
-            Animation currentAnimation = game.AnimationsSequence.ElementAt(gameState.AnimationId);
-            double Z=0, X=0;
+            double Z = 0, X = 0;
             TimeSpan T;
-            if (currentAnimation.GetType() == typeof(Asteroid))
+            Asteroid currentAsteroid = (Asteroid)currentAnimation;
+            X = currentAsteroid.Lane;
+            T = DateTime.Now - currentAsteroid.StartingAnimationTime;
+            double time = T.TotalMilliseconds + Constant.TPharos;
+            Z = currentAsteroid.Z0 + Constant.ZCarpet + currentAsteroid.Speed * time;
+
+
+            //if the child hits the asteroid..    
+            if (childBody.Joints[JointType.SpineMid].Position.Z >= Z - Constant.Delta &&
+                childBody.Joints[JointType.SpineMid].Position.Z <= Z + Constant.Delta &&
+                childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.Delta &&
+                childBody.Joints[JointType.SpineMid].Position.X <= X + Constant.Delta)
             {
-                Asteroid currentAsteroid = (Asteroid)currentAnimation;
-                X = currentAsteroid.Lane;
-                T = DateTime.Now - currentAsteroid.StartingAnimationTime;
-                double time = T.TotalMilliseconds + Constant.TPharos;
-                Z = currentAsteroid.Z0 + Constant.ZCarpet + currentAsteroid.Speed * time;
+                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff")); //TODO TOGLIERE!!
+                gameState.ExecuteReinforcement = false;
+            }
+        }
+
+        private void CheckChildPositionLogicBlock()
+        {
+            /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
+              Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
+              Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);*/
+
+            double Z = 0, X = 0;
+            LogicBlock currentLogicBlock = (LogicBlock)currentAnimation;
+            X = currentLogicBlock.Shapes[currentLogicBlock.Target].X;
+            Z = currentLogicBlock.Shapes[currentLogicBlock.Target].Z;
 
 
-                //if the child hits the asteroid..    
-                if (childBody.Joints[JointType.SpineMid].Position.Z >= Z - Constant.Delta &&
-                    childBody.Joints[JointType.SpineMid].Position.Z <= Z + Constant.Delta &&
-                    childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.Delta &&
-                    childBody.Joints[JointType.SpineMid].Position.X <= X + Constant.Delta)
-                {
-                    Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff")); //TODO TOGLIERE!!
-                    gameState.ExecuteReinforcement = false;
-                }
+            //if the child hits the asteroid..    
+            if (childBody.Joints[JointType.SpineMid].Position.Z >= Z - Constant.DeltaLogicBlock &&
+                childBody.Joints[JointType.SpineMid].Position.Z <= Z + Constant.DeltaLogicBlock &&
+                childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.DeltaLogicBlock &&
+                childBody.Joints[JointType.SpineMid].Position.X <= X + Constant.DeltaLogicBlock)
+            {
+                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff")); //TODO TOGLIERE!!
+                gameState.ExecuteReinforcement = true;
             }
         }
 

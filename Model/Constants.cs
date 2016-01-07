@@ -22,6 +22,7 @@ namespace AuiSpaceGame.Model
         /// Precision to measure the position
         /// </summary>
         public const double Delta = 0.25;
+        public const double DeltaLogicBlock = 0.30;
         public const double TReinforcement = 22;
         public const double TLogicBlockAnimation = 10000;
 
