@@ -167,7 +167,15 @@ namespace AuiSpaceGame.View
 
         private void squareBottomLeft_Click(object sender, RoutedEventArgs e)
         {
-            SquareTmp = Square.BottomLeft;
+            int index = 0;
+            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
+            {
+                if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Bottom)
+                {
+                    SquareTmp = index;
+                }
+                index += 1;
+            }
             shapeColorSquare();
             squareBottomLeft.Background = Brushes.Yellow;
             squareBottomRight.Background = Brushes.AliceBlue;
@@ -177,7 +185,15 @@ namespace AuiSpaceGame.View
 
         private void squareBottomRight_Click(object sender, RoutedEventArgs e)
         {
-            SquareTmp = Square.BottomRight;
+            int index = 0;
+            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
+            {
+                if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Bottom)
+                {
+                    SquareTmp = index;
+                }
+                index += 1;
+            }
             shapeColorSquare();
             squareBottomLeft.Background = Brushes.AliceBlue;
             squareBottomRight.Background = Brushes.Yellow;
@@ -187,7 +203,15 @@ namespace AuiSpaceGame.View
 
         private void squareTopLeft_Click(object sender, RoutedEventArgs e)
         {
-            SquareTmp = Square.TopLeft;
+            int index = 0;
+            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
+            {
+                if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Top)
+                {
+                    SquareTmp = index;
+                }
+                index += 1;
+            }
             shapeColorSquare();
             squareBottomLeft.Background = Brushes.AliceBlue;
             squareBottomRight.Background = Brushes.AliceBlue;
@@ -197,7 +221,15 @@ namespace AuiSpaceGame.View
 
         private void squareTopRight_Click(object sender, RoutedEventArgs e)
         {
-            SquareTmp = Square.TopRight;
+            int index = 0;
+            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
+            {
+                if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Top)
+                {
+                    SquareTmp = index;
+                }
+                index += 1;
+            }
             shapeColorSquare();
             squareBottomLeft.Background = Brushes.AliceBlue;
             squareBottomRight.Background = Brushes.AliceBlue;
