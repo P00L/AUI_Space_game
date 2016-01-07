@@ -64,7 +64,7 @@ namespace AuiSpaceGame.Model
         public const string Square = "Square";
     }
 
-    public static class Color
+    public static class Colour
     {
         public const string Red = "Red";
         public const string Blue = "Blue";

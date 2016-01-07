@@ -38,10 +38,10 @@ namespace AuiSpaceGame.Model
         public LogicBlock()
         {
             Shapes = new Shape[4];
-            Shapes[Square.TopLeft] = new Shape(Color.Red, Figure.Square, this);
-            Shapes[Square.TopRight] = new Shape(Color.Red, Figure.Square, this);
-            Shapes[Square.BottomLeft] = new Shape(Color.Red, Figure.Square, this);
-            Shapes[Square.BottomRight] = new Shape(Color.Red, Figure.Square, this);
+            Shapes[Square.TopLeft] = new Shape(Colour.Red, Figure.Square, this);
+            Shapes[Square.TopRight] = new Shape(Colour.Red, Figure.Square, this);
+            Shapes[Square.BottomLeft] = new Shape(Colour.Red, Figure.Square, this);
+            Shapes[Square.BottomRight] = new Shape(Colour.Red, Figure.Square, this);
             Target = Square.TopLeft;
             AnimationDuration = TimeSpan.FromMilliseconds(Constant.TLogicBlockAnimation);
             UpdateImage();
