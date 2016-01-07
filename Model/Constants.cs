@@ -23,6 +23,7 @@ namespace AuiSpaceGame.Model
         /// </summary>
         public const double Delta = 0.25;
         public const double DeltaLogicBlock = 0.30;
+        public const int NumberOfCarpetSquares = 4;
         public const double TReinforcement = 22;
         public const double TLogicBlockAnimation = 10000;
 

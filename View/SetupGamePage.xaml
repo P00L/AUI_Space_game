@@ -16,7 +16,7 @@
             </StackPanel>
             <StackPanel DockPanel.Dock="Right">
                 <Label x:Name="gameDuration" HorizontalAlignment="Right" Content="{DynamicResource gameDuration}"/>
-                <TextBox x:Name="therapistName" HorizontalAlignment="Right" TextWrapping="Wrap" Text="TODO" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="{DynamicResource therapistName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="therapistName" HorizontalAlignment="Right" TextWrapping="Wrap" TextChanged="therapistName_TextChanged" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="{DynamicResource therapistName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             </StackPanel>
         </DockPanel>
 

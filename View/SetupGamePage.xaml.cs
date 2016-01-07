@@ -41,6 +41,8 @@ namespace AuiSpaceGame.View
             Game = game;
             InitializeComponent();
             gameName.Text = Game.Name;
+            childName.Text = Game.Child;
+            therapistName.Text = Game.Therapist;
             animationSequence.ItemsSource = Game.AnimationsSequence;
             if (game.AnimationsSequence.Count > 0)
             {
@@ -66,6 +68,10 @@ namespace AuiSpaceGame.View
         private void childName_TextChanged(object sender, TextChangedEventArgs e)
         {
             Game.Child = childName.Text;
+        }
+        private void therapistName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Game.Therapist = therapistName.Text;
         }
 
         private void addAnimation_Click(object sender, RoutedEventArgs e)

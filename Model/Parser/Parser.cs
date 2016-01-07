@@ -17,35 +17,54 @@ namespace AuiSpaceGame.Model.Parser
             var sw = new StringWriter();
             XmlWriterSettings setting = new XmlWriterSettings();
             setting.ConformanceLevel = ConformanceLevel.Auto;
-                using (XmlWriter writer = XmlWriter.Create(sw))
+            using (XmlWriter writer = XmlWriter.Create(sw))
+            {
+                writer.WriteStartElement("game");
+                writer.WriteAttributeString("gameName", game.Name);
+                writer.WriteAttributeString("childName", game.Child);
+                writer.WriteAttributeString("therapistName", game.Therapist);
+                writer.WriteAttributeString("durationInMilliseconds", game.GameDuration.TotalMilliseconds.ToString());
+                writer.WriteStartElement("animationsSequence");
+                foreach (var anim in game.AnimationsSequence)
                 {
-                    writer.WriteStartElement("game");
-                    writer.WriteAttributeString("gameName", game.Name);
-                    writer.WriteAttributeString("childName", "BAMBINO"); //TODO cambiare nome
-                    writer.WriteAttributeString("durationInMilliseconds", game.GameDuration.TotalMilliseconds.ToString());
-                    writer.WriteStartElement("animationsSequence");
-                    foreach (var anim in game.AnimationsSequence)
+                    writer.WriteStartElement("animation");
+                    if (anim.GetType() == typeof(Asteroid))
                     {
-                        writer.WriteStartElement("animation");
-                        if (anim.GetType() == typeof(Asteroid))
-                        {
-                            writer.WriteAttributeString("type", "asteroid");
-                            Asteroid ast = ((Asteroid)anim);
-                            writer.WriteAttributeString("lane", ast.Lane.ToString());
-                            writer.WriteAttributeString("speed", ast.Speed.ToString());
-                        }
-                        writer.WriteEndElement(); //end of animation
+                        writer.WriteAttributeString("type", "asteroid");
+                        Asteroid ast = ((Asteroid)anim);
+                        writer.WriteAttributeString("lane", ast.Lane.ToString());
+                        writer.WriteAttributeString("speed", ast.Speed.ToString());
                     }
-                    writer.WriteEndElement(); //end of animationSequence
-                    writer.WriteEndElement(); //end of game
-                    writer.Flush();
+                    else if (anim.GetType() == typeof(LogicBlock))
+                    {
+                        writer.WriteAttributeString("type", "logicBlock");
+                        LogicBlock logicBlock = ((LogicBlock)anim);
+                        writer.WriteAttributeString("target", logicBlock.Target.ToString());
+                        foreach (var shape in logicBlock.Shapes)
+                        {
+                            writer.WriteStartElement("shape");
+                            writer.WriteAttributeString("color", shape.Color.ToString());
+                            writer.WriteAttributeString("figure", shape.Figure.ToString());
+                            writer.WriteAttributeString("x", shape.X.ToString());
+                            writer.WriteAttributeString("z", shape.Z.ToString());
+                            writer.WriteEndElement();
+                        }
+                    }
+                        writer.WriteEndElement(); //end of animation
                 }
-            
+                writer.WriteEndElement(); //end of animationSequence
+                writer.WriteEndElement(); //end of game
+                writer.Flush();
+            }
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            string fileName = "game";
-            if (game.Name != null) //TODO generazione nomi (se non c'è nomeGioco)?
-                fileName = game.Name;
-            saveFileDialog.FileName = game.Child + "_" + fileName;
+            string fileName = "";
+            if (game.Child != null)
+                fileName = game.Child + "_";
+            if (game.Name != null)
+                fileName = fileName + game.Name;
+            else fileName = fileName + "game";
+            saveFileDialog.FileName = fileName;
             saveFileDialog.Filter = "XML file | *.xml";
             if (saveFileDialog.ShowDialog() == true)
                 File.WriteAllText(saveFileDialog.FileName, sw.ToString());
@@ -72,7 +91,8 @@ namespace AuiSpaceGame.Model.Parser
                             if (reader.HasAttributes)
                             {
                                 game.Name = reader.GetAttribute("gameName");
-                                //TODO CHILD
+                                game.Child = reader.GetAttribute("childName");
+                                game.Therapist = reader.GetAttribute("therapistName");
                                 Double gameDuration = Convert.ToDouble(reader.GetAttribute("durationInMilliseconds"));
                                 game.GameDuration = TimeSpan.FromMilliseconds(gameDuration);
                             }
@@ -92,7 +112,27 @@ namespace AuiSpaceGame.Model.Parser
                                     }
                                     else if (reader.GetAttribute("type") == "logicBlock")
                                     {
-                                        //TODO
+                                        int Target = Convert.ToInt16(reader.GetAttribute("target"));
+                                        int i = 0;
+                                        Shape[] Shapes = new Shape[Constant.NumberOfCarpetSquares];
+                                        LogicBlock LogicBlock = new LogicBlock();
+                                        if (reader.ReadToDescendant("shape"))
+                                        {
+                                            do
+                                            {
+                                                string Color = reader.GetAttribute("color");
+                                                string Figure = reader.GetAttribute("figure");
+                                                double X = Convert.ToDouble(reader.GetAttribute("x"));
+                                                double Z = Convert.ToDouble(reader.GetAttribute("z"));
+                                                Shape TempShape = new Model.Shape(Color, Figure, LogicBlock, X, Z);
+                                                Shapes[i] = TempShape;
+                                                i++;
+                                            }
+                                            while (reader.ReadToNextSibling("shape"));
+                                        }
+                                        LogicBlock.Shapes = Shapes;
+                                        LogicBlock.Target = Target;
+                                        game.AnimationsSequence.Add(LogicBlock);
                                     }
                                 } while (reader.ReadToNextSibling("animation"));
                             }

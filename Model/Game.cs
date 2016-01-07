@@ -12,6 +12,7 @@ namespace AuiSpaceGame.Model
         public String Name { get; set; }
         public ObservableCollection<Animation> AnimationsSequence { get; set; }
         public String Child { get; set; }
+        public String Therapist { get; set; }
         public TimeSpan GameDuration { get; set; }
 
         public Game()
