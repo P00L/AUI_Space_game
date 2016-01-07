@@ -33,6 +33,13 @@ namespace AuiSpaceGame.View
         {
             Game = new Game();
             InitializeComponent();
+            laneMiddle.Background = Brushes.AliceBlue;
+            laneRight.Background = Brushes.AliceBlue;
+            laneLeft.Background = Brushes.AliceBlue;
+            squareBottomLeft.Background = Brushes.AliceBlue;
+            squareBottomRight.Background = Brushes.AliceBlue;
+            squareTopLeft.Background = Brushes.AliceBlue;
+            squareTopRight.Background = Brushes.AliceBlue;
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
@@ -40,6 +47,13 @@ namespace AuiSpaceGame.View
         {
             Game = game;
             InitializeComponent();
+            laneMiddle.Background = Brushes.AliceBlue;
+            laneRight.Background = Brushes.AliceBlue;
+            laneLeft.Background = Brushes.AliceBlue;
+            squareBottomLeft.Background = Brushes.AliceBlue;
+            squareBottomRight.Background = Brushes.AliceBlue;
+            squareTopLeft.Background = Brushes.AliceBlue;
+            squareTopRight.Background = Brushes.AliceBlue;
             gameName.Text = Game.Name;
             childName.Text = Game.Child;
             therapistName.Text = Game.Therapist;
@@ -249,6 +263,7 @@ namespace AuiSpaceGame.View
 
         private void animationSequence_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Reset();
             if (animationSequence.SelectedItem != null)
             {
                 CurrentAnimation = (Animation)animationSequence.SelectedItem;
@@ -325,8 +340,22 @@ namespace AuiSpaceGame.View
                 //LOGIC BLOCK ANIMATION
                 else if (CurrentAnimation.GetType() == typeof(LogicBlock))
                 {
-
+                    //Fake invocation of click button
+                    int index = 0;
+                    foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
+                    {
+                        if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Top)
+                        {
+                            SquareTmp = index;
+                        }
+                        index += 1;
+                    }
                     shapeColorSquare();
+                    squareBottomLeft.Background = Brushes.AliceBlue;
+                    squareBottomRight.Background = Brushes.AliceBlue;
+                    squareTopLeft.Background = Brushes.Yellow;
+                    squareTopRight.Background = Brushes.AliceBlue;
+
                     colorBlue.IsEnabled = true;
                     colorRed.IsEnabled = true;
                     colorYellow.IsEnabled = true;
@@ -450,6 +479,28 @@ namespace AuiSpaceGame.View
 
         private void Reset()
         {
+            laneMiddle.Background = Brushes.AliceBlue;
+            laneRight.Background = Brushes.AliceBlue;
+            laneLeft.Background = Brushes.AliceBlue;
+            squareBottomLeft.Background = Brushes.AliceBlue;
+            squareBottomRight.Background = Brushes.AliceBlue;
+            squareTopLeft.Background = Brushes.AliceBlue;
+            squareTopRight.Background = Brushes.AliceBlue;
+
+            colorBlue.IsEnabled = false;
+            colorBlue.IsChecked = false;
+            colorRed.IsEnabled = false;
+            colorRed.IsChecked = false;
+            colorYellow.IsEnabled = false;
+            colorYellow.IsChecked = false;
+
+            shapeCircle.IsEnabled = false;
+            shapeCircle.IsChecked = false;
+            shapeSquare.IsEnabled = false;
+            shapeSquare.IsChecked = false;
+            shapeTriangle.IsEnabled = false;
+            shapeTriangle.IsChecked = false;
+
             squareTopLeft.IsEnabled = false;
             squareTopRight.IsEnabled = false;
             squareBottomLeft.IsEnabled = false;
