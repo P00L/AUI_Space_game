@@ -33,13 +33,7 @@ namespace AuiSpaceGame.View
         {
             Game = new Game();
             InitializeComponent();
-            laneMiddle.Background = Brushes.AliceBlue;
-            laneRight.Background = Brushes.AliceBlue;
-            laneLeft.Background = Brushes.AliceBlue;
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.AliceBlue;
-            squareTopRight.Background = Brushes.AliceBlue;
+            Reset();
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
@@ -47,6 +41,7 @@ namespace AuiSpaceGame.View
         {
             Game = game;
             InitializeComponent();
+            //TODO reset?
             laneMiddle.Background = Brushes.AliceBlue;
             laneRight.Background = Brushes.AliceBlue;
             laneLeft.Background = Brushes.AliceBlue;

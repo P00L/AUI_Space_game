@@ -6,7 +6,10 @@
       xmlns:local="clr-namespace:AuiSpaceGame.View"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="StartingPage">
+      Title="StartingPage"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="Roboto">
 
     <Grid>
         <Button x:Name="createGameButton" Content="{DynamicResource createNewGame}" HorizontalAlignment="Left" Margin="100,122,0,0" VerticalAlignment="Top" Click="createGameButton_Click"/>

@@ -6,12 +6,15 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:AuiSpaceGame.View"
       mc:Ignorable="d"
-      Title="SetupGamePage">
+      Title="SetupGamePage"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="Roboto">
 
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <StackPanel DockPanel.Dock="Left">
-                <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource gameName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="137"/>
+                <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource gameName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox x:Name="childName" TextWrapping="Wrap" TextChanged="childName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource childName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right">
