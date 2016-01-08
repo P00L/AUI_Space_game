@@ -100,10 +100,26 @@
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="squareTopLeft" Grid.Row="0" Grid.Column="0" Content="" IsEnabled="False" Click="squareTopLeft_Click" Height="Auto" />
-                    <Button x:Name="squareTopRight" Grid.Row="0" Grid.Column="4" Content=""  IsEnabled="False" Click="squareTopRight_Click" Height="Auto" />
-                    <Button x:Name="squareBottomLeft" Grid.Row="2" Grid.Column="0" Content="" IsEnabled="False" Click="squareBottomLeft_Click" Height="Auto" />
-                    <Button x:Name="squareBottomRight" Grid.Row="2" Grid.Column="4" Content="" IsEnabled="False" Click="squareBottomRight_Click" Height="Auto"/>
+                    <Button x:Name="squareTopLeft" Grid.Row="0" Grid.Column="0" Content="" IsEnabled="False" Click="squareTopLeft_Click" Height="Auto" >
+                        <Button.Background>
+                            <ImageBrush x:Name="squareTopLeftImage"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="squareTopRight" Grid.Row="0" Grid.Column="4" Content=""  IsEnabled="False" Click="squareTopRight_Click" Height="Auto" >
+                        <Button.Background>
+                            <ImageBrush x:Name="squareTopRightImage"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="squareBottomLeft" Grid.Row="2" Grid.Column="0" Content="" IsEnabled="False" Click="squareBottomLeft_Click" Height="Auto" >
+                        <Button.Background>
+                            <ImageBrush x:Name="squareBottomLeftImage"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="squareBottomRight" Grid.Row="2" Grid.Column="4" Content="" IsEnabled="False" Click="squareBottomRight_Click" Height="Auto">
+                        <Button.Background>
+                            <ImageBrush x:Name="squareBottomRightImage"/>
+                        </Button.Background>
+                    </Button>
 
                     <Button x:Name="laneLeft" Grid.Row="1" Grid.Column="1" Content=""  Click="laneLeft_Click" IsEnabled="False" Height="Auto" />
                     <Button x:Name="laneMiddle" Grid.Row="1" Grid.Column="2" Content=""  Click="laneMiddle_Click" IsEnabled="False" Height="Auto" />

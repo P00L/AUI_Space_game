@@ -25,15 +25,19 @@ namespace AuiSpaceGame.View
     /// </summary>
     public partial class SetupGamePage : Page
     {
+        //= new BitmapImage(new Uri(@"Images/Asteroids/Asteroid-high-middle.png",UriKind.Relative))
         private Game Game;
         private Animation CurrentAnimation;
         private int SquareTmp;
+        private Dictionary<string, ImageBrush> squareDic;
 
         public SetupGamePage()
         {
             Game = new Game();
             InitializeComponent();
             Reset();
+            //string aaa = "Images/LogicBlocks/LogicBlock-Red-Square.png";
+            //squareBottomLeftImage.ImageSource = new BitmapImage(new Uri(@aaa, UriKind.Relative));
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
@@ -41,14 +45,7 @@ namespace AuiSpaceGame.View
         {
             Game = game;
             InitializeComponent();
-            //TODO reset?
-            laneMiddle.Background = Brushes.AliceBlue;
-            laneRight.Background = Brushes.AliceBlue;
-            laneLeft.Background = Brushes.AliceBlue;
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.AliceBlue;
-            squareTopRight.Background = Brushes.AliceBlue;
+            Reset();
             gameName.Text = Game.Name;
             childName.Text = Game.Child;
             therapistName.Text = Game.Therapist;
@@ -176,74 +173,85 @@ namespace AuiSpaceGame.View
 
         private void squareBottomLeft_Click(object sender, RoutedEventArgs e)
         {
+            string imageUri = "";
             int index = 0;
             foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
             {
+                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
                 if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Bottom)
                 {
                     SquareTmp = index;
+                    imageUri += "-selected";
                 }
+                imageUri += ".png";
                 index += 1;
+                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
             }
+
             shapeColorSquare();
-            squareBottomLeft.Background = Brushes.Yellow;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.AliceBlue;
-            squareTopRight.Background = Brushes.AliceBlue;
         }
 
         private void squareBottomRight_Click(object sender, RoutedEventArgs e)
         {
+            string imageUri = "";
             int index = 0;
             foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
             {
+                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
                 if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Bottom)
                 {
                     SquareTmp = index;
+                    imageUri += "-selected";
                 }
+                imageUri += ".png";
                 index += 1;
+                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
             }
+
             shapeColorSquare();
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.Yellow;
-            squareTopLeft.Background = Brushes.AliceBlue;
-            squareTopRight.Background = Brushes.AliceBlue;
+
         }
 
         private void squareTopLeft_Click(object sender, RoutedEventArgs e)
         {
+            string imageUri = "";
             int index = 0;
             foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
             {
+                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
                 if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Top)
                 {
                     SquareTmp = index;
+                    imageUri += "-selected";
                 }
+                imageUri += ".png";
                 index += 1;
+                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
             }
+
             shapeColorSquare();
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.Yellow;
-            squareTopRight.Background = Brushes.AliceBlue;
+
         }
 
         private void squareTopRight_Click(object sender, RoutedEventArgs e)
         {
+            string imageUri = "";
             int index = 0;
             foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
             {
+                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
                 if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Top)
                 {
                     SquareTmp = index;
+                    imageUri += "-selected";
                 }
+                imageUri += ".png";
                 index += 1;
+                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
             }
+
             shapeColorSquare();
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.AliceBlue;
-            squareTopRight.Background = Brushes.Yellow;
+
         }
 
         private void lowSpeed_Checked(object sender, RoutedEventArgs e)
@@ -336,20 +344,42 @@ namespace AuiSpaceGame.View
                 else if (CurrentAnimation.GetType() == typeof(LogicBlock))
                 {
                     //Fake invocation of click button
+                    squareDic = new Dictionary<string, ImageBrush>();
                     int index = 0;
+                    string stringa = "";                    
+                    string imageUri = "";
+
                     foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
                     {
+                        imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
                         if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Top)
                         {
+                            stringa = s.X + "-" + s.Z;
+                            squareDic.Add(stringa, squareTopLeftImage);
                             SquareTmp = index;
+                            imageUri += "-selected";
+                        }
+                        if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Top)
+                        {
+                            stringa = s.X + "-" + s.Z;
+                            squareDic.Add(stringa, squareTopRightImage);
+                        }
+                        if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Bottom)
+                        {
+                            stringa = s.X + "-" + s.Z;
+                            squareDic.Add(stringa, squareBottomLeftImage);
+                        }
+                        if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Bottom)
+                        {
+                            stringa = s.X + "-" + s.Z;
+                            squareDic.Add(stringa, squareBottomRightImage);
                         }
                         index += 1;
+                        imageUri += ".png";
+                        squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
                     }
+
                     shapeColorSquare();
-                    squareBottomLeft.Background = Brushes.AliceBlue;
-                    squareBottomRight.Background = Brushes.AliceBlue;
-                    squareTopLeft.Background = Brushes.Yellow;
-                    squareTopRight.Background = Brushes.AliceBlue;
 
                     colorBlue.IsEnabled = true;
                     colorRed.IsEnabled = true;
@@ -477,10 +507,10 @@ namespace AuiSpaceGame.View
             laneMiddle.Background = Brushes.AliceBlue;
             laneRight.Background = Brushes.AliceBlue;
             laneLeft.Background = Brushes.AliceBlue;
-            squareBottomLeft.Background = Brushes.AliceBlue;
-            squareBottomRight.Background = Brushes.AliceBlue;
-            squareTopLeft.Background = Brushes.AliceBlue;
-            squareTopRight.Background = Brushes.AliceBlue;
+            squareBottomLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
+            squareBottomRightImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
+            squareTopLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
+            squareTopRightImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
 
             colorBlue.IsEnabled = false;
             colorBlue.IsChecked = false;
@@ -533,32 +563,56 @@ namespace AuiSpaceGame.View
 
         private void shapeTriangle_Checked(object sender, RoutedEventArgs e)
         {
-            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure = FigureShape.Triangle;
+            Model.Shape shape = ((LogicBlock)CurrentAnimation).Shapes[SquareTmp];
+            shape.Figure = FigureShape.Triangle;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected.png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+
         }
 
         private void shapeSquare_Checked(object sender, RoutedEventArgs e)
         {
-            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure = FigureShape.Square;
+            Model.Shape shape = ((LogicBlock)CurrentAnimation).Shapes[SquareTmp];
+            shape.Figure = FigureShape.Square;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected.png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+
         }
 
         private void shapeCircle_Checked(object sender, RoutedEventArgs e)
         {
-            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Figure = FigureShape.Circle;
+            Model.Shape shape = ((LogicBlock)CurrentAnimation).Shapes[SquareTmp];
+            shape.Figure = FigureShape.Circle;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected.png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+
         }
 
         private void colorYellow_Checked(object sender, RoutedEventArgs e)
         {
-            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color = Colour.Yellow;
+            Model.Shape shape = ((LogicBlock)CurrentAnimation).Shapes[SquareTmp];
+            shape.Color = Colour.Yellow;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected.png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+
         }
 
         private void colorRed_Checked(object sender, RoutedEventArgs e)
         {
-            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color = Colour.Red;
+            Model.Shape shape = ((LogicBlock)CurrentAnimation).Shapes[SquareTmp];
+            shape.Color = Colour.Red;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected.png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+
         }
 
         private void colorBlue_Checked(object sender, RoutedEventArgs e)
         {
-            ((LogicBlock)CurrentAnimation).Shapes[SquareTmp].Color = Colour.Blue;
+            Model.Shape shape = ((LogicBlock)CurrentAnimation).Shapes[SquareTmp];
+            shape.Color = Colour.Blue;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected.png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+
         }
 
         private void shapeColorSquare()
