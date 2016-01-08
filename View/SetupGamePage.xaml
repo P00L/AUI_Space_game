@@ -84,7 +84,7 @@
                     <RadioButton x:Name="shapeSquare" Content="{DynamicResource shapeSquare}" GroupName="shape" Checked="shapeSquare_Checked"/>
                     <RadioButton x:Name="shapeTriangle" Content="{DynamicResource shapeTriangle}" GroupName="shape" Checked="shapeTriangle_Checked"/>
                 </StackPanel>
-                <Button x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}" HorizontalAlignment="Left"/>
+                <Button x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}" HorizontalAlignment="Left" Click="targetAnimationButton_Click"/>
             </StackPanel>
             <Viewbox>
                 <Grid>

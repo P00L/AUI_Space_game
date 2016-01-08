@@ -21,7 +21,7 @@ namespace AuiSpaceGame.Model
             {
                 target = value;
                 UpdateImage();
-                NotifyPropertyChanged("target");
+                NotifyPropertyChanged("image");
             }
         }
         public Shape[] Shapes
@@ -30,8 +30,6 @@ namespace AuiSpaceGame.Model
             set
             {
                 shapes = value;
-                UpdateImage();
-                NotifyPropertyChanged("shapes");
             }
         }
 
@@ -47,23 +45,9 @@ namespace AuiSpaceGame.Model
             UpdateImage();
         }
 
-        private void UpdateImage() //TODO
+        private void UpdateImage() //TODO cambiare il nome immagine
         {
-            string NewImage = "LogicBlocks/LogicBlock-";
-            /*
-            if (speed == AuiSpaceGame.Model.Speed.Low)
-                NewImage += "low-";
-            else if (speed == AuiSpaceGame.Model.Speed.High)
-                NewImage += "high-";
-
-            if (lane == AuiSpaceGame.Model.Lane.Left)
-                NewImage += "left";
-            else if (lane == AuiSpaceGame.Model.Lane.Middle)
-                NewImage += "middle";
-            else if (lane == AuiSpaceGame.Model.Lane.Right)
-                NewImage += "right";
-                */
-            NewImage += ".png";
+            string NewImage = "LogicBlocks/LogicBlock-" + Shapes[target].Color + "-" + Shapes[target].Figure + ".png";
             Image = NewImage;
         }
 

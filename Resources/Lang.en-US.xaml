@@ -6,8 +6,8 @@
     <System:String x:Key="childName">Child's name</System:String>
     <System:String x:Key="gameDuration">Exstimated length</System:String>
     <System:String x:Key="therapistName">Therapist's name</System:String>
-    <System:String x:Key="animationUp">Up</System:String>
-    <System:String x:Key="animationDown">Down</System:String>
+    <System:String x:Key="animationUp">&lt;</System:String>
+    <System:String x:Key="animationDown">&gt;</System:String>
     <System:String x:Key="animationRemove">Remove</System:String>
     <System:String x:Key="addAnimation">Add</System:String>
     <System:String x:Key="back">Back</System:String>
