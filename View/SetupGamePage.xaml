@@ -23,7 +23,7 @@
             </StackPanel>
         </DockPanel>
 
-        <ListView  x:Name="animationSequence" DockPanel.Dock="Top" Height="100px" SelectionChanged="animationSequence_SelectionChanged">
+        <ListView  x:Name="animationSequence" DockPanel.Dock="Top" Height="100px" SelectionChanged="animationSequence_SelectionChanged" Background="#2C3840" BorderThickness="0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
