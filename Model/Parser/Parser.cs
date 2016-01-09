@@ -53,7 +53,18 @@ namespace AuiSpaceGame.Model.Parser
                     {
                         writer.WriteAttributeString("type", "logicBlock");
                         LogicBlock logicBlock = ((LogicBlock)anim);
-                        writer.WriteAttributeString("target", logicBlock.Target.ToString());
+
+                        string TargetString = "";
+                        if (logicBlock.Target == Square.BottomLeft)
+                            TargetString = "BottomLeft";
+                        else if (logicBlock.Target == Square.BottomRight)
+                            TargetString = "BottomRight";
+                        else if (logicBlock.Target == Square.TopLeft)
+                            TargetString = "TopLeft";
+                        else if (logicBlock.Target == Square.TopRight)
+                            TargetString = "TopRight";
+                        writer.WriteAttributeString("target", TargetString);
+
                         foreach (var shape in logicBlock.Shapes)
                         {
                             writer.WriteStartElement("shape");
@@ -155,8 +166,19 @@ namespace AuiSpaceGame.Model.Parser
                                     }
                                     else if (reader.GetAttribute("type") == "logicBlock")
                                     {
-                                        int Target = Convert.ToInt16(reader.GetAttribute("target"));
-                                        int i = 0;
+
+                                        string TargetString = reader.GetAttribute("target");
+                                        int Target = 0;
+                                        if (TargetString == "BottomLeft")
+                                            Target = Square.BottomLeft;
+                                        else if (TargetString == "BottomRight")
+                                            Target = Square.BottomRight;
+                                        else if (TargetString == "TopLeft")
+                                            Target = Square.TopLeft;
+                                        else if (TargetString == "TopRight")
+                                            Target = Square.TopRight;
+
+                                            int i = 0;
                                         Shape[] Shapes = new Shape[Constant.NumberOfCarpetSquares];
                                         LogicBlock LogicBlock = new LogicBlock();
                                         if (reader.ReadToDescendant("shape"))
