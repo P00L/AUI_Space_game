@@ -197,6 +197,7 @@
     <Content Include="Images\Asteroids\Asteroid-high-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\GameTitle.png" />
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Circle-selected.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
