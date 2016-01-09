@@ -198,55 +198,109 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\GameTitle.png" />
+    <Content Include="Images\LogicBlocks\LogicBlock-Blue-Circle-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Circle-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Blue-Circle-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Circle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Blue-Square-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Square-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Blue-Square-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Blue-Triangle-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Triangle-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Blue-Triangle-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Triangle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Red-Circle-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Red-Circle-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Red-Circle-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Red-Circle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Red-Square-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Red-Square-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Red-Square-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Red-Square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Red-Triangle-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Red-Triangle-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Red-Triangle-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Red-Triangle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Circle-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Circle-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Circle-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Circle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Square-selected-target.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Square-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Square-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle-selected-target .png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle-selected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle.png">
