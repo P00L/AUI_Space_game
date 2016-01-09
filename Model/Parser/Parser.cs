@@ -32,8 +32,22 @@ namespace AuiSpaceGame.Model.Parser
                     {
                         writer.WriteAttributeString("type", "asteroid");
                         Asteroid ast = ((Asteroid)anim);
-                        writer.WriteAttributeString("lane", ast.Lane.ToString());
-                        writer.WriteAttributeString("speed", ast.Speed.ToString());
+
+                        string LaneString = "";
+                        if (ast.Lane == Lane.Left)
+                            LaneString = "left";
+                        else if (ast.Lane == Lane.Middle)
+                            LaneString = "middle";
+                        else if (ast.Lane == Lane.Right)
+                            LaneString = "right";
+                        writer.WriteAttributeString("lane", LaneString);
+
+                        string SpeedString = "";
+                        if (ast.Speed == Speed.High)
+                            SpeedString = "high";
+                        else if (ast.Speed == Speed.Low)
+                            SpeedString = "low";
+                        writer.WriteAttributeString("speed", SpeedString);
                     }
                     else if (anim.GetType() == typeof(LogicBlock))
                     {
@@ -43,14 +57,29 @@ namespace AuiSpaceGame.Model.Parser
                         foreach (var shape in logicBlock.Shapes)
                         {
                             writer.WriteStartElement("shape");
+
+
                             writer.WriteAttributeString("color", shape.Color.ToString());
                             writer.WriteAttributeString("figure", shape.Figure.ToString());
-                            writer.WriteAttributeString("x", shape.X.ToString());
-                            writer.WriteAttributeString("z", shape.Z.ToString());
+
+                            string XString = "";
+                            if (shape.X == SquareCoordinate.Left)
+                                XString = "left";
+                            else if (shape.X == SquareCoordinate.Right)
+                                XString = "right";
+
+                            string ZString = "";
+                            if (shape.Z == SquareCoordinate.Top)
+                                ZString = "top";
+                            else if (shape.Z == SquareCoordinate.Bottom)
+                                ZString = "bottom";
+
+                            writer.WriteAttributeString("x", XString);
+                            writer.WriteAttributeString("z", ZString);
                             writer.WriteEndElement();
                         }
                     }
-                        writer.WriteEndElement(); //end of animation
+                    writer.WriteEndElement(); //end of animation
                 }
                 writer.WriteEndElement(); //end of animationSequence
                 writer.WriteEndElement(); //end of game
@@ -105,9 +134,23 @@ namespace AuiSpaceGame.Model.Parser
                                 {
                                     if (reader.GetAttribute("type") == "asteroid")
                                     {
-                                        double Lane = Convert.ToDouble(reader.GetAttribute("lane"));
-                                        double Speed = Convert.ToDouble(reader.GetAttribute("speed"));
-                                        Asteroid asteroid = new Asteroid(Lane, Speed);
+                                        string LaneString = reader.GetAttribute("lane");
+                                        double LaneDouble = 0;
+                                        if (LaneString == "left")
+                                            LaneDouble = Lane.Left;
+                                        else if (LaneString == "middle")
+                                            LaneDouble = Lane.Middle;
+                                        else if (LaneString == "right")
+                                            LaneDouble = Lane.Right;
+
+                                        string SpeedString = reader.GetAttribute("speed");
+                                        double SpeedDouble = 0;
+                                        if (SpeedString == "high")
+                                            SpeedDouble = Speed.High;
+                                        else if (SpeedString == "low")
+                                            SpeedDouble = Speed.Low;
+
+                                        Asteroid asteroid = new Asteroid(LaneDouble, SpeedDouble);
                                         game.AnimationsSequence.Add(asteroid);
                                     }
                                     else if (reader.GetAttribute("type") == "logicBlock")
@@ -122,8 +165,21 @@ namespace AuiSpaceGame.Model.Parser
                                             {
                                                 string Color = reader.GetAttribute("color");
                                                 string Figure = reader.GetAttribute("figure");
-                                                double X = Convert.ToDouble(reader.GetAttribute("x"));
-                                                double Z = Convert.ToDouble(reader.GetAttribute("z"));
+
+                                                string XString = reader.GetAttribute("x");
+                                                double X = 0;
+                                                if (XString == "left")
+                                                    X = SquareCoordinate.Left;
+                                                else if (XString == "right")
+                                                    X = SquareCoordinate.Right;
+
+                                                string ZString = reader.GetAttribute("z");
+                                                double Z = 0;
+                                                if (ZString == "top")
+                                                    Z = SquareCoordinate.Top;
+                                                else if (ZString == "bottom")
+                                                    Z = SquareCoordinate.Bottom;
+
                                                 Shape TempShape = new Model.Shape(Color, Figure, LogicBlock, X, Z);
                                                 Shapes[i] = TempShape;
                                                 i++;
