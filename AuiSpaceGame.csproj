@@ -294,7 +294,7 @@
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Square.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle-selected-target .png">
+    <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle-selected-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LogicBlocks\LogicBlock-Yellow-Triangle-selected.png">

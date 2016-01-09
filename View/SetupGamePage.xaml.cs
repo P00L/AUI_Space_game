@@ -25,7 +25,6 @@ namespace AuiSpaceGame.View
     /// </summary>
     public partial class SetupGamePage : Page
     {
-        //= new BitmapImage(new Uri(@"Images/Asteroids/Asteroid-high-middle.png",UriKind.Relative))
         private Game Game;
         private Animation CurrentAnimation;
         private int SquareTmp;
