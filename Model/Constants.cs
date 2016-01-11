@@ -39,8 +39,8 @@ namespace AuiSpaceGame.Model
 
     public static class Speed
     {
-        public const double Low = 2;
-        public const double High = 10;
+        public const double Low = 0.3;
+        public const double High = 0.6;
     }
 
     public static class Square
@@ -53,10 +53,10 @@ namespace AuiSpaceGame.Model
 
     public static class SquareCoordinate
     {
-        public const double Top = 0; //TODO
-        public const double Bottom = 3;
-        public const double Left = 2;
-        public const double Right = 1;
+        public const double Top = Constant.ZCarpet + Constant.Square/2;
+        public const double Bottom = Constant.ZCarpet + 3 * Constant.Square + Constant.Square/2;
+        public const double Left = (-3 / 2) * Constant.Square;
+        public const double Right = (3 / 2) * Constant.Square;
     }
 
     public static class FigureShape

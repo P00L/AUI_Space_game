@@ -74,6 +74,9 @@ namespace AuiSpaceGame.Controller
 
             // open the sensor
             this.kinectSensor.Open();
+
+            if (this.bodyFrameReader != null)
+                this.bodyFrameReader.FrameArrived += this.Reader_FrameArrived;
         }
 
         /// <summary>
@@ -130,10 +133,12 @@ namespace AuiSpaceGame.Controller
                     }
 
                 }
+                //Console.WriteLine("ANIM ON  "+gameState.AnimationOn); //TODO TOGLRIERE
                 //now we have the body of the child
                 if (gameState.AnimationOn)
                 {
                     currentAnimation = game.AnimationsSequence.ElementAt(gameState.AnimationId);
+                    
                     if (currentAnimation.GetType() == typeof(Asteroid))
                         CheckChildPositionAsteroid();
                     else if (currentAnimation.GetType() == typeof(LogicBlock))
@@ -148,18 +153,20 @@ namespace AuiSpaceGame.Controller
             /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
               Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
               Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);*/
-
             double Z = 0, X = 0;
             TimeSpan T;
             Asteroid currentAsteroid = (Asteroid)currentAnimation;
             X = currentAsteroid.Lane;
             T = DateTime.Now - currentAsteroid.StartingAnimationTime;
             double time = T.TotalMilliseconds + Constant.TPharos;
-            Z = currentAsteroid.Z0 + Constant.ZCarpet + currentAsteroid.Speed * time;
-
-
+            Z = currentAsteroid.Z0 + Constant.ZCarpet + currentAsteroid.Speed * time / 1000;
+            Console.WriteLine("------");
+            Console.WriteLine("time "+T.TotalMilliseconds);
+            Console.WriteLine("Ast:   X = "+X + ", Z = "+Z);
+            Console.WriteLine("Child: X = "+ childBody.Joints[JointType.SpineMid].Position.X + ", Z = "+ childBody.Joints[JointType.SpineMid].Position.Z);
             //if the child hits the asteroid..    
             if (childBody.Joints[JointType.SpineMid].Position.Z >= Z - Constant.Delta &&
+                childBody.Joints[JointType.SpineMid].Position.Z >= Constant.ZCarpet + Constant.Square + Constant.ZLittleSpace &&
                 childBody.Joints[JointType.SpineMid].Position.Z <= Z + Constant.Delta &&
                 childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.Delta &&
                 childBody.Joints[JointType.SpineMid].Position.X <= X + Constant.Delta)
@@ -181,7 +188,7 @@ namespace AuiSpaceGame.Controller
             Z = currentLogicBlock.Shapes[currentLogicBlock.Target].Z;
 
 
-            //if the child hits the asteroid..    
+            //if the child hits the logic block..    
             if (childBody.Joints[JointType.SpineMid].Position.Z >= Z - Constant.DeltaLogicBlock &&
                 childBody.Joints[JointType.SpineMid].Position.Z <= Z + Constant.DeltaLogicBlock &&
                 childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.DeltaLogicBlock &&

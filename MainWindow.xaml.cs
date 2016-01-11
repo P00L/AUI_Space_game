@@ -550,14 +550,14 @@ namespace AuiSpaceGame
 
         private void CheckChildPosition()
         {
-              /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
-                Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
-                Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);*/
-            
+             // Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
+                //Console.WriteLine("Y = " + childBody.Joints[JointType.SpineMid].Position.Y);
+               // Console.WriteLine("Z = " + childBody.Joints[JointType.SpineMid].Position.Z);
+           /* 
             if (childBody.Joints[JointType.SpineMid].Position.Z >= 1.77 && childBody.Joints[JointType.SpineMid].Position.Z <= 2.23 && childBody.Joints[JointType.SpineMid].Position.X >= -0.23 && childBody.Joints[JointType.SpineMid].Position.X <= 0.23)
             {
                 Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff"));
-            }
+            } */
         }
 
     }

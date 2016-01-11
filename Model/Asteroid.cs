@@ -41,7 +41,7 @@ namespace AuiSpaceGame.Model
         {
             Lane = lane;
             Speed = speed;
-            Z0 = Constant.ZCarpet + Constant.ZLittleSpace + Constant.Square;
+            Z0 = Constant.ZLittleSpace + Constant.Square - Constant.Delta;
             AnimationDuration = TimeSpan.FromMilliseconds(((Constant.Square * 2) * 1000) / Speed);
             UpdateImage();
 
