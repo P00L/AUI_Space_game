@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AuiSpaceGame.Controller;
+using AuiSpaceGame.Model;
+using AuiSpaceGame.Model.Parser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,28 +13,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AuiSpaceGame.Model;
-using AuiSpaceGame.Controller;
-using Microsoft.Win32;
-using System.IO;
-using AuiSpaceGame.Model.Parser;
 
-namespace AuiSpaceGame.View
+namespace AuiSpaceGame
 {
     /// <summary>
-    /// Interaction logic for SetupGamePage.xaml
+    /// Interaction logic for SetupGameWindow.xaml
     /// </summary>
-    public partial class SetupGamePage : Page
+    public partial class SetupGameWindow : Window
     {
+
         private Game Game;
         private Animation CurrentAnimation;
         private int SquareTmp;
         private Dictionary<string, ImageBrush> squareDic;
 
-        public SetupGamePage()
+        public SetupGameWindow()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Game = new Game();
             InitializeComponent();
             Reset();
@@ -40,8 +39,9 @@ namespace AuiSpaceGame.View
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
-        public SetupGamePage(Game game)
+        public SetupGameWindow(Game game)
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Game = game;
             InitializeComponent();
             Reset();
@@ -62,7 +62,9 @@ namespace AuiSpaceGame.View
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new StartingPage());
+            Window1 Window1 = new Window1();
+            Window1.Show();
+            this.Close();
         }
 
         private void gameName_TextChanged(object sender, TextChangedEventArgs e)

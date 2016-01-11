@@ -97,11 +97,8 @@
     <Compile Include="Model\LogicBlock.cs" />
     <Compile Include="Model\Parser\Parser.cs" />
     <Compile Include="Model\Shape.cs" />
-    <Compile Include="View\SetupGamePage.xaml.cs">
-      <DependentUpon>SetupGamePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\StartingPage.xaml.cs">
-      <DependentUpon>StartingPage.xaml</DependentUpon>
+    <Compile Include="SetupGameWindow.xaml.cs">
+      <DependentUpon>SetupGameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -128,11 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SetupGamePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\StartingPage.xaml">
+    <Page Include="SetupGameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

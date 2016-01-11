@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AuiSpaceGame.View;
+using AuiSpaceGame.Model;
+using AuiSpaceGame.Model.Parser;
 
 namespace AuiSpaceGame
 {
@@ -22,13 +23,26 @@ namespace AuiSpaceGame
     {
         public Window1()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            frame.Navigate(new StartingPage());
         }
 
-        private void frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        private void createGameButton_Click(object sender, RoutedEventArgs e)
         {
+            SetupGameWindow SetupGameWindow = new SetupGameWindow();
+            SetupGameWindow.Show();
+            this.Close();
+        }
 
+        private void loadGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            Game Game = Parser.loadGame();
+            if (Game != null)
+            {       
+                SetupGameWindow SetupGameWindow = new SetupGameWindow(Game);
+                SetupGameWindow.Show();
+                this.Close();
+            }
         }
     }
 }
