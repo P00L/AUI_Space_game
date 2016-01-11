@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using AuiSpaceGame.Model;
+using AuiSpaceGame.Utilities;
+
 namespace AuiSpaceGame.Controller
 {
 
@@ -53,7 +55,7 @@ namespace AuiSpaceGame.Controller
             {
                 Console.WriteLine("ANIMATION ON " + GameState.AnimationId + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 Animation animation = Game.AnimationsSequence.ElementAt(GameState.AnimationId);
-                //TODO controllare se serve davvero
+
                 GameState.ExecuteReinforcementChanged -= ExecuteReinforcementChanged;
                 if (animation.GetType() == typeof(Asteroid))
                 {
@@ -70,11 +72,11 @@ namespace AuiSpaceGame.Controller
                 //TODO chiamate pharos & C
                 if(animation.GetType() == typeof(Asteroid))
                 {
-
+                    APIServer.LuminousCarpetRequest(((Asteroid)animation).ToString()); //TODO CHECK
                 }
                 else if (animation.GetType() == typeof(LogicBlock))
                 {
-
+                    //TODO 4 chiamate?!
                 }
                 Timer.Start();
             }
@@ -99,12 +101,20 @@ namespace AuiSpaceGame.Controller
                 Console.WriteLine("REINFORCEMENT ON " + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 Timer.Interval = Constant.TReinforcement;
                 //TODO chiamata pharos & c
+                APIServer.HueRequest("#FF0000", "front", "50");
+                APIServer.HueRequest("#FFCC00", "middle", "50");
+                APIServer.HueRequest("#FFFF00", "rear", "50");
+                APIServer.LuminousCarpetRequest("Reinforcement");
                 Timer.Start();
 
             }
             else //reinforcement ended
             {
                 Console.WriteLine("REINFORCEMENT OFF " + "  {0:HH: mm: ss.fff}", DateTime.Now);
+                //TODO chiamata pharos CHECK SPEGNERE LUCI!!!
+                APIServer.HueRequest("#000000", "front", "1");
+                APIServer.HueRequest("#000000", "middle", "1");
+                APIServer.HueRequest("#000000", "rear", "1");
                 NextAnimation();
             }
         }
@@ -130,6 +140,7 @@ namespace AuiSpaceGame.Controller
             {
                 Console.WriteLine("ANIMATION END " + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 GameState.AnimationOn = false;
+                return;
             }
             if (GameState.ReinforcementOn) //end of reinforcmente
             {

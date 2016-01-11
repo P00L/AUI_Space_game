@@ -72,5 +72,26 @@ namespace AuiSpaceGame.Model
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public override string ToString()
+        {
+            string LaneString = "";
+            if (this.lane == Model.Lane.Left)
+                LaneString = "left";
+            else if (this.lane == Model.Lane.Middle)
+                LaneString = "middle";
+            else if (this.lane == Model.Lane.Right)
+                LaneString = "right";
+
+            string SpeedString = "";
+            if (this.speed == Model.Speed.High)
+                SpeedString = "high";
+            else if (this.speed == Model.Speed.Low)
+                SpeedString = "low";
+
+            return "Asteroid-" + SpeedString + "-" + LaneString;
+        }
+
+
     }
 }

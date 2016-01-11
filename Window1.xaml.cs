@@ -24,7 +24,6 @@ namespace AuiSpaceGame
         bool AmbientAnimationOn;
         public Window1()
         {
-            Console.WriteLine("PROAVAAA");
             AmbientAnimationOn = false;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace AuiSpaceGame
 
         public Window1(bool ambientAnimationOn)
         {
-            Console.WriteLine("PROAVAAA22222222222");
             AmbientAnimationOn = ambientAnimationOn;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
