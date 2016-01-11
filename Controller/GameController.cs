@@ -112,6 +112,16 @@ namespace AuiSpaceGame.Controller
         public void ExecuteReinforcementChanged(object sender, EventArgs e)
         {
             Console.WriteLine("ExecuteReinforcementChanged");
+            Animation animation = Game.AnimationsSequence.ElementAt(GameState.AnimationId);
+            if (animation.GetType() == typeof(LogicBlock))
+            {
+                if(GameState.ExecuteReinforcement)
+                {
+                    Console.WriteLine("REINFORCEMENT END due to target reached before expire of timer" + "{0:HH: mm: ss.fff}", DateTime.Now);
+                    Timer.Stop();
+                    GameState.AnimationOn = false;
+                }
+            }
         }
 
         private void OnElapsedTimer(object sender, ElapsedEventArgs e)
