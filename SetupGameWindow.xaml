@@ -54,7 +54,7 @@
         </Grid>
 
         <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom">
-            <Button x:Name="backButton" Content="{DynamicResource back}" VerticalAlignment="Bottom" Click="button_Click"/>
+            <Button x:Name="backButton" Content="{DynamicResource back}" VerticalAlignment="Bottom" Click="backButton_Click"/>
             <Button x:Name="saveButton" Content="{DynamicResource saveGame}" VerticalAlignment="Bottom" Click="saveButton_Click"/>
             <Button x:Name="startGame" Content="{DynamicResource startGame}" VerticalAlignment="Bottom" Click="startGame_Click" IsEnabled="False"/>
         </StackPanel>

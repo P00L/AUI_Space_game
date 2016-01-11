@@ -27,9 +27,11 @@ namespace AuiSpaceGame
         private Animation CurrentAnimation;
         private int SquareTmp;
         private Dictionary<string, ImageBrush> squareDic;
+        bool AmbientAnimationOn;
 
-        public SetupGameWindow()
+        public SetupGameWindow(bool ambientAnimationOn)
         {
+            AmbientAnimationOn = ambientAnimationOn;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Game = new Game();
             InitializeComponent();
@@ -39,8 +41,9 @@ namespace AuiSpaceGame
             animationSequence.ItemsSource = Game.AnimationsSequence;
         }
 
-        public SetupGameWindow(Game game)
+        public SetupGameWindow(Game game, bool ambientAnimationOn)
         {
+            AmbientAnimationOn = ambientAnimationOn;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Game = game;
             InitializeComponent();
@@ -60,9 +63,9 @@ namespace AuiSpaceGame
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 Window1 = new Window1();
+            Window1 Window1 = new Window1(AmbientAnimationOn);
             Window1.Show();
             this.Close();
         }
