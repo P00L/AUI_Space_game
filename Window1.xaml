@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AuiSpaceGame"
         mc:Ignorable="d"
-        Height="500"
-        Width="450"
-        Title="A Space Game"
+        Height="520"
+        Width="430"
         ResizeMode="NoResize"
+        Title="A Space Game"
+        
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Roboto">
