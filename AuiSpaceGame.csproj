@@ -189,6 +189,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\AsteroidsCarpet\Asteroid-high.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AsteroidsCarpet\Asteroid-low.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AsteroidsCarpet\none.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Asteroids\Asteroid-high-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

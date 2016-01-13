@@ -56,7 +56,7 @@
         <DockPanel Margin="10,10">
             <DockPanel DockPanel.Dock="Right" Margin="0,0,10,0">
 
-                
+
 
                 <StackPanel DockPanel.Dock="Top">
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
@@ -136,9 +136,21 @@
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="laneLeft" Grid.Row="1" Grid.Column="1" Content=""  Click="laneLeft_Click" IsEnabled="False" Height="Auto" />
-                    <Button x:Name="laneMiddle" Grid.Row="1" Grid.Column="2" Content=""  Click="laneMiddle_Click" IsEnabled="False" Height="Auto" />
-                    <Button x:Name="laneRight" Grid.Row="1" Grid.Column="3" Content="" Click="laneRight_Click" IsEnabled="False" Height="Auto" />
+                    <Button x:Name="laneLeft" Grid.Row="1" Grid.Column="1" Click="laneLeft_Click" IsEnabled="False" Height="Auto">
+                        <Button.Background>
+                            <ImageBrush x:Name="laneLeftImage"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="laneMiddle" Grid.Row="1" Grid.Column="2" Click="laneMiddle_Click" IsEnabled="False" Height="Auto">
+                        <Button.Background>
+                            <ImageBrush x:Name="laneMiddleImage"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="laneRight" Grid.Row="1" Grid.Column="3" Click="laneRight_Click" IsEnabled="False" Height="Auto" >
+                        <Button.Background>
+                            <ImageBrush x:Name="laneRightImage"/>
+                        </Button.Background>
+                    </Button>
                 </Grid>
             </Viewbox>
         </DockPanel>

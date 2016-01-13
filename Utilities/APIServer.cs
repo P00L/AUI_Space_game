@@ -25,8 +25,8 @@ namespace AuiSpaceGame.Utilities
                 {
                     Action = "EnvironmentAction",
                     Color = color,
-                    Position = position, //front-middle-rear
-                    Luminosity = luminosity //valore tra 1 e 100
+                    Position = position, //possible values: front-middle-rear
+                    Luminosity = luminosity //value between 1 and 100
                 });
                 streamWriter.Write(json);
             }
