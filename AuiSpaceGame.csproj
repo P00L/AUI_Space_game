@@ -192,6 +192,37 @@
     <Content Include="Images\Asteroids\Asteroid-high-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\Asteroids\AsteroidButton.png" />
+    <Content Include="Images\RadioButton\radioButtonAsteroid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonLogicBlock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\radioButtonHigh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\radioButtonLow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonBlue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonCircle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonRed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonSquare.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonTriangle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\RadioButton\RadioButtonYellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\GameTitle.png" />
     <Content Include="Images\LogicBlocks\LogicBlock-Blue-Circle-selected-target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

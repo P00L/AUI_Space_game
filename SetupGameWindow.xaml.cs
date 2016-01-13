@@ -322,6 +322,8 @@ namespace AuiSpaceGame
                     animationAsteroid.IsEnabled = true;
                     animationLogicBlock.IsEnabled = true;
 
+                    AsteroidRadioButton();
+
                     lowSpeed.IsEnabled = true;
                     highSpeed.IsEnabled = true;
 
@@ -410,6 +412,8 @@ namespace AuiSpaceGame
                     lowSpeed.IsChecked = false;
                     highSpeed.IsEnabled = false;
                     highSpeed.IsChecked = false;
+
+                    logicBlockEnableRadioButton();
 
                     squareTopLeft.IsEnabled = true;
                     squareTopRight.IsEnabled = true;
@@ -561,6 +565,15 @@ namespace AuiSpaceGame
             animationLogicBlock.IsChecked = false;
             lowSpeed.IsChecked = false;
             highSpeed.IsChecked = false;
+
+            lowSpeedImage.Opacity = 0.23;
+            highSpeedImage.Opacity = 0.23;
+            colorBlueImage.Opacity = 0.23;
+            colorYellowImage.Opacity = 0.23;
+            colorRedImage.Opacity = 0.23;
+            shapeSquareImage.Opacity = 0.23;
+            shapeTriangleImage.Opacity = 0.23;
+            shapeCircleImage.Opacity = 0.23;
         }
 
         private void startGame_Click(object sender, RoutedEventArgs e)
@@ -738,5 +751,30 @@ namespace AuiSpaceGame
             squareDic[shapeOld.X + "-" + shapeOld.Z].ImageSource = new BitmapImage(new Uri(imageUriOld, UriKind.Relative));
             squareDic[shapeNew.X + "-" + shapeNew.Z].ImageSource = new BitmapImage(new Uri(imageUriNew, UriKind.Relative));
         }
+
+        private void logicBlockEnableRadioButton()
+        {
+            lowSpeedImage.Opacity = 0.23;
+            highSpeedImage.Opacity = 0.23;
+            colorBlueImage.Opacity = 1;
+            colorYellowImage.Opacity = 1;
+            colorRedImage.Opacity = 1;
+            shapeSquareImage.Opacity = 1;
+            shapeTriangleImage.Opacity = 1;
+            shapeCircleImage.Opacity = 1;
+        }
+
+        private void AsteroidRadioButton()
+        {
+            lowSpeedImage.Opacity = 1;
+            highSpeedImage.Opacity = 1;
+            colorBlueImage.Opacity = 0.23;
+            colorYellowImage.Opacity = 0.23;
+            colorRedImage.Opacity = 0.23;
+            shapeSquareImage.Opacity = 0.23;
+            shapeTriangleImage.Opacity = 0.23;
+            shapeCircleImage.Opacity = 0.23;
+        }
+
     }
 }

@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AuiSpaceGame"
         mc:Ignorable="d"
-        Title="Configurazione" Height="600" Width="800"
+        Title="Configurazione" Height="666" Width="900"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="Roboto">
@@ -60,33 +60,36 @@
 
                 <StackPanel DockPanel.Dock="Top">
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                        <RadioButton x:Name="animationAsteroid" Content="{DynamicResource animationAsteroid}" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False" VerticalAlignment="Center"/>
-                        <RadioButton x:Name="animationLogicBlock" Content="{DynamicResource animationLogicBlock}" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="animationAsteroid"  Content="" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False" VerticalAlignment="Center"/>
+                        <Image Source="Images/RadioButton/radioButtonAsteroid.png" Width="60"/>
+                        <RadioButton x:Name="animationLogicBlock" Content="" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False" VerticalAlignment="Center"/>
+                        <Image Source="Images/RadioButton/RadioButtonLogicBlock.png" Width="60"/>
+
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5">
                         <Label x:Name="SpeedLabel" Content="{DynamicResource speed}" VerticalAlignment="Center"/>
                         <RadioButton x:Name="lowSpeed" Content="" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="lowSpeedImage" Source="Images/RadioButton/radioButtonLow.png" Width="32" Height="32"/>
                         <RadioButton x:Name="highSpeed" Content="" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="highSpeedImage" Source="Images/RadioButton/radioButtonHigh.png" Width="32" Height="32"/>
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5">
                         <Label x:Name="colorLabel" Content="{DynamicResource color}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                         <RadioButton x:Name="colorYellow" Content=""  GroupName="colour" Checked="colorYellow_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="colorYellowImage" Source="Images/RadioButton/RadioButtonYellow.png" Width="32" Height="32"/>
                         <RadioButton x:Name="colorRed" Content="" GroupName="colour" Checked="colorRed_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="colorRedImage" Source="Images/RadioButton/RadioButtonRed.png" Width="32"/>
                         <RadioButton x:Name="colorBlue" Content="" GroupName="colour" Checked="colorBlue_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="colorBlueImage" Source="Images/RadioButton/RadioButtonBlue.png" Width="32"/>
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,5">
                         <Label x:Name="shapeLabel" Content="{DynamicResource shape}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                         <RadioButton x:Name="shapeCircle" Content="" GroupName="shape" Checked="shapeCircle_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="shapeCircleImage" Source="Images/RadioButton/RadioButtonCircle.png" Width="32"/>
                         <RadioButton x:Name="shapeSquare" Content="" GroupName="shape" Checked="shapeSquare_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="shapeSquareImage" Source="Images/RadioButton/RadioButtonSquare.png" Width="32"/>
                         <RadioButton x:Name="shapeTriangle" Content="" GroupName="shape" Checked="shapeTriangle_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <Image x:Name="shapeTriangleImage" Source="Images/RadioButton/RadioButtonTriangle.png" Width="32"/>
                     </StackPanel>
                     <Button DockPanel.Dock="Top" x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}"  Click="targetAnimationButton_Click" Margin="0,5"/>
                 </StackPanel>
