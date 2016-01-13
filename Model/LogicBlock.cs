@@ -56,5 +56,28 @@ namespace AuiSpaceGame.Model
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public override string ToString()
+        {
+            string ShapesString = "";
+            foreach (Shape shape in this.shapes)
+            {
+                string ZString = "";
+                if (shape.Z == SquareCoordinate.Top)
+                    ZString = "Top";
+                else if (shape.Z == SquareCoordinate.Bottom)
+                    ZString = "Bottom";
+
+                string XString = "";
+                if (shape.X == SquareCoordinate.Left)
+                    XString = "Left";
+                else if (shape.X == SquareCoordinate.Right)
+                    XString = "Right";
+
+                ShapesString = "LogicBlock-" + ZString + "-" + XString + "-" + shape.Color.ToString() + "-" + shape.Figure.ToString() + ",";
+            }
+            ShapesString = ShapesString.Remove(ShapesString.Length - 1); // removes the last ","
+            return ShapesString;
+        }
     }
 }

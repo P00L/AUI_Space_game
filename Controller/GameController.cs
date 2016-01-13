@@ -76,7 +76,14 @@ namespace AuiSpaceGame.Controller
                 }
                 else if (animation.GetType() == typeof(LogicBlock))
                 {
-                    //TODO 4 chiamate?!
+                    //TODO 4 chiamate?! CHEEEEEEEEECK!!!!!!!!!!!
+                    string LogicBlockString = ((LogicBlock)animation).ToString();
+                    string[] ShapesString = LogicBlockString.Split(',');
+                    for(int i = 0; i < ShapesString.Length; i++)
+                    {
+                        APIServer.LuminousCarpetRequest(ShapesString[i]);
+                    }
+                    /////////// FINE CHECK
                 }
                 Timer.Start();
             }

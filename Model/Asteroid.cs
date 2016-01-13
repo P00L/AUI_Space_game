@@ -77,17 +77,17 @@ namespace AuiSpaceGame.Model
         {
             string LaneString = "";
             if (this.lane == Model.Lane.Left)
-                LaneString = "left";
+                LaneString = "Left";
             else if (this.lane == Model.Lane.Middle)
-                LaneString = "middle";
+                LaneString = "Middle";
             else if (this.lane == Model.Lane.Right)
-                LaneString = "right";
+                LaneString = "Right";
 
             string SpeedString = "";
             if (this.speed == Model.Speed.High)
-                SpeedString = "high";
+                SpeedString = "High";
             else if (this.speed == Model.Speed.Low)
-                SpeedString = "low";
+                SpeedString = "Low";
 
             return "Asteroid-" + SpeedString + "-" + LaneString;
         }
