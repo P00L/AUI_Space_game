@@ -11,7 +11,7 @@
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="Roboto">
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top">
+        <DockPanel DockPanel.Dock="Top" Margin="10,10">
             <StackPanel DockPanel.Dock="Left">
                 <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource gameName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox x:Name="childName" TextWrapping="Wrap" TextChanged="childName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource childName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
@@ -53,38 +53,51 @@
             <Button x:Name="addAnimation"  Content="{DynamicResource addAnimation}" Grid.Row="0" Grid.Column="3" Click="addAnimation_Click"/>
         </Grid>
 
-        <StackPanel DockPanel.Dock="Right" VerticalAlignment="Bottom">
-            <Button x:Name="backButton" Content="{DynamicResource back}" VerticalAlignment="Bottom" Click="backButton_Click"/>
-            <Button x:Name="saveButton" Content="{DynamicResource saveGame}" VerticalAlignment="Bottom" Click="saveButton_Click"/>
-            <Button x:Name="startGame" Content="{DynamicResource startGame}" VerticalAlignment="Bottom" Click="startGame_Click" IsEnabled="False"/>
-        </StackPanel>
+        <DockPanel Margin="10,10">
+            <DockPanel DockPanel.Dock="Right" Margin="0,0,10,0">
 
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                <RadioButton x:Name="animationAsteroid" Content="{DynamicResource animationAsteroid}" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False"/>
-                <RadioButton x:Name="animationLogicBlock" Content="{DynamicResource animationLogicBlock}" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False"/>
-            </StackPanel>
+                
 
-            <StackPanel DockPanel.Dock="Bottom">
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="SpeedLabel" Content="{DynamicResource speed}"/>
-                    <RadioButton x:Name="lowSpeed" Content="{DynamicResource lowSpeed}" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked"/>
-                    <RadioButton x:Name="highSpeed" Content="{DynamicResource highSpeed}" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked"/>
+                <StackPanel DockPanel.Dock="Top">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                        <RadioButton x:Name="animationAsteroid" Content="{DynamicResource animationAsteroid}" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="animationLogicBlock" Content="{DynamicResource animationLogicBlock}" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5">
+                        <Label x:Name="SpeedLabel" Content="{DynamicResource speed}" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="lowSpeed" Content="" GroupName="Speed" IsEnabled="False" Checked="lowSpeed_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <RadioButton x:Name="highSpeed" Content="" GroupName="Speed" IsEnabled="False" Checked="highSpeed_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5">
+                        <Label x:Name="colorLabel" Content="{DynamicResource color}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                        <RadioButton x:Name="colorYellow" Content=""  GroupName="colour" Checked="colorYellow_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <RadioButton x:Name="colorRed" Content="" GroupName="colour" Checked="colorRed_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <RadioButton x:Name="colorBlue" Content="" GroupName="colour" Checked="colorBlue_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,5">
+                        <Label x:Name="shapeLabel" Content="{DynamicResource shape}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                        <RadioButton x:Name="shapeCircle" Content="" GroupName="shape" Checked="shapeCircle_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <RadioButton x:Name="shapeSquare" Content="" GroupName="shape" Checked="shapeSquare_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                        <RadioButton x:Name="shapeTriangle" Content="" GroupName="shape" Checked="shapeTriangle_Checked" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Image Source="Images/Asteroids/Asteroid-high-left.png"/>
+                    </StackPanel>
+                    <Button DockPanel.Dock="Top" x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}"  Click="targetAnimationButton_Click" Margin="0,5"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="colorLabel" Content="{DynamicResource color}"/>
-                    <RadioButton x:Name="colorYellow" Content="{DynamicResource colorYellow}" GroupName="colour" Checked="colorYellow_Checked"/>
-                    <RadioButton x:Name="colorRed" Content="{DynamicResource colorRed}" GroupName="colour" Checked="colorRed_Checked"/>
-                    <RadioButton x:Name="colorBlue" Content="{DynamicResource colorBlue}" GroupName="colour" Checked="colorBlue_Checked"/>
+
+                <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                    <Button x:Name="backButton" Content="{DynamicResource back}" VerticalAlignment="Bottom" Click="backButton_Click" Margin="0,5"/>
+                    <Button x:Name="saveButton" Content="{DynamicResource saveGame}" VerticalAlignment="Bottom" Click="saveButton_Click" Margin="0,5"/>
+                    <Button x:Name="startGame" Content="{DynamicResource startGame}" VerticalAlignment="Bottom" Click="startGame_Click" IsEnabled="False" Margin="0,5" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="shapeLabel" Content="{DynamicResource shape}"/>
-                    <RadioButton x:Name="shapeCircle" Content="{DynamicResource shapeCircle}" GroupName="shape" Checked="shapeCircle_Checked"/>
-                    <RadioButton x:Name="shapeSquare" Content="{DynamicResource shapeSquare}" GroupName="shape" Checked="shapeSquare_Checked"/>
-                    <RadioButton x:Name="shapeTriangle" Content="{DynamicResource shapeTriangle}" GroupName="shape" Checked="shapeTriangle_Checked"/>
-                </StackPanel>
-                <Button x:Name="targetAnimationButton" Content="{DynamicResource targetAnimation}" HorizontalAlignment="Left" Click="targetAnimationButton_Click"/>
-            </StackPanel>
+
+            </DockPanel>
             <Viewbox>
                 <Grid>
                     <Grid.RowDefinitions>
