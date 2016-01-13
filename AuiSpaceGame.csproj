@@ -55,7 +55,7 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\Kinect.ico</ApplicationIcon>
+    <ApplicationIcon>Images\ASpaceGame.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -171,7 +171,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Kinect.ico" />
+    <Resource Include="Images\ASpaceGame.ico" />
     <Resource Include="Images\Logo.png" />
     <Resource Include="Images\Status.png" />
   </ItemGroup>
