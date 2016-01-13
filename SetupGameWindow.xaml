@@ -61,9 +61,9 @@
                 <StackPanel DockPanel.Dock="Top">
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
                         <RadioButton x:Name="animationAsteroid"  Content="" GroupName="AnimationType" Checked="animationAsteroid_Checked" IsEnabled="False" VerticalAlignment="Center"/>
-                        <Image Source="Images/RadioButton/radioButtonAsteroid.png" Width="60"/>
+                        <Image x:Name="animationAsteroidImage" Source="Images/RadioButton/radioButtonAsteroid.png" Width="60"/>
                         <RadioButton x:Name="animationLogicBlock" Content="" GroupName="AnimationType" Checked="animationLogicBlock_Checked" IsEnabled="False" VerticalAlignment="Center"/>
-                        <Image Source="Images/RadioButton/RadioButtonLogicBlock.png" Width="60"/>
+                        <Image x:Name="animationLogicBLockImage" Source="Images/RadioButton/RadioButtonLogicBlock.png" Width="60"/>
 
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5">

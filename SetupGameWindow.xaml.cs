@@ -110,6 +110,9 @@ namespace AuiSpaceGame
             animationAsteroid.Checked += animationAsteroid_Checked;
             animationLogicBlock.IsChecked = false;
 
+            animationAsteroidImage.Opacity = 1;
+            animationLogicBLockImage.Opacity = 1; 
+
             lowSpeed.IsEnabled = true;
             highSpeed.IsEnabled = true;
             lowSpeed.IsChecked = true;
@@ -283,6 +286,10 @@ namespace AuiSpaceGame
             {
                 CurrentAnimation = (Animation)animationSequence.SelectedItem;
                 EnableUpDown();
+                animationAsteroid.IsEnabled = true;
+                animationLogicBlock.IsEnabled = true;
+                animationLogicBLockImage.Opacity = 1;
+                animationAsteroidImage.Opacity = 1;
                 //ASTEROID ANIMATION
                 if (CurrentAnimation.GetType() == typeof(Asteroid))
                 {
@@ -318,9 +325,6 @@ namespace AuiSpaceGame
                         lowSpeed.IsChecked = false;
                         highSpeed.IsChecked = true;
                     }
-
-                    animationAsteroid.IsEnabled = true;
-                    animationLogicBlock.IsEnabled = true;
 
                     AsteroidRadioButton();
 
@@ -404,9 +408,6 @@ namespace AuiSpaceGame
                     shapeCircle.IsEnabled = true;
                     shapeTriangle.IsEnabled = true;
                     shapeSquare.IsEnabled = true;
-
-                    animationAsteroid.IsEnabled = true;
-                    animationLogicBlock.IsEnabled = true;
 
                     lowSpeed.IsEnabled = false;
                     lowSpeed.IsChecked = false;
@@ -574,6 +575,8 @@ namespace AuiSpaceGame
             shapeSquareImage.Opacity = 0.23;
             shapeTriangleImage.Opacity = 0.23;
             shapeCircleImage.Opacity = 0.23;
+            animationAsteroidImage.Opacity = 0.23;
+            animationLogicBLockImage.Opacity = 0.23;
         }
 
         private void startGame_Click(object sender, RoutedEventArgs e)
