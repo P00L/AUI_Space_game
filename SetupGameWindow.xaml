@@ -9,7 +9,8 @@
         Title="Configurazione" Height="666" Width="900"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       Background="{DynamicResource MaterialDesignPaper}"
-      FontFamily="Roboto">
+      FontFamily="Roboto"
+      KeyDown="RemoteControl">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="10,10">
             <StackPanel DockPanel.Dock="Left">

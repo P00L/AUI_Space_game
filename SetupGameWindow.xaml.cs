@@ -24,6 +24,7 @@ namespace AuiSpaceGame
     {
 
         private Game Game;
+        private GameState gameState;
         private Animation CurrentAnimation;
         private int SquareTmp;
         private Dictionary<string, ImageBrush> squareDic;
@@ -111,7 +112,7 @@ namespace AuiSpaceGame
             animationLogicBlock.IsChecked = false;
 
             animationAsteroidImage.Opacity = 1;
-            animationLogicBLockImage.Opacity = 1; 
+            animationLogicBLockImage.Opacity = 1;
 
             lowSpeed.IsEnabled = true;
             highSpeed.IsEnabled = true;
@@ -581,7 +582,7 @@ namespace AuiSpaceGame
 
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
-            GameState gameState = new GameState();
+            gameState = new GameState();
             Kinect kinect = new Kinect(Game, gameState);
             GameController gameController = new GameController(Game, gameState);
             gameState.GameOn = true;
@@ -777,6 +778,24 @@ namespace AuiSpaceGame
             shapeSquareImage.Opacity = 0.23;
             shapeTriangleImage.Opacity = 0.23;
             shapeCircleImage.Opacity = 0.23;
+        }
+
+        private void RemoteControl(object sender, KeyEventArgs e)
+        {
+            if (gameState != null && gameState.AnimationOn)
+            {
+                if (e.Key == Key.PageUp)
+                {
+                    Console.WriteLine("execute reinforement therapist decision");
+                    gameState.ExecuteReinforcement = true;
+                }
+                if (e.Key == Key.PageDown)
+                {
+                    Console.WriteLine("redo animation therapist decision");
+                    gameState.RedoAnimation = true;
+
+                }
+            }
         }
 
     }
