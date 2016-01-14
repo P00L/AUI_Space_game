@@ -85,46 +85,27 @@ namespace AuiSpaceGame
             Game.Therapist = therapistName.Text;
         }
 
-        private void addAnimation_Click(object sender, RoutedEventArgs e)
+        private void addAsteroid_Click(object sender, RoutedEventArgs e)
         {
             CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
             Game.AnimationsSequence.Add(CurrentAnimation); //TODO controllare
-
             animationSequence.ScrollIntoView(CurrentAnimation);
-
-            squareTopLeft.IsEnabled = false;
-            squareTopRight.IsEnabled = false;
-            squareBottomLeft.IsEnabled = false;
-            squareBottomRight.IsEnabled = false;
-            laneLeft.IsEnabled = true;
-            laneMiddle.IsEnabled = true;
-            laneRight.IsEnabled = true;
-
-            laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
-            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
-            laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
-
-            animationAsteroid.IsEnabled = true;
-            animationLogicBlock.IsEnabled = true;
-            animationAsteroid.Checked -= animationAsteroid_Checked;
-            animationAsteroid.IsChecked = true;
-            animationAsteroid.Checked += animationAsteroid_Checked;
-            animationLogicBlock.IsChecked = false;
-
-            animationAsteroidImage.Opacity = 1;
-            animationLogicBLockImage.Opacity = 1;
-
-            lowSpeed.IsEnabled = true;
-            highSpeed.IsEnabled = true;
-            lowSpeed.IsChecked = true;
-            highSpeed.IsChecked = false;
-
-            EnableUpDown();
-            animationRemove.IsEnabled = true;
             animationSequence.Focus();
             animationSequence.SelectedItem = CurrentAnimation;
+            animationRemove.IsEnabled = true;
             startGame.IsEnabled = true;
 
+        }
+
+        private void addLogicBlock_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentAnimation = new LogicBlock();
+            Game.AnimationsSequence.Add(CurrentAnimation); //TODO controllare
+            animationSequence.ScrollIntoView(CurrentAnimation);
+            animationSequence.Focus();
+            animationSequence.SelectedItem = CurrentAnimation;
+            animationRemove.IsEnabled = true;
+            startGame.IsEnabled = true;
         }
 
         private void animationAsteroid_Checked(object sender, RoutedEventArgs e)
@@ -643,6 +624,10 @@ namespace AuiSpaceGame
             shapeCircleImage.Opacity = 0.23;
             animationAsteroidImage.Opacity = 0.23;
             animationLogicBLockImage.Opacity = 0.23;
+            SpeedLabel.Opacity = 0.23;
+            colorLabel.Opacity = 0.23;
+            shapeLabel.Opacity = 0.23;
+
         }
 
         private void startGame_Click(object sender, RoutedEventArgs e)
@@ -831,6 +816,9 @@ namespace AuiSpaceGame
             shapeSquareImage.Opacity = 1;
             shapeTriangleImage.Opacity = 1;
             shapeCircleImage.Opacity = 1;
+            SpeedLabel.Opacity = 0.23;
+            colorLabel.Opacity = 1;
+            shapeLabel.Opacity = 1;
         }
 
         private void AsteroidRadioButton()
@@ -843,6 +831,9 @@ namespace AuiSpaceGame
             shapeSquareImage.Opacity = 0.23;
             shapeTriangleImage.Opacity = 0.23;
             shapeCircleImage.Opacity = 0.23;
+            SpeedLabel.Opacity = 1;
+            colorLabel.Opacity = 0.23;
+            shapeLabel.Opacity = 0.23;
         }
 
         private void RemoteControl(object sender, KeyEventArgs e)

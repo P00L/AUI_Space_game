@@ -40,18 +40,41 @@
 
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="178*"/>
+                <ColumnDefinition Width="178*"/>
+                <ColumnDefinition Width="179*"/>
+                <ColumnDefinition Width="66*"/>
+                <ColumnDefinition Width="113*"/>
+                <ColumnDefinition Width="179*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="32" />
             </Grid.RowDefinitions>
-            <Button x:Name="animationUp" Content="{DynamicResource animationUp}" Grid.Row="0" Grid.Column="0" Click="animationUp_Click" IsEnabled="False"/>
-            <Button x:Name="animationDown"  Content="{DynamicResource animationDown}" Grid.Row="0" Grid.Column="1" Click="animationDown_Click" IsEnabled="False"/>
-            <Button x:Name="animationRemove"  Content="{DynamicResource animationRemove}" Grid.Row="0" Grid.Column="2" Click="animationRemove_Click" IsEnabled="False"/>
-            <Button x:Name="addAnimation"  Content="{DynamicResource addAnimation}" Grid.Row="0" Grid.Column="3" Click="addAnimation_Click"/>
+            <Button x:Name="animationUp" Content="" Grid.Row="0" Grid.Column="0" Click="animationUp_Click" IsEnabled="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/SxButton.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="animationDown"  Content="" Grid.Row="0" Grid.Column="1" Click="animationDown_Click" IsEnabled="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/DxButton.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="animationRemove"  Content="" Grid.Row="0" Grid.Column="2" Click="animationRemove_Click" IsEnabled="False">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/DeleteButton.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="addAsteroid"  Content="" Grid.Row="0" Grid.Column="3" Click="addAsteroid_Click" Grid.ColumnSpan="2">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/AsteroidButton.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="addLogicBlock"  Content="" Grid.Row="0" Grid.Column="5" Click="addLogicBlock_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/LogicBlockButton.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
         </Grid>
 
         <DockPanel Margin="10,10">

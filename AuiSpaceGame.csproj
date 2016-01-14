@@ -189,6 +189,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\AsteroidButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\AsteroidsCarpet\Asteroid-high.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -201,7 +204,15 @@
     <Content Include="Images\Asteroids\Asteroid-high-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\DxButton.png" />
+    <Resource Include="Images\SxButton.png" />
     <Resource Include="Images\Asteroids\AsteroidButton.png" />
+    <Content Include="Images\DeleteButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LogicBlockButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\RadioButton\radioButtonAsteroid.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
