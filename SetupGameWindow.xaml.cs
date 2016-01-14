@@ -111,7 +111,7 @@ namespace AuiSpaceGame
             animationLogicBlock.IsChecked = false;
 
             animationAsteroidImage.Opacity = 1;
-            animationLogicBLockImage.Opacity = 1; 
+            animationLogicBLockImage.Opacity = 1;
 
             lowSpeed.IsEnabled = true;
             highSpeed.IsEnabled = true;
@@ -295,12 +295,28 @@ namespace AuiSpaceGame
 
         private void lowSpeed_Checked(object sender, RoutedEventArgs e)
         {
-            ((Asteroid)CurrentAnimation).Speed = Speed.Low;
+            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+            CurrentAsteroid.Speed = Speed.Low;
+
+            if (CurrentAsteroid.Lane == Lane.Left)
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Middle)
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Right)
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
         }
 
         private void highSpeed_Checked(object sender, RoutedEventArgs e)
         {
-            ((Asteroid)CurrentAnimation).Speed = Speed.High;
+            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+            CurrentAsteroid.Speed = Speed.High;
+
+            if (CurrentAsteroid.Lane == Lane.Left)
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Middle)
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Right)
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
         }
 
         private void animationSequence_SelectionChanged(object sender, SelectionChangedEventArgs e)
