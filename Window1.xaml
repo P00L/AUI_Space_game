@@ -28,6 +28,6 @@
             <Label x:Name="ambientLabel" Content="Ambientazione: " VerticalAlignment="Center"/>
             <ToggleButton x:Name="ambientToggleButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Checked="ambientToggleButton_Checked" Unchecked="ambientToggleButton_Unchecked"/>
         </StackPanel>
-        <Label  Grid.Row="4" x:Name="creditsLabel" Content="P. Fusari, D. Mapelli @HOC Lab" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,15"/>
+        <Label  Grid.Row="4" x:Name="creditsLabel" Content="{StaticResource credits}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,15"/>
     </Grid>
 </Window>

@@ -6,10 +6,11 @@
     <System:String x:Key="childName">Nome del bambino</System:String>
     <System:String x:Key="gameDuration">Durata stimata</System:String>
     <System:String x:Key="therapistName">Nome del terapista</System:String>
-    <System:String x:Key="animationUp">&lt;</System:String>
-    <System:String x:Key="animationDown">&gt;</System:String>
+    <System:String x:Key="animationUp">Sposta a sinistra</System:String>
+    <System:String x:Key="animationDown">Sposta a destra</System:String>
     <System:String x:Key="animationRemove">Elimina</System:String>
-    <System:String x:Key="addAnimation">Aggiungi</System:String>
+    <System:String x:Key="addAsteroid">Aggiungi asteroide</System:String>
+    <System:String x:Key="addLogicBlock">Aggiungi blocco logico</System:String>
     <System:String x:Key="back">Indietro</System:String>
     <System:String x:Key="saveGame">Salva gioco</System:String>
     <System:String x:Key="startGame">Inizia gioco</System:String>
@@ -29,6 +30,7 @@
     <System:String x:Key="targetAnimation">Target</System:String>
     <System:String x:Key="createNewGame">Crea nuovo gioco</System:String>
     <System:String x:Key="loadGame">Carica gioco</System:String>
+    <System:String x:Key="credits">P. Fusari, D. Mapelli @HOC Lab</System:String>
 
 
 
