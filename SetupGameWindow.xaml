@@ -12,14 +12,13 @@
       FontFamily="Roboto"
       KeyDown="RemoteControl">
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Margin="10,10">
+        <DockPanel DockPanel.Dock="Top" Margin="20,10">
             <StackPanel DockPanel.Dock="Left">
-                <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource gameName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <TextBox x:Name="childName" TextWrapping="Wrap" TextChanged="childName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource childName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="gameName" TextWrapping="Wrap" TextChanged="gameName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource gameName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" Margin="0,0,0,5"/>
+                <TextBox x:Name="childName" TextWrapping="Wrap" TextChanged="childName_TextChanged" materialDesign:TextFieldAssist.Hint="{DynamicResource childName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15" Margin="0,5"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right">
-                <Label x:Name="gameDuration" HorizontalAlignment="Right" Content="{DynamicResource gameDuration}"/>
-                <TextBox x:Name="therapistName" HorizontalAlignment="Right" TextWrapping="Wrap" TextChanged="therapistName_TextChanged" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="{DynamicResource therapistName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="therapistName" HorizontalAlignment="Right" TextWrapping="Wrap" TextChanged="therapistName_TextChanged" VerticalAlignment="Top" materialDesign:TextFieldAssist.Hint="{DynamicResource therapistName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="15"/>
             </StackPanel>
         </DockPanel>
 
