@@ -100,9 +100,9 @@ namespace AuiSpaceGame
             laneMiddle.IsEnabled = true;
             laneRight.IsEnabled = true;
 
-            laneLeft.Background = Brushes.Yellow;
-            laneMiddle.Background = Brushes.AliceBlue;
-            laneRight.Background = Brushes.AliceBlue;
+            laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
+            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
+            laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
 
             animationAsteroid.IsEnabled = true;
             animationLogicBlock.IsEnabled = true;
@@ -152,9 +152,17 @@ namespace AuiSpaceGame
             Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
             CurrentAsteroid.Lane = Lane.Left;
 
-            laneLeft.Background = Brushes.Yellow;
-            laneMiddle.Background = Brushes.AliceBlue;
-            laneRight.Background = Brushes.AliceBlue;
+            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+            if (CurrentAsteroid.Speed == Speed.Low)
+                imageUri += "Low";
+            else if (CurrentAsteroid.Speed == Speed.High)
+                imageUri += "high";
+            imageUri += ".png";
+
+            string noImageUri = "Images/AsteroidsCarpet/none.png";
+            laneLeftImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+            laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
 
         }
 
@@ -163,9 +171,17 @@ namespace AuiSpaceGame
             Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
             CurrentAsteroid.Lane = Lane.Middle;
 
-            laneLeft.Background = Brushes.AliceBlue;
-            laneMiddle.Background = Brushes.Yellow;
-            laneRight.Background = Brushes.AliceBlue;
+            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+            if (CurrentAsteroid.Speed == Speed.Low)
+                imageUri += "low";
+            else if (CurrentAsteroid.Speed == Speed.High)
+                imageUri += "high";
+            imageUri += ".png";
+
+            string noImageUri = "Images/AsteroidsCarpet/none.png";
+            laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
 
         }
 
@@ -174,9 +190,17 @@ namespace AuiSpaceGame
             Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
             CurrentAsteroid.Lane = Lane.Right;
 
-            laneLeft.Background = Brushes.AliceBlue;
-            laneMiddle.Background = Brushes.AliceBlue;
-            laneRight.Background = Brushes.Yellow;
+            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+            if (CurrentAsteroid.Speed == Speed.Low)
+                imageUri += "low";
+            else if (CurrentAsteroid.Speed == Speed.High)
+                imageUri += "high";
+            imageUri += ".png";
+
+            string noImageUri = "Images/AsteroidsCarpet/none.png";
+            laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+            laneRightImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
         }
 
         private void squareBottomLeft_Click(object sender, RoutedEventArgs e)
@@ -272,12 +296,28 @@ namespace AuiSpaceGame
 
         private void lowSpeed_Checked(object sender, RoutedEventArgs e)
         {
-            ((Asteroid)CurrentAnimation).Speed = Speed.Low;
+            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+            CurrentAsteroid.Speed = Speed.Low;
+
+            if (CurrentAsteroid.Lane == Lane.Left)
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Middle)
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Right)
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
         }
 
         private void highSpeed_Checked(object sender, RoutedEventArgs e)
         {
-            ((Asteroid)CurrentAnimation).Speed = Speed.High;
+            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+            CurrentAsteroid.Speed = Speed.High;
+
+            if (CurrentAsteroid.Lane == Lane.Left)
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Middle)
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Right)
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
         }
 
         private void animationSequence_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -294,25 +334,50 @@ namespace AuiSpaceGame
                 //ASTEROID ANIMATION
                 if (CurrentAnimation.GetType() == typeof(Asteroid))
                 {
-                    if (((Asteroid)CurrentAnimation).Lane == Lane.Left)
+                    Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+                    if (CurrentAsteroid.Lane == Lane.Left)
                     {
-                        laneLeft.Background = Brushes.Yellow;
-                        laneMiddle.Background = Brushes.AliceBlue;
-                        laneRight.Background = Brushes.AliceBlue;
+                        string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+                        if (CurrentAsteroid.Speed == Speed.Low)
+                            imageUri += "low";
+                        else if (CurrentAsteroid.Speed == Speed.High)
+                            imageUri += "high";
+                        imageUri += ".png";
+
+                        string noImageUri = "Images/AsteroidsCarpet/none.png";
+                        laneLeftImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+                        laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                        laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
                     }
                     else
-                    if (((Asteroid)CurrentAnimation).Lane == Lane.Middle)
+                    if (CurrentAsteroid.Lane == Lane.Middle)
                     {
-                        laneLeft.Background = Brushes.AliceBlue;
-                        laneMiddle.Background = Brushes.Yellow;
-                        laneRight.Background = Brushes.AliceBlue;
+                        string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+                        if (CurrentAsteroid.Speed == Speed.Low)
+                            imageUri += "low";
+                        else if (CurrentAsteroid.Speed == Speed.High)
+                            imageUri += "high";
+                        imageUri += ".png";
+
+                        string noImageUri = "Images/AsteroidsCarpet/none.png";
+                        laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                        laneMiddleImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+                        laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
                     }
                     else
-                    if (((Asteroid)CurrentAnimation).Lane == Lane.Right)
+                    if (CurrentAsteroid.Lane == Lane.Right)
                     {
-                        laneLeft.Background = Brushes.AliceBlue;
-                        laneMiddle.Background = Brushes.AliceBlue;
-                        laneRight.Background = Brushes.Yellow;
+                        string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+                        if (CurrentAsteroid.Speed == Speed.Low)
+                            imageUri += "low";
+                        else if (CurrentAsteroid.Speed == Speed.High)
+                            imageUri += "high";
+                        imageUri += ".png";
+
+                        string noImageUri = "Images/AsteroidsCarpet/none.png";
+                        laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                        laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                        laneRightImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
                     }
 
                     if (((Asteroid)CurrentAnimation).Speed == Speed.Low)
@@ -526,9 +591,9 @@ namespace AuiSpaceGame
 
         private void Reset()
         {
-            laneMiddle.Background = Brushes.AliceBlue;
-            laneRight.Background = Brushes.AliceBlue;
-            laneLeft.Background = Brushes.AliceBlue;
+            laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
+            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
+            laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/none.png", UriKind.Relative));
             squareBottomLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
             squareBottomRightImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
             squareTopLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/LogicBlocks/none.png", UriKind.Relative)); ;
