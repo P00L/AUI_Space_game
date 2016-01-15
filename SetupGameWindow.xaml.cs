@@ -639,14 +639,15 @@ namespace AuiSpaceGame
                 Kinect kinect = new Kinect(Game, gameState);
                 GameController gameController = new GameController(Game, gameState);
                 gameState.GameOn = true;
-                startGame.Content = "stop game";
+                startGame.Content = Application.Current.Resources["endGame"];
                 backButton.IsEnabled = false;
             }
             else
             {
-                startGame.Content = "start game";
+                startGame.Content = Application.Current.Resources["startGame"];
                 backButton.IsEnabled = true;
                 gameState.GameOn = false;
+                AmbientAnimationOn = false;
             }
         }
 

@@ -13,7 +13,8 @@
     <System:String x:Key="addLogicBlock">Add logic block</System:String>
     <System:String x:Key="back">Back</System:String>
     <System:String x:Key="saveGame">Save</System:String>
-    <System:String x:Key="startGame">Start</System:String>
+    <System:String x:Key="startGame">Start game</System:String>
+    <System:String x:Key="endGame">End game</System:String>
     <System:String x:Key="animationAsteroid">Asteroid</System:String>
     <System:String x:Key="animationLogicBlock">Logic block</System:String>
     <System:String x:Key="speed">Speed</System:String>

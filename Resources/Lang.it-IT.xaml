@@ -14,6 +14,7 @@
     <System:String x:Key="back">Indietro</System:String>
     <System:String x:Key="saveGame">Salva gioco</System:String>
     <System:String x:Key="startGame">Inizia gioco</System:String>
+    <System:String x:Key="endGame">Termina gioco</System:String>
     <System:String x:Key="animationAsteroid">Asteroide</System:String>
     <System:String x:Key="animationLogicBlock">Blocco logico</System:String>
     <System:String x:Key="speed">Velocità</System:String>
