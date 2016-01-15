@@ -39,15 +39,11 @@ namespace AuiSpaceGame
             InitializeComponent();
             if (AmbientAnimationOn)
             {
-                ambientToggleButton.Checked -= ambientToggleButton_Checked;
                 ambientToggleButton.IsChecked = true;
-                ambientToggleButton.Checked += ambientToggleButton_Checked;
             }
             else
             {
-                ambientToggleButton.Checked -= ambientToggleButton_Unchecked;
                 ambientToggleButton.IsChecked = false;
-                ambientToggleButton.Checked += ambientToggleButton_Unchecked;
             }
         }
 
@@ -71,33 +67,38 @@ namespace AuiSpaceGame
 
         private void ambientToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            AmbientAnimationOn = true;
-            if (APIServer == null)
+            if (AmbientAnimationOn != true)
             {
-                APIServer = new APIServer();
+                AmbientAnimationOn = true;
+                if (APIServer == null)
+                {
+                    APIServer = new APIServer();
+                }
+
+                APIServer.LuminousCarpetRequest("Sparkle");
+                APIServer.ShowVideoOnScreenRequest("FirstScreen", "Space.mp4");
+                APIServer.HueRequest("#2E09C1", "front", "100");
+                APIServer.HueRequest("#2E09C1", "middle", "100");
+                APIServer.HueRequest("#2E09C1", "rear", "100");
             }
-
-            APIServer.LuminousCarpetRequest("Sparkle");
-            APIServer.ShowVideoOnScreenRequest("FirstScreen", "Space.mp4");
-            APIServer.HueRequest("#2E09C1", "front", "100");
-            APIServer.HueRequest("#2E09C1", "middle", "100");
-            APIServer.HueRequest("#2E09C1", "rear", "100");
-
         }
 
         private void ambientToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            AmbientAnimationOn = false;
-            if (APIServer == null)
+            if (AmbientAnimationOn != false)
             {
-                APIServer = new APIServer();
-            }
+                AmbientAnimationOn = false;
+                if (APIServer == null)
+                {
+                    APIServer = new APIServer();
+                }
 
-            APIServer.LuminousCarpetRequest("Release");
-            //TODO spegnere il video sullo schermo
-            APIServer.HueRequest("#FFFFFF", "front", "100");
-            APIServer.HueRequest("#FFFFFF", "middle", "100");
-            APIServer.HueRequest("#FFFFFF", "rear", "100");
+                APIServer.LuminousCarpetRequest("Release");
+                //TODO spegnere il video sullo schermo
+                APIServer.HueRequest("#FFFFFF", "front", "100");
+                APIServer.HueRequest("#FFFFFF", "middle", "100");
+                APIServer.HueRequest("#FFFFFF", "rear", "100");
+            }
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
