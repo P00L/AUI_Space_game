@@ -9,7 +9,7 @@
         Width="430"
         ResizeMode="NoResize"
         Title="A Space Game"
-        
+        Closing="MainWindow_Closing"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Roboto">

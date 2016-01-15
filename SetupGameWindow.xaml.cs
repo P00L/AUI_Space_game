@@ -515,9 +515,11 @@ namespace AuiSpaceGame
                 Game.AnimationsSequence.Remove(CurrentAnimation);
                 if (len == 1)
                 {
+                    Reset();
                     animationRemove.IsEnabled = false;
                     startGame.IsEnabled = false;
-                    Reset();
+                    startGame.Content = "start game";
+                    backButton.IsEnabled = true;
                     return;
                 }
                 if (index == 0)
@@ -627,16 +629,25 @@ namespace AuiSpaceGame
             SpeedLabel.Opacity = 0.23;
             colorLabel.Opacity = 0.23;
             shapeLabel.Opacity = 0.23;
-
         }
 
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
-            gameState = new GameState();
-            Kinect kinect = new Kinect(Game, gameState);
-            GameController gameController = new GameController(Game, gameState);
-            gameState.GameOn = true;
-
+            if (gameState == null || !gameState.GameOn)
+            {
+                gameState = new GameState();
+                Kinect kinect = new Kinect(Game, gameState);
+                GameController gameController = new GameController(Game, gameState);
+                gameState.GameOn = true;
+                startGame.Content = "stop game";
+                backButton.IsEnabled = false;
+            }
+            else
+            {
+                startGame.Content = "start game";
+                backButton.IsEnabled = true;
+                gameState.GameOn = false;
+            }
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)

@@ -96,7 +96,7 @@ namespace AuiSpaceGame.Controller
                     APIServer.ShowVideoOnScreenRequest("FirstScreen", "LogicBlock-" + animationLogicBlock.Shapes[animationLogicBlock.Target].Figure + "-" + animationLogicBlock.Shapes[animationLogicBlock.Target].Color + ".mp4");
                     string LogicBlockString = animationLogicBlock.ToString();
                     string[] ShapesString = LogicBlockString.Split(',');
-                    System.Threading.Thread.Sleep(5000); //TODO!!! tempo del video!!!
+                   // System.Threading.Thread.Sleep(5000); //TODO!!! tempo del video!!!
                     for (int i = 0; i < ShapesString.Length; i++)
                     {
                         APIServer.LuminousCarpetRequest(ShapesString[i]);

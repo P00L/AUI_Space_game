@@ -14,17 +14,15 @@ namespace AuiSpaceGame.Utilities
     {
         private HttpWebRequest httpWebRequest;
         private StreamWriter streamWriter;
+
         public APIServer()
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-            streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
+            aser();
+
         }
         public void HueRequest(string color, string position, string luminosity)
         {
-            
+
             string json = new JavaScriptSerializer().Serialize(new
             {
                 Action = "EnvironmentAction",
@@ -34,7 +32,7 @@ namespace AuiSpaceGame.Utilities
             });
 
 
-            Console.WriteLine(json);
+            Console.WriteLine(json + " " + DateTime.Now);
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -43,7 +41,7 @@ namespace AuiSpaceGame.Utilities
 
         public void LuminousCarpetRequest(string trigger)
         {
-            
+
             string json = new JavaScriptSerializer().Serialize(new
             {
                 Action = "CarpetAction",
@@ -51,7 +49,7 @@ namespace AuiSpaceGame.Utilities
             });
 
 
-            Console.WriteLine(json);
+            Console.WriteLine(json + " " + DateTime.Now);
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -62,7 +60,7 @@ namespace AuiSpaceGame.Utilities
 
         public void ShowImageOnScreenRequest(string targetScreen, string image)
         {
-            
+
 
             string json = new JavaScriptSerializer().Serialize(new
             {
@@ -72,7 +70,7 @@ namespace AuiSpaceGame.Utilities
             });
 
 
-            Console.WriteLine(json);
+            Console.WriteLine(json + " " + DateTime.Now);
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -91,7 +89,7 @@ namespace AuiSpaceGame.Utilities
             });
 
 
-            Console.WriteLine(json);
+            Console.WriteLine(json + " " + DateTime.Now);
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -101,7 +99,7 @@ namespace AuiSpaceGame.Utilities
 
         public void ShowTextImageOnScreenRequest(string targetScreen, string image, string text)
         {
-            
+
             string json = new JavaScriptSerializer().Serialize(new
             {
                 Action = "ShowTextImageOnScreen",
@@ -111,113 +109,133 @@ namespace AuiSpaceGame.Utilities
             });
 
 
-            Console.WriteLine(json);
+            Console.WriteLine(json + " " + DateTime.Now);
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
             streamWriter.Write(json);
         }
 
-/*
-        public static void StaticHueRequest(string color, string position, string luminosity)
+        public async void aser()
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+            // return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            Console.WriteLine("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+            try
             {
-                string json = new JavaScriptSerializer().Serialize(new
-                {
-                    Action = "EnvironmentAction",
-                    Color = color,
-                    Position = position, //possible values: front-middle-rear
-                    Luminosity = luminosity //value between 1 and 100
-                });
-                streamWriter.Write(json);
+                Stream stream = await httpWebRequest.GetRequestStreamAsync();
+                streamWriter = new StreamWriter(stream);
+
+            }
+            catch (System.Net.WebException e)
+            {
+                Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             }
         }
 
-        public static void StaticLuminousCarpetRequest(string trigger)
-        {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = new JavaScriptSerializer().Serialize(new
+        /*
+                public static void StaticHueRequest(string color, string position, string luminosity)
                 {
-                    Action = "CarpetAction",
-                    Trigger = trigger
+                    return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            Action = "EnvironmentAction",
+                            Color = color,
+                            Position = position, //possible values: front-middle-rear
+                            Luminosity = luminosity //value between 1 and 100
+                        });
+                        streamWriter.Write(json);
+                    }
                 }
-);
-                streamWriter.Write(json);
-            }
-        }
 
-        public static void StaticShowImageOnScreenRequest(string targetScreen, string image)
-        {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = new JavaScriptSerializer().Serialize(new
+                public static void StaticLuminousCarpetRequest(string trigger)
                 {
-                    Action = "ShowImageOnScreen",
-                    TargetScreen = targetScreen,
-                    Image = image
+                    return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            Action = "CarpetAction",
+                            Trigger = trigger
+                        }
+        );
+                        streamWriter.Write(json);
+                    }
                 }
-);
-                streamWriter.Write(json);
-            }
-        }
 
-        public static void StaticShowVideoOnScreenRequest(string targetScreen, string video)
-        {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = new JavaScriptSerializer().Serialize(new
+                public static void StaticShowImageOnScreenRequest(string targetScreen, string image)
                 {
-                    Action = "ShowVideoOnScreen",
-                    TargetScreen = targetScreen,
-                    Video = video
+                    return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            Action = "ShowImageOnScreen",
+                            TargetScreen = targetScreen,
+                            Image = image
+                        }
+        );
+                        streamWriter.Write(json);
+                    }
                 }
-);
-                streamWriter.Write(json);
-            }
-        }
 
-        public static void StaticShowTextImageOnScreenRequest(string targetScreen, string image, string text)
-        {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = new JavaScriptSerializer().Serialize(new
+                public static void StaticShowVideoOnScreenRequest(string targetScreen, string video)
                 {
-                    Action = "ShowTextImageOnScreen",
-                    TargetScreen = targetScreen,
-                    Image = image,
-                    Text = text
+                    return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            Action = "ShowVideoOnScreen",
+                            TargetScreen = targetScreen,
+                            Video = video
+                        }
+        );
+                        streamWriter.Write(json);
+                    }
                 }
-);
-                streamWriter.Write(json);
-            }
-        }
-        */
+
+                public static void StaticShowTextImageOnScreenRequest(string targetScreen, string image, string text)
+                {
+                    return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+                    httpWebRequest.ContentType = "application/json";
+                    httpWebRequest.Method = "POST";
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        string json = new JavaScriptSerializer().Serialize(new
+                        {
+                            Action = "ShowTextImageOnScreen",
+                            TargetScreen = targetScreen,
+                            Image = image,
+                            Text = text
+                        }
+        );
+                        streamWriter.Write(json);
+                    }
+                }
+                */
     }
 }

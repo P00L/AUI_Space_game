@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using AuiSpaceGame.Model;
 using AuiSpaceGame.Model.Parser;
 using AuiSpaceGame.Utilities;
+using System.ComponentModel;
 
 namespace AuiSpaceGame
 {
@@ -97,6 +98,11 @@ namespace AuiSpaceGame
             APIServer.HueRequest("#FFFFFF", "front", "100");
             APIServer.HueRequest("#FFFFFF", "middle", "100");
             APIServer.HueRequest("#FFFFFF", "rear", "100");
+        }
+
+        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            
         }
     }
 }
