@@ -85,11 +85,11 @@ namespace AuiSpaceGame.Model
 
             string SpeedString = "";
             if (this.speed == Model.Speed.High)
-                SpeedString = "High";
+                SpeedString = "100";
             else if (this.speed == Model.Speed.Low)
-                SpeedString = "Low";
+                SpeedString = "50";
 
-            return "Asteroid-" + SpeedString + "-" + LaneString;
+            return "Asteroid-" + LaneString + "-" + SpeedString;
         }
 
 

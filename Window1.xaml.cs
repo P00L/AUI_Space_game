@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AuiSpaceGame.Model;
 using AuiSpaceGame.Model.Parser;
+using AuiSpaceGame.Utilities;
 
 namespace AuiSpaceGame
 {
@@ -22,6 +23,7 @@ namespace AuiSpaceGame
     public partial class Window1 : Window
     {
         bool AmbientAnimationOn;
+        private APIServer APIServer;
         public Window1()
         {
             AmbientAnimationOn = false;
@@ -35,9 +37,17 @@ namespace AuiSpaceGame
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             if (AmbientAnimationOn)
+            {
+                ambientToggleButton.Checked -= ambientToggleButton_Checked;
                 ambientToggleButton.IsChecked = true;
+                ambientToggleButton.Checked += ambientToggleButton_Checked;
+            }
             else
+            {
+                ambientToggleButton.Checked -= ambientToggleButton_Unchecked;
                 ambientToggleButton.IsChecked = false;
+                ambientToggleButton.Checked += ambientToggleButton_Unchecked;
+            }
         }
 
         private void createGameButton_Click(object sender, RoutedEventArgs e)
@@ -51,7 +61,7 @@ namespace AuiSpaceGame
         {
             Game Game = Parser.loadGame();
             if (Game != null)
-            {       
+            {
                 SetupGameWindow SetupGameWindow = new SetupGameWindow(Game, AmbientAnimationOn);
                 SetupGameWindow.Show();
                 this.Close();
@@ -61,13 +71,32 @@ namespace AuiSpaceGame
         private void ambientToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             AmbientAnimationOn = true;
-            // CHIAMATA PHAROS AMBIENTAZIONE ON
+            if (APIServer == null)
+            {
+                APIServer = new APIServer();
+            }
+
+            APIServer.LuminousCarpetRequest("Sparkle");
+            APIServer.ShowVideoOnScreenRequest("FirstScreen", "Space.mp4");
+            APIServer.HueRequest("#2E09C1", "front", "100");
+            APIServer.HueRequest("#2E09C1", "middle", "100");
+            APIServer.HueRequest("#2E09C1", "rear", "100");
+
         }
 
         private void ambientToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             AmbientAnimationOn = false;
-            // CHIAMATA PHAROS AMBIENTAZIONE OFF
+            if (APIServer == null)
+            {
+                APIServer = new APIServer();
+            }
+
+            APIServer.LuminousCarpetRequest("Release");
+            //TODO spegnere il video sullo schermo
+            APIServer.HueRequest("#FFFFFF", "front", "100");
+            APIServer.HueRequest("#FFFFFF", "middle", "100");
+            APIServer.HueRequest("#FFFFFF", "rear", "100");
         }
     }
 }

@@ -28,6 +28,18 @@ namespace AuiSpaceGame.Model
                 NotifyPropertyChanged("color");
             }
         }
+
+        public string ColorToRGB()
+        {
+            if (color == Colour.Blue)
+                return "R0-G0-B100";
+            else if (color == Colour.Red)
+                return "R100-G0-B0";
+            else if (color == Colour.Yellow)
+                return "R100-G100-B0";
+            return "TO RGB not implemented";
+        }
+
         public string Figure
         {
             get { return figure; }

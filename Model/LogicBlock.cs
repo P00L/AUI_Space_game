@@ -74,7 +74,7 @@ namespace AuiSpaceGame.Model
                 else if (shape.X == SquareCoordinate.Right)
                     XString = "Right";
 
-                ShapesString = "LogicBlock-" + ZString + "-" + XString + "-" + shape.Color.ToString() + "-" + shape.Figure.ToString() + ",";
+                ShapesString = shape.Figure.ToString() + "-" + ZString + "-" + XString + "-" + shape.ColorToRGB() + ",";
             }
             ShapesString = ShapesString.Remove(ShapesString.Length - 1); // removes the last ","
             return ShapesString;

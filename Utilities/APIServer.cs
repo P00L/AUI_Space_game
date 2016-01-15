@@ -16,6 +16,7 @@ namespace AuiSpaceGame.Utilities
         private StreamWriter streamWriter;
         public APIServer()
         {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
@@ -23,8 +24,7 @@ namespace AuiSpaceGame.Utilities
         }
         public void HueRequest(string color, string position, string luminosity)
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+            
             string json = new JavaScriptSerializer().Serialize(new
             {
                 Action = "EnvironmentAction",
@@ -32,25 +32,37 @@ namespace AuiSpaceGame.Utilities
                 Position = position, //possible values: front-middle-rear
                 Luminosity = luminosity //value between 1 and 100
             });
+
+
+            Console.WriteLine(json);
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
             streamWriter.Write(json);
         }
 
         public void LuminousCarpetRequest(string trigger)
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+            
             string json = new JavaScriptSerializer().Serialize(new
             {
                 Action = "CarpetAction",
                 Trigger = trigger
             });
+
+
+            Console.WriteLine(json);
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
             streamWriter.Write(json);
 
         }
 
         public void ShowImageOnScreenRequest(string targetScreen, string image)
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            
 
             string json = new JavaScriptSerializer().Serialize(new
             {
@@ -58,13 +70,18 @@ namespace AuiSpaceGame.Utilities
                 TargetScreen = targetScreen,
                 Image = image
             });
+
+
+            Console.WriteLine(json);
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
             streamWriter.Write(json);
 
         }
 
         public void ShowVideoOnScreenRequest(string targetScreen, string video)
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             string json = new JavaScriptSerializer().Serialize(new
             {
@@ -72,14 +89,19 @@ namespace AuiSpaceGame.Utilities
                 TargetScreen = targetScreen,
                 Video = video
             });
+
+
+            Console.WriteLine(json);
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
             streamWriter.Write(json);
 
         }
 
         public void ShowTextImageOnScreenRequest(string targetScreen, string image, string text)
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+            
             string json = new JavaScriptSerializer().Serialize(new
             {
                 Action = "ShowTextImageOnScreen",
@@ -87,12 +109,37 @@ namespace AuiSpaceGame.Utilities
                 Image = image,
                 Text = text
             });
+
+
+            Console.WriteLine(json);
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
             streamWriter.Write(json);
         }
-        
 
-        /* SE NON FUNZIONANO I METODI SOPRA   ++++ HUEREQUEST DA RISCRIVERE
-        public static void LuminousCarpetRequest(string trigger)
+/*
+        public static void StaticHueRequest(string color, string position, string luminosity)
+        {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = new JavaScriptSerializer().Serialize(new
+                {
+                    Action = "EnvironmentAction",
+                    Color = color,
+                    Position = position, //possible values: front-middle-rear
+                    Luminosity = luminosity //value between 1 and 100
+                });
+                streamWriter.Write(json);
+            }
+        }
+
+        public static void StaticLuminousCarpetRequest(string trigger)
         {
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
@@ -111,7 +158,7 @@ namespace AuiSpaceGame.Utilities
             }
         }
 
-        public static void ShowImageOnScreenRequest(string targetScreen, string image)
+        public static void StaticShowImageOnScreenRequest(string targetScreen, string image)
         {
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
@@ -131,7 +178,7 @@ namespace AuiSpaceGame.Utilities
             }
         }
 
-        public static void ShowVideoOnScreenRequest(string targetScreen, string video)
+        public static void StaticShowVideoOnScreenRequest(string targetScreen, string video)
         {
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
@@ -151,7 +198,7 @@ namespace AuiSpaceGame.Utilities
             }
         }
 
-        public static void ShowTextImageOnScreenRequest(string targetScreen, string image, string text)
+        public static void StaticShowTextImageOnScreenRequest(string targetScreen, string image, string text)
         {
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
@@ -170,6 +217,7 @@ namespace AuiSpaceGame.Utilities
 );
                 streamWriter.Write(json);
             }
-        } */
+        }
+        */
     }
 }
