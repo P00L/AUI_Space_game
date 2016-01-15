@@ -15,11 +15,13 @@ namespace AuiSpaceGame.Controller
         GameState GameState;
         Game Game;
         Timer Timer;
+        APIServer APIServer;
 
         public GameController(Game game, GameState gameState)
         {
             GameState = gameState;
             Game = game;
+            APIServer = new APIServer();
             GameState.GameOnChanged += new EventHandler(GameOnChanged);
             GameState.GamePauseOnChanged += new EventHandler(GamePauseOnChanged);
             GameState.AnimationOnChanged += new EventHandler(AnimationOnChanged);

@@ -10,28 +10,88 @@ using AuiSpaceGame.Model;
 
 namespace AuiSpaceGame.Utilities
 {
-    static class APIServer
+    class APIServer
     {
-        public static void HueRequest(string color, string position, string luminosity)
+        private HttpWebRequest httpWebRequest;
+        private StreamWriter streamWriter;
+        public APIServer()
         {
-            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
+            httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
+            streamWriter = new StreamWriter(httpWebRequest.GetRequestStream());
+        }
+        public void HueRequest(string color, string position, string luminosity)
+        {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            string json = new JavaScriptSerializer().Serialize(new
             {
-                string json = new JavaScriptSerializer().Serialize(new
-                {
-                    Action = "EnvironmentAction",
-                    Color = color,
-                    Position = position, //possible values: front-middle-rear
-                    Luminosity = luminosity //value between 1 and 100
-                });
-                streamWriter.Write(json);
-            }
+                Action = "EnvironmentAction",
+                Color = color,
+                Position = position, //possible values: front-middle-rear
+                Luminosity = luminosity //value between 1 and 100
+            });
+            streamWriter.Write(json);
         }
 
+        public void LuminousCarpetRequest(string trigger)
+        {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                Action = "CarpetAction",
+                Trigger = trigger
+            });
+            streamWriter.Write(json);
+
+        }
+
+        public void ShowImageOnScreenRequest(string targetScreen, string image)
+        {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                Action = "ShowImageOnScreen",
+                TargetScreen = targetScreen,
+                Image = image
+            });
+            streamWriter.Write(json);
+
+        }
+
+        public void ShowVideoOnScreenRequest(string targetScreen, string video)
+        {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                Action = "ShowVideoOnScreen",
+                TargetScreen = targetScreen,
+                Video = video
+            });
+            streamWriter.Write(json);
+
+        }
+
+        public void ShowTextImageOnScreenRequest(string targetScreen, string image, string text)
+        {
+            return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                Action = "ShowTextImageOnScreen",
+                TargetScreen = targetScreen,
+                Image = image,
+                Text = text
+            });
+            streamWriter.Write(json);
+        }
+        
+
+        /* SE NON FUNZIONANO I METODI SOPRA   ++++ HUEREQUEST DA RISCRIVERE
         public static void LuminousCarpetRequest(string trigger)
         {
             return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -110,6 +170,6 @@ namespace AuiSpaceGame.Utilities
 );
                 streamWriter.Write(json);
             }
-        }
+        } */
     }
 }
