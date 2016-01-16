@@ -88,24 +88,13 @@ namespace AuiSpaceGame
         private void addAsteroid_Click(object sender, RoutedEventArgs e)
         {
             CurrentAnimation = new Asteroid(Lane.Left, Speed.Low);
-            Game.AnimationsSequence.Add(CurrentAnimation); //TODO controllare
-            animationSequence.ScrollIntoView(CurrentAnimation);
-            animationSequence.Focus();
-            animationSequence.SelectedItem = CurrentAnimation;
-            animationRemove.IsEnabled = true;
-            startGame.IsEnabled = true;
-
+            addAnimationClicked();
         }
 
         private void addLogicBlock_Click(object sender, RoutedEventArgs e)
         {
             CurrentAnimation = new LogicBlock();
-            Game.AnimationsSequence.Add(CurrentAnimation); //TODO controllare
-            animationSequence.ScrollIntoView(CurrentAnimation);
-            animationSequence.Focus();
-            animationSequence.SelectedItem = CurrentAnimation;
-            animationRemove.IsEnabled = true;
-            startGame.IsEnabled = true;
+            addAnimationClicked();
         }
 
         private void animationAsteroid_Checked(object sender, RoutedEventArgs e)
@@ -130,175 +119,48 @@ namespace AuiSpaceGame
 
         private void laneLeft_Click(object sender, RoutedEventArgs e)
         {
-            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
-            CurrentAsteroid.Lane = Lane.Left;
-
-            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
-            if (CurrentAsteroid.Speed == Speed.Low)
-                imageUri += "Low";
-            else if (CurrentAsteroid.Speed == Speed.High)
-                imageUri += "high";
-            imageUri += ".png";
-
-            string noImageUri = "Images/AsteroidsCarpet/none.png";
-            laneLeftImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
-            laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
-
+            laneClicked(Lane.Left);
         }
 
         private void laneMiddle_Click(object sender, RoutedEventArgs e)
         {
-            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
-            CurrentAsteroid.Lane = Lane.Middle;
-
-            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
-            if (CurrentAsteroid.Speed == Speed.Low)
-                imageUri += "low";
-            else if (CurrentAsteroid.Speed == Speed.High)
-                imageUri += "high";
-            imageUri += ".png";
-
-            string noImageUri = "Images/AsteroidsCarpet/none.png";
-            laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
-            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-            laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
-
+            laneClicked(Lane.Middle);
         }
 
         private void laneRight_Click(object sender, RoutedEventArgs e)
         {
-            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
-            CurrentAsteroid.Lane = Lane.Right;
 
-            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
-            if (CurrentAsteroid.Speed == Speed.Low)
-                imageUri += "low";
-            else if (CurrentAsteroid.Speed == Speed.High)
-                imageUri += "high";
-            imageUri += ".png";
-
-            string noImageUri = "Images/AsteroidsCarpet/none.png";
-            laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
-            laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
-            laneRightImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            laneClicked(Lane.Right);
         }
 
         private void squareBottomLeft_Click(object sender, RoutedEventArgs e)
         {
-            string imageUri = "";
-            int index = 0;
-            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
-            {
-                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
-                if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Bottom)
-                {
-                    SquareTmp = index;
-                    imageUri += "-selected";
-                }
-                if (index == ((LogicBlock)CurrentAnimation).Target)
-                    imageUri += "-target";
-                imageUri += ".png";
-                index += 1;
-                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-            }
-
-            shapeColorSquare();
+            squareClicked(SquareCoordinate.Left, SquareCoordinate.Bottom);
         }
 
         private void squareBottomRight_Click(object sender, RoutedEventArgs e)
         {
-            string imageUri = "";
-            int index = 0;
-            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
-            {
-                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
-                if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Bottom)
-                {
-                    SquareTmp = index;
-                    imageUri += "-selected";
-                }
-                if (index == ((LogicBlock)CurrentAnimation).Target)
-                    imageUri += "-target";
-                imageUri += ".png";
-                index += 1;
-                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-            }
-
-            shapeColorSquare();
-
+            squareClicked(SquareCoordinate.Right, SquareCoordinate.Bottom);
         }
 
         private void squareTopLeft_Click(object sender, RoutedEventArgs e)
         {
-            string imageUri = "";
-            int index = 0;
-            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
-            {
-                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
-                if (s.X == SquareCoordinate.Left && s.Z == SquareCoordinate.Top)
-                {
-                    SquareTmp = index;
-                    imageUri += "-selected";
-                }
-                if (index == ((LogicBlock)CurrentAnimation).Target)
-                    imageUri += "-target";
-                imageUri += ".png";
-                index += 1;
-                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-            }
-
-            shapeColorSquare();
-
+            squareClicked(SquareCoordinate.Left, SquareCoordinate.Top);
         }
 
         private void squareTopRight_Click(object sender, RoutedEventArgs e)
         {
-            string imageUri = "";
-            int index = 0;
-            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
-            {
-                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
-                if (s.X == SquareCoordinate.Right && s.Z == SquareCoordinate.Top)
-                {
-                    SquareTmp = index;
-                    imageUri += "-selected";
-                }
-                if (index == ((LogicBlock)CurrentAnimation).Target)
-                    imageUri += "-target";
-                imageUri += ".png";
-                index += 1;
-                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-            }
-
-            shapeColorSquare();
-
+            squareClicked(SquareCoordinate.Right, SquareCoordinate.Top);
         }
 
         private void lowSpeed_Checked(object sender, RoutedEventArgs e)
         {
-            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
-            CurrentAsteroid.Speed = Speed.Low;
-
-            if (CurrentAsteroid.Lane == Lane.Left)
-                laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
-            else if (CurrentAsteroid.Lane == Lane.Middle)
-                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
-            else if (CurrentAsteroid.Lane == Lane.Right)
-                laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-low.png", UriKind.Relative));
+            speedClicked(Speed.Low);
         }
 
         private void highSpeed_Checked(object sender, RoutedEventArgs e)
         {
-            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
-            CurrentAsteroid.Speed = Speed.High;
-
-            if (CurrentAsteroid.Lane == Lane.Left)
-                laneLeftImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
-            else if (CurrentAsteroid.Lane == Lane.Middle)
-                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
-            else if (CurrentAsteroid.Lane == Lane.Right)
-                laneRightImage.ImageSource = new BitmapImage(new Uri(@"Images/AsteroidsCarpet/Asteroid-high.png", UriKind.Relative));
+            speedClicked(Speed.High);
         }
 
         private void animationSequence_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -558,7 +420,6 @@ namespace AuiSpaceGame
                     }
                 }
                 else
-
                     if (index == len - 1)
                 {
                     animationUp.IsEnabled = true;
@@ -660,104 +521,32 @@ namespace AuiSpaceGame
 
         private void shapeTriangle_Checked(object sender, RoutedEventArgs e)
         {
-            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
-            shape.Figure = FigureShape.Triangle;
-            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
-            //Forcing the refresh of the image
-            if (SquareTmp == CurrentLogicBlock.Target)
-            {
-                CurrentLogicBlock.Target = SquareTmp;
-                imageUri += "-target";
-            }
-            imageUri += ".png";
-            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-
+            shapeClicked(FigureShape.Triangle);
         }
 
         private void shapeSquare_Checked(object sender, RoutedEventArgs e)
         {
-            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
-            shape.Figure = FigureShape.Square;
-            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
-            //Forcing the refresh of the image
-            if (SquareTmp == CurrentLogicBlock.Target)
-            {
-                CurrentLogicBlock.Target = SquareTmp;
-                imageUri += "-target";
-            }
-            imageUri += ".png";
-            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-
+            shapeClicked(FigureShape.Square);
         }
 
         private void shapeCircle_Checked(object sender, RoutedEventArgs e)
         {
-            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
-            shape.Figure = FigureShape.Circle;
-            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
-            //Forcing the refresh of the image
-
-            if (SquareTmp == CurrentLogicBlock.Target)
-            {
-                CurrentLogicBlock.Target = SquareTmp;
-                imageUri += "-target";
-            }
-            imageUri += ".png";
-            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-
+            shapeClicked(FigureShape.Circle);
         }
 
         private void colorYellow_Checked(object sender, RoutedEventArgs e)
         {
-            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
-            shape.Color = Colour.Yellow;
-            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
-            //Forcing the refresh of the image
-            if (SquareTmp == CurrentLogicBlock.Target)
-            {
-                CurrentLogicBlock.Target = SquareTmp;
-                imageUri += "-target";
-            }
-            imageUri += ".png";
-            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-
+            colorClicked(Colour.Yellow);
         }
 
         private void colorRed_Checked(object sender, RoutedEventArgs e)
         {
-            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
-            shape.Color = Colour.Red;
-            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
-            //Forcing the refresh of the image
-            if (SquareTmp == CurrentLogicBlock.Target)
-            {
-                CurrentLogicBlock.Target = SquareTmp;
-                imageUri += "-target";
-            }
-            imageUri += ".png";
-            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            colorClicked(Colour.Red);
         }
 
         private void colorBlue_Checked(object sender, RoutedEventArgs e)
         {
-            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
-            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
-            shape.Color = Colour.Blue;
-            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
-            //Forcing the refresh of the image
-            if (SquareTmp == CurrentLogicBlock.Target)
-            {
-                CurrentLogicBlock.Target = SquareTmp;
-                imageUri += "-target";
-            }
-            imageUri += ".png";
-            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
-
+            colorClicked(Colour.Blue);
         }
 
         private void shapeColorSquare()
@@ -866,5 +655,114 @@ namespace AuiSpaceGame
             }
         }
 
+        private void addAnimationClicked()
+        {
+            Game.AnimationsSequence.Add(CurrentAnimation);
+            animationSequence.ScrollIntoView(CurrentAnimation);
+            animationSequence.Focus();
+            animationSequence.SelectedItem = CurrentAnimation;
+            animationRemove.IsEnabled = true;
+            startGame.IsEnabled = true;
+        }
+        private void laneClicked(double lane)
+        {
+            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+            CurrentAsteroid.Lane = lane;
+
+            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+            if (CurrentAsteroid.Speed == Speed.Low)
+                imageUri += "low";
+            else if (CurrentAsteroid.Speed == Speed.High)
+                imageUri += "high";
+            imageUri += ".png";
+
+            string noImageUri = "Images/AsteroidsCarpet/none.png";
+            if (lane == Lane.Left)
+            {
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+            }
+            else if (lane == Lane.Middle)
+            {
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+            }
+            else if (lane == Lane.Right)
+            {
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@noImageUri, UriKind.Relative));
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            }
+        }
+        private void squareClicked(double x, double z)
+        {
+            string imageUri = "";
+            int index = 0;
+            foreach (Model.Shape s in ((LogicBlock)CurrentAnimation).Shapes)
+            {
+                imageUri = "Images/LogicBlocks/LogicBlock-" + s.Color + "-" + s.Figure;
+                if (s.X == x && s.Z == z)
+                {
+                    SquareTmp = index;
+                    imageUri += "-selected";
+                }
+                if (index == ((LogicBlock)CurrentAnimation).Target)
+                    imageUri += "-target";
+                imageUri += ".png";
+                index += 1;
+                squareDic[s.X + "-" + s.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            }
+
+            shapeColorSquare();
+        }
+        private void speedClicked(double speed)
+        {
+            Asteroid CurrentAsteroid = (Asteroid)CurrentAnimation;
+            CurrentAsteroid.Speed = speed;
+            string imageUri = "Images/AsteroidsCarpet/Asteroid-";
+            if (speed == Speed.High)
+                imageUri += "high";
+            else if (speed == Speed.Low)
+                imageUri += "low";
+            imageUri += ".png";
+            if (CurrentAsteroid.Lane == Lane.Left)
+                laneLeftImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Middle)
+                laneMiddleImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+            else if (CurrentAsteroid.Lane == Lane.Right)
+                laneRightImage.ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+        }
+        private void shapeClicked(string figureShape)
+        {
+            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
+            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
+            shape.Figure = figureShape;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
+            //Forcing the refresh of the image
+            if (SquareTmp == CurrentLogicBlock.Target)
+            {
+                CurrentLogicBlock.Target = SquareTmp;
+                imageUri += "-target";
+            }
+            imageUri += ".png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+        }
+        private void colorClicked(string color)
+        {
+            LogicBlock CurrentLogicBlock = (LogicBlock)CurrentAnimation;
+            Model.Shape shape = CurrentLogicBlock.Shapes[SquareTmp];
+            shape.Color = color;
+            string imageUri = "Images/LogicBlocks/LogicBlock-" + shape.Color + "-" + shape.Figure + "-selected";
+            //Forcing the refresh of the image
+            if (SquareTmp == CurrentLogicBlock.Target)
+            {
+                CurrentLogicBlock.Target = SquareTmp;
+                imageUri += "-target";
+            }
+            imageUri += ".png";
+            squareDic[shape.X + "-" + shape.Z].ImageSource = new BitmapImage(new Uri(@imageUri, UriKind.Relative));
+        }
     }
 }
