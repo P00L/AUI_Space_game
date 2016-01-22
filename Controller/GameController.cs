@@ -45,6 +45,7 @@ namespace AuiSpaceGame.Controller
 
                 //let's start the introductory video
                 Timer.Interval = Constant.TIntroVideo;
+                APIServer.ShowVideoOnScreenRequest("FirstScreen", "Introduction.mp4"); //TODO AGGIUNGERE IL VIDEO
                 Timer.Start();
             }
             else
