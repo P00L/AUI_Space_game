@@ -16,6 +16,7 @@ namespace AuiSpaceGame.Model
         /// Delay of the carpet (in milliseconds)
         /// </summary>
         public const double TPharos = 0;
+        public const double TIntroVideo = 10000;
         public const double ZLittleSpace = 0.07;
         public const double Square = 0.6;
         /// <summary>

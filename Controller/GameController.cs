@@ -43,8 +43,9 @@ namespace AuiSpaceGame.Controller
                 APIServer.HueRequest("#000000", "middle", "1");
                 APIServer.HueRequest("#000000", "rear", "1");
 
-
-                GameState.AnimationOn = true;
+                //let's start the introductory video
+                Timer.Interval = Constant.TIntroVideo;
+                Timer.Start();
             }
             else
             {
@@ -172,6 +173,11 @@ namespace AuiSpaceGame.Controller
             {
                 Console.WriteLine("REINFORCEMENT END " + "{0:HH: mm: ss.fff}", DateTime.Now);
                 GameState.ReinforcementOn = false;
+            }
+            else //end of introductory video
+            {
+                Console.WriteLine("INTRO-VIDEO END " + "{0:HH: mm: ss.fff}", DateTime.Now);
+                GameState.AnimationOn = true;
             }
         }
 
