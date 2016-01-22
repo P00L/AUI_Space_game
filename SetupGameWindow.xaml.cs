@@ -380,7 +380,7 @@ namespace AuiSpaceGame
                     Reset();
                     animationRemove.IsEnabled = false;
                     startGame.IsEnabled = false;
-                    startGame.Content = "start game";
+                    startGame.Content = Application.Current.Resources["startGame"];
                     backButton.IsEnabled = true;
                     return;
                 }

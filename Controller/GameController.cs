@@ -167,9 +167,8 @@ namespace AuiSpaceGame.Controller
             {
                 Console.WriteLine("ANIMATION END " + "  {0:HH: mm: ss.fff}", DateTime.Now);
                 GameState.AnimationOn = false;
-                return;
             }
-            if (GameState.ReinforcementOn) //end of reinforcmente
+            else if (GameState.ReinforcementOn) //end of reinforcmente
             {
                 Console.WriteLine("REINFORCEMENT END " + "{0:HH: mm: ss.fff}", DateTime.Now);
                 GameState.ReinforcementOn = false;
