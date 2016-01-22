@@ -17,8 +17,7 @@ namespace AuiSpaceGame.Utilities
 
         public APIServer()
         {
-            aser();
-
+            Connect();
         }
         public void HueRequest(string color, string position, string luminosity)
         {
@@ -116,9 +115,8 @@ namespace AuiSpaceGame.Utilities
             streamWriter.Write(json);
         }
 
-        public async void aser()
+        public async void Connect()
         {
-            // return; //TODO TOGLIERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             httpWebRequest = (HttpWebRequest)WebRequest.Create(Constant.URLServer);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
