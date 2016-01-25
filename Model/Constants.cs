@@ -10,13 +10,13 @@ namespace AuiSpaceGame.Model
 {
     public static class Constant
     {
-        public const string URLServer = "http://192.168.0.1";
+        public const string URLServer = "http://localhost:5050";
         public const double ZCarpet = 2;
         /// <summary>
         /// Delay of the carpet (in milliseconds)
         /// </summary>
         public const double TPharos = 0;
-        public const double TIntroVideo = 10000;
+        public const double TIntroVideo = 30000;
         public const double ZLittleSpace = 0.07;
         public const double Square = 0.6;
         /// <summary>
@@ -25,8 +25,8 @@ namespace AuiSpaceGame.Model
         public const double Delta = 0.25;
         public const double DeltaLogicBlock = 0.30;
         public const int NumberOfCarpetSquares = 4;
-        public const double TReinforcement = 3000;
-        public const double TLogicBlockAnimation = 10000;
+        public const double TReinforcement = 16000;
+        public const double TLogicBlockAnimation = 30000;
 
         public const string ImageUriPrefix = "/AuiSpaceGame;component/Images/";
     }

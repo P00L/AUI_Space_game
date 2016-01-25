@@ -103,7 +103,7 @@ namespace AuiSpaceGame
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            
+
         }
     }
 }
