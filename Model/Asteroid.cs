@@ -24,6 +24,7 @@ namespace AuiSpaceGame.Model
                 NotifyPropertyChanged("image");
             }
         }
+        // 1240 : speed(ms) = time
         public double Speed
         {
             get { return speed; }
@@ -31,6 +32,7 @@ namespace AuiSpaceGame.Model
             {
                 speed = value;
                 AnimationDuration = TimeSpan.FromMilliseconds(((Constant.Square * 2) * 1000) / speed);
+                Console.WriteLine(AnimationDuration);
                 UpdateImage();
                 NotifyPropertyChanged("image");
             }
@@ -77,11 +79,11 @@ namespace AuiSpaceGame.Model
         {
             string LaneString = "";
             if (this.lane == Model.Lane.Left)
-                LaneString = "Left";
+                LaneString = "1";
             else if (this.lane == Model.Lane.Middle)
-                LaneString = "Middle";
+                LaneString = "2";
             else if (this.lane == Model.Lane.Right)
-                LaneString = "Right";
+                LaneString = "3";
 
             string SpeedString = "";
             if (this.speed == Model.Speed.High)
@@ -89,7 +91,7 @@ namespace AuiSpaceGame.Model
             else if (this.speed == Model.Speed.Low)
                 SpeedString = "50";
 
-            return "Asteroid-" + LaneString + "-" + SpeedString;
+            return LaneString + "?" + SpeedString+":100";
         }
 
 

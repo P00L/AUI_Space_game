@@ -32,11 +32,11 @@ namespace AuiSpaceGame.Model
         public string ColorToRGB()
         {
             if (color == Colour.Blue)
-                return "R0-G0-B100";
+                return "0:10,0:100,100:100";
             else if (color == Colour.Red)
-                return "R100-G0-B0";
+                return "100:100,0:100,0:100";
             else if (color == Colour.Yellow)
-                return "R100-G100-B0";
+                return "100:100,100:100,0:100";
             return "TO RGB not implemented";
         }
 

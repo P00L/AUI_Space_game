@@ -64,17 +64,17 @@ namespace AuiSpaceGame.Model
             {
                 string ZString = "";
                 if (shape.Z == SquareCoordinate.Top)
-                    ZString = "Top";
+                    ZString = "1";
                 else if (shape.Z == SquareCoordinate.Bottom)
-                    ZString = "Bottom";
+                    ZString = "2";
 
                 string XString = "";
                 if (shape.X == SquareCoordinate.Left)
-                    XString = "Left";
+                    XString = "1";
                 else if (shape.X == SquareCoordinate.Right)
-                    XString = "Right";
+                    XString = "2";
 
-                ShapesString += shape.Figure.ToString() + "-" + ZString + "-" + XString + "-" + shape.ColorToRGB() + ",";
+                ShapesString += ZString + XString + "?" + shape.Figure.ToString() + ZString + XString + "," + shape.ColorToRGB() + ";";
             }
             ShapesString = ShapesString.Remove(ShapesString.Length - 1); // removes the last ","
             return ShapesString;

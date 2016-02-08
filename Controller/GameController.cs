@@ -37,7 +37,7 @@ namespace AuiSpaceGame.Controller
             if (GameState.GameOn)
             {
                 Console.WriteLine("GAME ON");
-                APIServer.LuminousCarpetRequest("Release");
+                APIServer.LuminousCarpetRequest("5");
                 //TODO chiamata pharos CHECK SPEGNERE LUCI!!!
                 APIServer.HueRequest("#000000", "front", "1");
                 APIServer.HueRequest("#000000", "middle", "1");
@@ -51,7 +51,7 @@ namespace AuiSpaceGame.Controller
             else
             {
                 Console.WriteLine("GAME OFF");
-                APIServer.LuminousCarpetRequest("Release");
+                APIServer.LuminousCarpetRequest("5");
                 //TODO spegnere il video sullo schermo
                 APIServer.HueRequest("#FFFFFF", "front", "100");
                 APIServer.HueRequest("#FFFFFF", "middle", "100");
@@ -88,7 +88,7 @@ namespace AuiSpaceGame.Controller
                 if (animation.GetType() == typeof(Asteroid))
                 {
                     APIServer.ShowVideoOnScreenRequest("FirstScreen", "Space.mp4");
-                    APIServer.LuminousCarpetRequest("Sparkle");
+                    APIServer.LuminousCarpetRequest("6");
                     APIServer.LuminousCarpetRequest(((Asteroid)animation).ToString()); //TODO CHECK
 
                 }
@@ -97,7 +97,7 @@ namespace AuiSpaceGame.Controller
                     LogicBlock animationLogicBlock = (LogicBlock)animation;
                     APIServer.ShowVideoOnScreenRequest("FirstScreen", "LogicBlock-" + animationLogicBlock.Shapes[animationLogicBlock.Target].Figure + "-" + animationLogicBlock.Shapes[animationLogicBlock.Target].Color + ".mp4");
                     string LogicBlockString = animationLogicBlock.ToString();
-                    string[] ShapesString = LogicBlockString.Split(',');
+                    string[] ShapesString = LogicBlockString.Split(';');
                    // System.Threading.Thread.Sleep(5000); //TODO!!! tempo del video!!!
                     for (int i = 0; i < ShapesString.Length; i++)
                     {
@@ -109,7 +109,7 @@ namespace AuiSpaceGame.Controller
             else // true--->false end of animation
             {
                 Console.WriteLine("ANIMATION OFF " + GameState.AnimationId + "  {0:HH: mm: ss.fff}", DateTime.Now);
-                APIServer.LuminousCarpetRequest("Release");
+                APIServer.LuminousCarpetRequest("5");
                 if (GameState.ExecuteReinforcement)
                 {
                     GameState.ReinforcementOn = true;
@@ -132,7 +132,7 @@ namespace AuiSpaceGame.Controller
                 APIServer.HueRequest("#FF0000", "front", "50");
                 APIServer.HueRequest("#FFCC00", "middle", "50");
                 APIServer.HueRequest("#FFFF00", "rear", "50");
-                APIServer.LuminousCarpetRequest("Reinforcement");
+                APIServer.LuminousCarpetRequest("7");
                 Timer.Start();
 
             }
@@ -143,7 +143,7 @@ namespace AuiSpaceGame.Controller
                 APIServer.HueRequest("#000000", "front", "1");
                 APIServer.HueRequest("#000000", "middle", "1");
                 APIServer.HueRequest("#000000", "rear", "1");
-                APIServer.LuminousCarpetRequest("Release");
+                APIServer.LuminousCarpetRequest("5");
                 NextAnimation();
             }
         }
