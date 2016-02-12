@@ -15,12 +15,11 @@ namespace AuiSpaceGame.Utilities
         private HttpWebRequest httpWebRequest;
         private StreamWriter streamWriter;
 
-        public APIServer()
-        {
-            //Connect();
-        }
-
-        public async void LuminousCarpetRequest(string trigger)
+        /// <summary>
+        /// Display an animation on the carpet
+        /// </summary>
+        /// <param name="trigger">Trigger to invoke</param>
+        public async static void LuminousCarpetRequest(string trigger)
         {
             string messageToSend = new JavaScriptSerializer().Serialize(new
             {
@@ -65,7 +64,12 @@ namespace AuiSpaceGame.Utilities
 
         }
 
-        public async void ShowImageOnScreenRequest(string targetScreen, string image)
+        /// <summary>
+        /// Display an image on a screen
+        /// </summary>
+        /// <param name="targetScreen">Screen on which the image will be displayed</param>
+        /// <param name="image">URI of the image</param>
+        public async static void ShowImageOnScreenRequest(string targetScreen, string image)
         {
             string messageToSend = new JavaScriptSerializer().Serialize(new
             {
@@ -111,7 +115,12 @@ namespace AuiSpaceGame.Utilities
 
         }
 
-        public async void ShowVideoOnScreenRequest(string targetScreen, string video)
+        /// <summary>
+        /// Display a video on a screen
+        /// </summary>
+        /// <param name="targetScreen">Video on which the video will be displayed</param>
+        /// <param name="video">URI of the video</param>
+        public async static void ShowVideoOnScreenRequest(string targetScreen, string video)
         {
             string messageToSend = new JavaScriptSerializer().Serialize(new
             {
@@ -157,7 +166,13 @@ namespace AuiSpaceGame.Utilities
 
         }
 
-        public async void ShowTextImageOnScreenRequest(string targetScreen, string image, string text)
+        /// <summary>
+        /// Display an image with a text on a screen
+        /// </summary>
+        /// <param name="targetScreen">Screen on which the image with text will be displayed</param>
+        /// <param name="image">URI of the image</param>
+        /// <param name="text">Text to display</param>
+        public async static void ShowTextImageOnScreenRequest(string targetScreen, string image, string text)
         {
             string messageToSend = new JavaScriptSerializer().Serialize(new
             {
@@ -204,7 +219,13 @@ namespace AuiSpaceGame.Utilities
 
         }
 
-        public async void HueRequest(string color, string position, string luminosity)
+        /// <summary>
+        /// Change colors and luminosity of a Hue Light
+        /// </summary>
+        /// <param name="color">Color to show</param>
+        /// <param name="position">Light to modify</param>
+        /// <param name="luminosity">Luminosity to show</param>
+        public async static void HueRequest(string color, string position, string luminosity)
         {
             string messageToSend = new JavaScriptSerializer().Serialize(new
             {
@@ -251,7 +272,7 @@ namespace AuiSpaceGame.Utilities
 
         }
 
-        private void ResponseReceived(object p)
+        private static void ResponseReceived(object p)
         {
             throw new NotImplementedException();
         }

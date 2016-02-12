@@ -148,6 +148,9 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        /// <summary>
+        /// Checks whether the child hits an asteroid and decides whether to execute the reinforcement or not
+        /// </summary>
         private void CheckChildPositionAsteroid()
         {
             /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);
@@ -176,6 +179,9 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        /// <summary>
+        /// Checks whether the child goes on the target and decides whether to execute the reinforcement or not
+        /// </summary>
         private void CheckChildPositionLogicBlock()
         {
             /*Console.WriteLine("X = " + childBody.Joints[JointType.SpineMid].Position.X);

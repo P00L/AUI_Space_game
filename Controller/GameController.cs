@@ -15,13 +15,11 @@ namespace AuiSpaceGame.Controller
         GameState GameState;
         Game Game;
         Timer Timer;
-        APIServer APIServer;
 
         public GameController(Game game, GameState gameState)
         {
             GameState = gameState;
             Game = game;
-            APIServer = new APIServer();
             GameState.GameOnChanged += new EventHandler(GameOnChanged);
             GameState.GamePauseOnChanged += new EventHandler(GamePauseOnChanged);
             GameState.AnimationOnChanged += new EventHandler(AnimationOnChanged);
@@ -32,6 +30,9 @@ namespace AuiSpaceGame.Controller
             Timer.AutoReset = false;
         }
 
+        /// <summary>
+        /// Handles the start of the game and its end 
+        /// </summary>
         public void GameOnChanged(object sender, EventArgs e)
         {
             if (GameState.GameOn)
@@ -64,6 +65,9 @@ namespace AuiSpaceGame.Controller
 
         }
 
+        /// <summary>
+        /// Handles the start of an animation and its end
+        /// </summary>
         public void AnimationOnChanged(object sender, EventArgs e)
         {
             if (GameState.AnimationOn) // false--->true start of animation
@@ -121,6 +125,9 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        /// <summary>
+        /// Handles the start of the reinforcement and its end
+        /// </summary>
         public void ReinforcementOnChanged(object sender, EventArgs e)
         {
             if (GameState.ReinforcementOn) //reinforecmente started
@@ -148,6 +155,9 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        /// <summary>
+        /// Handles the changes to ExecuteReinforcement, when needed
+        /// </summary>
         public void ExecuteReinforcementChanged(object sender, EventArgs e)
         {
             Console.WriteLine("ExecuteReinforcementChanged");
@@ -163,6 +173,9 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        /// <summary>
+        /// Handles the event fired by a timer
+        /// </summary>
         private void OnElapsedTimer(object sender, ElapsedEventArgs e)
         {
             if (GameState.AnimationOn) //end of animation
@@ -182,10 +195,14 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        //TODO togliere!? che è?!?!
         public void NextStepGame()
         {
         }
 
+        /// <summary>
+        /// Manages the transition between an animation and the other
+        /// </summary>
         private void NextAnimation()
         {
             if (GameState.RedoAnimation)
@@ -211,6 +228,7 @@ namespace AuiSpaceGame.Controller
             }
         }
 
+        //Check whether the game is ended or not
         private Boolean CheckEndGame()
         {
             if (GameState.AnimationId < (Game.AnimationsSequence.Count - 1))

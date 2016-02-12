@@ -70,10 +70,6 @@ namespace AuiSpaceGame
             if (AmbientAnimationOn != true)
             {
                 AmbientAnimationOn = true;
-                if (APIServer == null)
-                {
-                    APIServer = new APIServer();
-                }
 
                 APIServer.LuminousCarpetRequest("6");
                 APIServer.ShowVideoOnScreenRequest("FirstScreen", "Space.mp4");
@@ -88,10 +84,6 @@ namespace AuiSpaceGame
             if (AmbientAnimationOn != false)
             {
                 AmbientAnimationOn = false;
-                if (APIServer == null)
-                {
-                    APIServer = new APIServer();
-                }
 
                 APIServer.LuminousCarpetRequest("5");
                 //TODO spegnere il video sullo schermo

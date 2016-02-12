@@ -12,6 +12,10 @@ namespace AuiSpaceGame.Model.Parser
 {
     public static class Parser
     {
+        /// <summary>
+        /// Saves the current game settings in an xml file
+        /// </summary>
+        /// <param name="game">The game to be saved</param>
         public static void saveGame(Game game)
         {
             var sw = new StringWriter();
@@ -110,6 +114,10 @@ namespace AuiSpaceGame.Model.Parser
                 File.WriteAllText(saveFileDialog.FileName, sw.ToString());
         }
 
+        /// <summary>
+        /// Loads game settings from an xml file
+        /// </summary>
+        /// <returns>The game loaded</returns>
         public static Game loadGame()
         {
             Game game = new Game();
