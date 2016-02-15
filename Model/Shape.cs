@@ -78,7 +78,7 @@ namespace AuiSpaceGame.Model
             Z = z;
         }
 
-        private void UpdateImage() //TODO
+        private void UpdateImage()
         {
             string NewImage = "LogicBlocks/LogicBlock-";
             /*

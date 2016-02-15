@@ -29,6 +29,7 @@ namespace AuiSpaceGame
         private int SquareTmp;
         private Dictionary<string, ImageBrush> squareDic;
         bool AmbientAnimationOn;
+        private bool gameAlreadyStarted = false;
 
         public SetupGameWindow(bool ambientAnimationOn)
         {
@@ -494,8 +495,11 @@ namespace AuiSpaceGame
 
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
-            if (gameState == null || !gameState.GameOn)
+            //clicking this button 2 things can happen:
+            //..the game starts
+            if(!gameAlreadyStarted)
             {
+                gameAlreadyStarted = true;
                 gameState = new GameState();
                 Kinect kinect = new Kinect(Game, gameState);
                 GameController gameController = new GameController(Game, gameState);
@@ -503,8 +507,11 @@ namespace AuiSpaceGame
                 startGame.Content = Application.Current.Resources["endGame"];
                 backButton.IsEnabled = false;
             }
-            else
+            else if(gameAlreadyStarted)
+            //..the game ends
             {
+                gameAlreadyStarted = false;
+                //to be more precise, we could check whether the game already ended and skip these cmds
                 startGame.Content = Application.Current.Resources["startGame"];
                 backButton.IsEnabled = true;
                 gameState.GameOn = false;
@@ -515,8 +522,6 @@ namespace AuiSpaceGame
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             Parser.saveGame(Game);
-            //TODO segnalare gioco salvato
-            //TODO gestire attivazione pulsante "save"
         }
 
         private void shapeTriangle_Checked(object sender, RoutedEventArgs e)

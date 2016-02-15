@@ -123,7 +123,7 @@ namespace AuiSpaceGame.Controller
                 childBody = this.bodies[0];
                 foreach (Body body in this.bodies)
                 {
-                    if (body.IsTracked) //TODO checkare se il bambino è presente o no
+                    if (body.IsTracked)
                     {
                         if (body.Joints[JointType.SpineMid].Position.Y < childHeight)
                         {
@@ -133,7 +133,7 @@ namespace AuiSpaceGame.Controller
                     }
 
                 }
-                //Console.WriteLine("ANIM ON  "+gameState.AnimationOn); //TODO TOGLRIERE
+                //Console.WriteLine("ANIM ON  "+gameState.AnimationOn);
                 //now we have the body of the child
                 if (gameState.AnimationOn)
                 {
@@ -174,7 +174,7 @@ namespace AuiSpaceGame.Controller
                 childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.Delta &&
                 childBody.Joints[JointType.SpineMid].Position.X <= X + Constant.Delta)
             {
-                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff")); //TODO TOGLIERE!!
+                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff"));
                 gameState.ExecuteReinforcement = false;
             }
         }
@@ -200,7 +200,7 @@ namespace AuiSpaceGame.Controller
                 childBody.Joints[JointType.SpineMid].Position.X >= X - Constant.DeltaLogicBlock &&
                 childBody.Joints[JointType.SpineMid].Position.X <= X + Constant.DeltaLogicBlock)
             {
-                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff")); //TODO TOGLIERE!!
+                Console.WriteLine(System.DateTime.Now.ToString("hh.mm.ss.ffffff"));
                 gameState.ExecuteReinforcement = true;
             }
         }

@@ -121,7 +121,7 @@ namespace AuiSpaceGame.Model.Parser
         public static Game loadGame()
         {
             Game game = new Game();
-            String xmlString = "EmptyGame"; //TODO default?!
+            String xmlString = "EmptyGame";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "XML-File | *.xml";

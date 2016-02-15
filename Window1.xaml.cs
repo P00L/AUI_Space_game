@@ -73,9 +73,7 @@ namespace AuiSpaceGame
 
                 APIServer.LuminousCarpetRequest("6");
                 APIServer.ShowVideoOnScreenRequest("FirstScreen", "Space.mp4");
-                APIServer.HueRequest("#2E09C1", "front", "100");
-                APIServer.HueRequest("#2E09C1", "middle", "100");
-                APIServer.HueRequest("#2E09C1", "rear", "100");
+                APIServer.HueRequest("#2E09C1", "100");
             }
         }
 
@@ -87,9 +85,7 @@ namespace AuiSpaceGame
 
                 APIServer.LuminousCarpetRequest("5");
                 //TODO spegnere il video sullo schermo
-                APIServer.HueRequest("#FFFFFF", "front", "100");
-                APIServer.HueRequest("#FFFFFF", "middle", "100");
-                APIServer.HueRequest("#FFFFFF", "rear", "100");
+                APIServer.HueRequest("#FFFFFF", "100");
             }
         }
 

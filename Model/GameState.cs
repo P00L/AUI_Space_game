@@ -13,8 +13,6 @@ namespace AuiSpaceGame.Model
         //                                              FALSE
         //                                  reinforcementOn TRUE
         //                                                  FALSE
-        
-        //TODO game pause????
 
         public event EventHandler GameOnChanged;
         public event EventHandler GamePauseOnChanged;

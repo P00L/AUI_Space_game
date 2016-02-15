@@ -45,7 +45,7 @@ namespace AuiSpaceGame.Model
             UpdateImage();
         }
 
-        private void UpdateImage() //TODO cambiare il nome immagine
+        private void UpdateImage()
         {
             string NewImage = "LogicBlocks/LogicBlock-" + Shapes[target].Color + "-" + Shapes[target].Figure + ".png";
             Image = NewImage;

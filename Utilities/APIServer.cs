@@ -225,14 +225,13 @@ namespace AuiSpaceGame.Utilities
         /// <param name="color">Color to show</param>
         /// <param name="position">Light to modify</param>
         /// <param name="luminosity">Luminosity to show</param>
-        public async static void HueRequest(string color, string position, string luminosity)
+        public async static void HueRequest(string color, string brightness)
         {
             string messageToSend = new JavaScriptSerializer().Serialize(new
             {
                 Action = "EnvironmentAction",
                 Color = color,
-                Position = position, //possible values: front-middle-rear
-                Luminosity = luminosity //value between 1 and 100
+                Brightness = brightness //value between 1 and 100
             });
 
             Console.WriteLine(messageToSend);
